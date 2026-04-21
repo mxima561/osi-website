@@ -1,0 +1,251 @@
+import { FadeIn, CountUp } from '../components/Motion';
+import { Section, Container, Eyebrow, Button, SectionHeading, Green, ImgOrPlaceholder } from '../components/Primitives';
+import { Link } from '../components/Router';
+import Icon from '../components/Icon';
+import { useQuote } from '../components/QuoteModal';
+import FinalCTA from '../components/FinalCTA';
+import { SERVICES, SERVICE_PAGES } from '../data/tokens';
+import NotFoundPage from './NotFoundPage';
+
+export function ServicesLandingPage() {
+  const quote = useQuote();
+  return (
+    <>
+      <Section dark className="pt-24 pb-24 md:pt-32 md:pb-32 overflow-hidden">
+        <div className="absolute inset-0 grid-bg opacity-40" />
+        <Container className="relative">
+          <FadeIn>
+            <Eyebrow dark>Services</Eyebrow>
+            <h1 className="mt-5 font-display font-black tracking-tight leading-[1.02] text-5xl md:text-6xl lg:text-7xl max-w-5xl">
+              Services Built Around How Furniture Projects <Green>Actually Work</Green>
+            </h1>
+            <p className="mt-7 max-w-2xl text-lg text-white/70 leading-relaxed">Installation is only part of the job. OSI supports the work before, during, and after install day with the labor, warehouse capacity, and ongoing service infrastructure needed to keep projects moving.</p>
+            <div className="mt-10 flex flex-wrap gap-3">
+              <Button variant="primary" size="lg" onClick={() => quote.open()}>Request a Quote</Button>
+              <Button variant="outlineLight" size="lg" onClick={() => quote.open()} iconRight={null}>Talk to OSI</Button>
+            </div>
+          </FadeIn>
+        </Container>
+      </Section>
+
+      <Section className="py-24 md:py-32">
+        <Container>
+          <FadeIn>
+            <SectionHeading eyebrow="About Our Services" align="center" maxW="max-w-3xl">
+              More than installers. A true <Green>service platform</Green>.
+            </SectionHeading>
+            <div className="mt-8 max-w-3xl mx-auto text-center text-lg text-[#4A4A4A] leading-relaxed space-y-5">
+              <p>OSI provides commercial furniture support across the full project lifecycle — from receiving and warehousing to installation, MAC work, decommissioning, modular walls, and long-term asset management.</p>
+              <p>Some clients come to us for a single installation. Others rely on us as an ongoing Phoenix partner. Either way, the value is the same: one accountable team that understands how to execute commercial furniture work with less friction and better follow-through.</p>
+            </div>
+          </FadeIn>
+        </Container>
+      </Section>
+
+      <Section className="py-24 md:py-32 bg-[#F9F9F5]">
+        <Container>
+          <FadeIn>
+            <SectionHeading eyebrow="Core Services" sub="Whether you are a dealer coordinating a client project or a facility team managing ongoing needs, OSI provides the local support needed to execute the work well.">
+              Our <Green>Core Services</Green>
+            </SectionHeading>
+          </FadeIn>
+          <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {SERVICES.map((s,i) => (
+              <FadeIn key={s.slug} delay={i*0.05}>
+                <Link to={`/services/${s.slug}`} className="group block h-full rounded-2xl border border-[#EAEAEA] p-8 bg-white hover:border-[#1A1A1A] transition">
+                  <div className="w-14 h-14 rounded-xl bg-[#E4FFC9] flex items-center justify-center text-[#5AD400]">
+                    <Icon name={s.icon} className="w-6 h-6"/>
+                  </div>
+                  <h3 className="font-display font-bold text-[22px] mt-6 tracking-tight">{s.title}</h3>
+                  <p className="mt-3 text-[#4A4A4A] leading-relaxed">{s.blurb}</p>
+                  <div className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-[#5AD400] group-hover:gap-3 transition-all">Learn More <Icon name="ArrowRight" className="w-4 h-4"/></div>
+                </Link>
+              </FadeIn>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      <Section className="py-24 md:py-32">
+        <Container>
+          <div className="grid lg:grid-cols-12 gap-12">
+            <FadeIn className="lg:col-span-5">
+              <SectionHeading eyebrow="Why OSI" sub="Clients choose OSI because successful projects take more than labor on install day.">
+                One local partner across the full <Green>furniture lifecycle</Green>
+              </SectionHeading>
+            </FadeIn>
+            <div className="lg:col-span-7 space-y-6">
+              {[
+                ['Operational depth', 'Receiving, staging, warehousing, delivery, installation, and follow-through under one roof.'],
+                ['Local scale', 'The crews, warehouse capacity, and Phoenix presence to support larger, more complex work.'],
+                ['Ongoing support', 'Services that continue beyond the initial install, including MAC, decommissions, modular walls, and asset programs.'],
+                ['Better coordination', 'Fewer handoffs, fewer gaps, and one team that understands the full picture.'],
+              ].map(([t,b], i) => (
+                <FadeIn key={t} delay={i*0.05}>
+                  <div className="flex gap-5 pb-6 border-b border-[#EAEAEA]">
+                    <div className="w-10 h-10 rounded-full bg-[#E4FFC9] flex items-center justify-center text-[#5AD400] shrink-0 mt-1">
+                      <Icon name="Check" className="w-4 h-4" strokeWidth={3}/>
+                    </div>
+                    <div>
+                      <h4 className="font-display font-bold text-lg">{t}</h4>
+                      <p className="mt-1.5 text-[#4A4A4A] leading-relaxed">{b}</p>
+                    </div>
+                  </div>
+                </FadeIn>
+              ))}
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      <Section className="py-24 bg-[#F4F4F4]">
+        <Container>
+          <FadeIn>
+            <SectionHeading align="center" maxW="max-w-2xl">Built for two core client groups</SectionHeading>
+          </FadeIn>
+          <div className="mt-14 grid md:grid-cols-2 gap-5 max-w-5xl mx-auto">
+            <FadeIn delay={0.05}>
+              <div className="bg-white rounded-2xl p-10">
+                <h3 className="font-display font-bold text-2xl">For Dealers, PMs & A&D</h3>
+                <p className="mt-4 text-[#4A4A4A] leading-relaxed">OSI acts as your Phoenix execution partner, helping protect the client relationship while keeping the project organized and on schedule.</p>
+              </div>
+            </FadeIn>
+            <FadeIn delay={0.1}>
+              <div className="bg-[#1A1A1A] text-white rounded-2xl p-10">
+                <h3 className="font-display font-bold text-2xl">For Enterprise & Facility Teams</h3>
+                <p className="mt-4 text-white/70 leading-relaxed">OSI supports the furniture and facility work that internal teams often do not have the time, labor, or infrastructure to manage well on their own.</p>
+              </div>
+            </FadeIn>
+          </div>
+        </Container>
+      </Section>
+
+      <FinalCTA title={<>Need the right <Green>service partner</Green> in Phoenix?</>} subtitle="Whether you need support for one project or a long-term local partner, OSI is ready to help." />
+    </>
+  );
+}
+
+export function ServiceSubpage({ slug }) {
+  const d = SERVICE_PAGES[slug];
+  const quote = useQuote();
+  if (!d) return <NotFoundPage />;
+  return (
+    <>
+      <Section dark={d.heroDark} className={`pt-20 pb-20 md:pt-28 md:pb-28 overflow-hidden ${!d.heroDark ? 'bg-[#F9F9F5]' : ''}`}>
+        {d.heroDark && <div className="absolute inset-0 grid-bg opacity-40" />}
+        <Container className="relative">
+          <FadeIn>
+            <Eyebrow dark={d.heroDark}>{d.eyebrow}</Eyebrow>
+            <h1 className={`mt-5 font-display font-black tracking-tight leading-[1.02] text-5xl md:text-6xl lg:text-7xl max-w-5xl ${d.heroDark ? 'text-white' : 'text-[#1A1A1A]'}`}>
+              {d.title[0]} <Green>{d.title[1]}</Green>
+            </h1>
+            <p className={`mt-7 max-w-2xl text-lg leading-relaxed ${d.heroDark ? 'text-white/70' : 'text-[#4A4A4A]'}`}>{d.sub}</p>
+            <div className="mt-10 flex flex-wrap gap-3">
+              <Button variant="primary" size="lg" onClick={() => quote.open()}>{d.ctas[0]}</Button>
+              <Button variant={d.heroDark ? 'outlineLight' : 'outlineDark'} size="lg" onClick={() => quote.open()} iconRight={null}>{d.ctas[1]}</Button>
+            </div>
+          </FadeIn>
+        </Container>
+      </Section>
+
+      <Section className="py-24 md:py-28">
+        <Container>
+          <FadeIn>
+            <div className="max-w-3xl mx-auto text-center space-y-6">
+              {d.intro.map((p,i) => <p key={i} className="text-lg leading-relaxed text-[#4A4A4A]">{p}</p>)}
+            </div>
+          </FadeIn>
+        </Container>
+      </Section>
+
+      <Section className="py-24 bg-[#F4F4F4]">
+        <Container>
+          <div className="grid lg:grid-cols-12 gap-12">
+            <FadeIn className="lg:col-span-5">
+              <SectionHeading eyebrow="Scope" sub={d.supportSub}>
+                {d.supportTitle}
+              </SectionHeading>
+            </FadeIn>
+            <div className="lg:col-span-7 grid sm:grid-cols-2 gap-3">
+              {d.supportList.map((s,i) => (
+                <FadeIn key={s} delay={i*0.04}>
+                  <div className="bg-white rounded-xl p-5 flex items-start gap-3">
+                    <Icon name="Check" className="w-4 h-4 text-[#5AD400] mt-1 shrink-0" strokeWidth={3}/>
+                    <span className="text-[15px] text-[#1A1A1A]">{s}</span>
+                  </div>
+                </FadeIn>
+              ))}
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      {d.extra && (
+        <Section className="py-24 md:py-28">
+          <Container>
+            <FadeIn>
+              <div className="max-w-4xl mx-auto">
+                <Eyebrow>{d.extra.title}</Eyebrow>
+                <h2 className="mt-4 font-display font-black text-4xl md:text-5xl tracking-tight leading-tight">{d.extra.sub}</h2>
+                {d.extra.body && <p className="mt-6 text-lg text-[#4A4A4A] leading-relaxed">{d.extra.body}</p>}
+                {d.extra.list && (
+                  <ul className="mt-6 space-y-3">
+                    {d.extra.list.map(l => (
+                      <li key={l} className="flex items-start gap-3">
+                        <span className="mt-2.5 w-1.5 h-1.5 rounded-full bg-[#6DFF00] shrink-0" />
+                        <span className="text-[#1A1A1A]">{l}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </FadeIn>
+          </Container>
+        </Section>
+      )}
+
+      {d.statCallout && (
+        <Section dark className="py-24">
+          <Container>
+            <FadeIn>
+              <div className="text-center">
+                <div className="font-display font-black text-[120px] md:text-[200px] leading-none text-[#6DFF00] tracking-tight">
+                  <CountUp to={d.statCallout.n} />{d.statCallout.suffix}
+                </div>
+                <div className="font-mono text-sm tracking-[0.3em] text-white/60 mt-2">{d.statCallout.label}</div>
+                <p className="mt-6 text-lg text-white/80">{d.statCallout.caption}</p>
+              </div>
+            </FadeIn>
+          </Container>
+        </Section>
+      )}
+
+      <Section className="py-24 md:py-28 bg-[#F9F9F5]">
+        <Container>
+          <FadeIn>
+            <div className="max-w-3xl">
+              <Eyebrow>Why OSI</Eyebrow>
+              {d.whySub && <h3 className="font-display font-bold text-2xl md:text-3xl mt-4">{d.whySub}</h3>}
+              {d.whyBody && <p className="mt-5 text-lg text-[#4A4A4A] leading-relaxed">{d.whyBody}</p>}
+              {d.whyList && (
+                <ul className="mt-6 space-y-3">
+                  {d.whyList.map(w => (
+                    <li key={w} className="flex items-start gap-3 text-[#1A1A1A]">
+                      <Icon name="Check" className="w-4 h-4 text-[#5AD400] mt-1 shrink-0" strokeWidth={3}/>
+                      <span>{w}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </FadeIn>
+        </Container>
+      </Section>
+
+      <FinalCTA
+        title={<>{d.closingTitle[0]} <Green>{d.closingTitle[1]}</Green></>}
+        subtitle={d.closingBody}
+      />
+    </>
+  );
+}
