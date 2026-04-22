@@ -50,7 +50,7 @@ export default function Nav() {
 
   return (
     <>
-      <nav className={`sticky top-0 z-50 bg-white/85 backdrop-blur-md border-b border-[#EAEAEA] transition-all ${scrolled ? 'py-2.5' : 'py-4'}`}>
+      <nav className={`sticky top-0 z-50 bg-white/85 backdrop-blur-md border-b border-[#EAEAEA] transition-all ${scrolled ? 'py-1.5' : 'py-2'}`}>
         <Container className="flex items-center justify-between gap-6">
           <div className="flex items-center gap-3">
             <button aria-label="Menu" className="lg:hidden w-10 h-10 rounded-lg hover:bg-black/5 flex items-center justify-center" onClick={()=>setMobileOpen(true)}>

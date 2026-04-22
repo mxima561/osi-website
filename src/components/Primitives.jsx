@@ -111,19 +111,11 @@ export function ImgOrPlaceholder({ src, alt, caption, className = '', imgClassNa
 }
 
 export function OSILogo({ variant = 'dark', className = '' }) {
-  const color = variant === 'dark' ? '#1A1A1A' : '#FFFFFF';
   return (
-    <div className={`inline-flex items-center gap-2.5 ${className}`} aria-label="OSI — Office Systems Installation">
-      <svg width="34" height="34" viewBox="0 0 34 34" fill="none" aria-hidden="true">
-        <rect x="1" y="1" width="32" height="32" rx="6" stroke={color} strokeWidth="1.5"/>
-        <path d="M9 11 L9 23 L25 23" stroke={color} strokeWidth="2" strokeLinecap="square"/>
-        <rect x="13" y="14" width="3.5" height="6" fill="#6DFF00"/>
-        <rect x="18" y="11.5" width="3.5" height="8.5" fill={color}/>
-      </svg>
-      <div className="flex flex-col leading-none">
-        <span className="font-display font-black text-[19px] tracking-tight" style={{ color }}>OSI</span>
-        <span className="font-mono text-[8.5px] tracking-[0.18em] mt-0.5" style={{ color, opacity: 0.55 }}>OFFICE SYSTEMS</span>
-      </div>
-    </div>
+    <img
+      src="/osi_logo_main.svg"
+      alt="OSI — Office Systems Installation"
+      className={`h-16 w-auto ${variant === 'light' ? 'brightness-0 invert' : ''} ${className}`}
+    />
   );
 }

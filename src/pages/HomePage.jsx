@@ -13,15 +13,15 @@ function HeroHome() {
   const imgY = useTransform(scrollY, [0, 600], [0, -60]);
   return (
     <Section className="relative overflow-hidden bg-[#F9F9F5]">
-      <Container className="pt-16 pb-20 md:pt-24 md:pb-28">
+      <Container className="pt-8 pb-20 md:pt-12 md:pb-28">
         <div className="grid lg:grid-cols-12 gap-10 items-center">
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-8">
             <Stagger>
               <StaggerItem>
                 <Eyebrow>Relax. You Found Us.</Eyebrow>
               </StaggerItem>
               <StaggerItem className="mt-6">
-                <h1 className="font-display font-black tracking-tight leading-[0.98] text-[44px] sm:text-[56px] md:text-[72px] lg:text-[84px] text-[#1A1A1A]">
+                <h1 className="font-display font-black tracking-tight leading-[0.98] text-[44px] sm:text-[56px] md:text-[72px] lg:text-[76px] text-[#1A1A1A]">
                   <span className="block">One partner for</span>
                   <span className="block min-h-[1em] leading-[0.98]">
                     <RotatingWord words={['Installation','Warehousing','Asset Management','MAC & Day 2','Modular Walls']} />
@@ -50,7 +50,7 @@ function HeroHome() {
             </Stagger>
           </div>
 
-          <div className="lg:col-span-5">
+          <div className="lg:col-span-4">
             <motion.div style={{ y: imgY }} className="relative aspect-[4/5] lg:aspect-auto lg:h-[620px] rounded-2xl overflow-hidden bg-[#EEEEE8]">
               <ImgOrPlaceholder src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1400&q=80" alt="OSI-installed corporate office" caption="HERO — OSI-INSTALLED CORPORATE OFFICE" />
               <div className="absolute left-5 bottom-5 bg-white/95 backdrop-blur rounded-xl px-4 py-3 flex items-center gap-3">

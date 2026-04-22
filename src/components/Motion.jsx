@@ -92,16 +92,18 @@ export function RotatingWord({ words, interval = 2800, color = '#6DFF00' }) {
     return <span style={{ color }}>{words[0]}</span>;
   }
   return (
-    <span className="inline-block relative align-top leading-[0.98]" style={{ color, minWidth: '1ch', minHeight: '1em' }}>
+    <span className="inline-grid align-top leading-[0.98]" style={{ color }}>
+      {words.map(w => (
+        <span key={w} className="invisible col-start-1 row-start-1 whitespace-nowrap" aria-hidden="true">{w}</span>
+      ))}
       <AnimatePresence mode="wait" initial={false}>
         <motion.span
           key={words[i]}
           initial={{ y: '40%', opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          exit={{ y: '-40%', opacity: 0, position: 'absolute' }}
+          exit={{ y: '-40%', opacity: 0 }}
           transition={{ duration: 0.45, ease: [0.16,1,0.3,1] }}
-          className="inline-block"
-          style={{ left: 0 }}
+          className="col-start-1 row-start-1 whitespace-nowrap"
         >
           {words[i]}
         </motion.span>
