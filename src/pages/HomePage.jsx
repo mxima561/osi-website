@@ -52,7 +52,7 @@ function HeroHome() {
 
           <div className="lg:col-span-4">
             <motion.div style={{ y: imgY }} className="relative aspect-[4/5] lg:aspect-auto lg:h-[620px] rounded-2xl overflow-hidden bg-[#EEEEE8]">
-              <ImgOrPlaceholder src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1400&q=80" alt="OSI-installed corporate office" caption="HERO — OSI-INSTALLED CORPORATE OFFICE" />
+              <ImgOrPlaceholder src="/photos/hero-open-plan.jpg" alt="OSI-installed corporate office" />
               <div className="absolute left-5 bottom-5 bg-white/95 backdrop-blur rounded-xl px-4 py-3 flex items-center gap-3">
                 <div className="w-2 h-2 rounded-full bg-[#6DFF00] animate-pulse" />
                 <span className="font-mono text-[11px] tracking-widest uppercase text-[#1A1A1A]">Phoenix, AZ</span>
@@ -96,7 +96,7 @@ function AudienceSplit() {
         <div className="mt-16 grid lg:grid-cols-12 gap-10">
           <FadeIn className="lg:col-span-5">
             <div className="relative h-[460px] lg:h-full rounded-2xl overflow-hidden" style={{ clipPath: 'polygon(0 0, 100% 0, 92% 100%, 0 100%)' }}>
-              <ImgOrPlaceholder src="https://images.unsplash.com/photo-1519974719765-e6559eac2575?w=1200&q=80" alt="OSI installer on site" caption="INSTALLER IN OSI HI-VIS VEST" />
+              <ImgOrPlaceholder src="/photos/warehouse-aisle-deep.png" alt="OSI warehouse facility" />
             </div>
           </FadeIn>
 

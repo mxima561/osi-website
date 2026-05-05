@@ -77,13 +77,18 @@ export default function ContactPage() {
       <Section className="pb-20">
         <Container>
           <FadeIn>
-            <div className="rounded-2xl overflow-hidden border border-[#EAEAEA] aspect-[16/6] bg-[#F4F4F4] relative">
-              <iframe
-                title="OSI Phoenix location"
-                src="https://www.google.com/maps?q=135+E+Watkins+St,+Phoenix,+AZ+85004&output=embed"
-                className="w-full h-full border-0"
-                loading="lazy"
-              />
+            <div className="grid md:grid-cols-2 gap-5">
+              <div className="rounded-2xl overflow-hidden border border-[#EAEAEA] aspect-[4/3] bg-[#F4F4F4]">
+                <img src="/photos/osi-building.jpg" alt="OSI Phoenix building" className="w-full h-full object-cover" />
+              </div>
+              <div className="rounded-2xl overflow-hidden border border-[#EAEAEA] aspect-[4/3] bg-[#F4F4F4]">
+                <iframe
+                  title="OSI Phoenix location"
+                  src="https://www.google.com/maps?q=135+E+Watkins+St,+Phoenix,+AZ+85004&output=embed"
+                  className="w-full h-full border-0"
+                  loading="lazy"
+                />
+              </div>
             </div>
           </FadeIn>
         </Container>

@@ -24,6 +24,16 @@ export default function AboutPage() {
         </Container>
       </Section>
 
+      <Section className="pb-0 -mt-8">
+        <Container>
+          <FadeIn>
+            <div className="aspect-[16/6] rounded-2xl overflow-hidden">
+              <ImgOrPlaceholder src="/photos/osi-building.jpg" alt="OSI Phoenix warehouse and office building" className="w-full h-full object-cover" />
+            </div>
+          </FadeIn>
+        </Container>
+      </Section>
+
       <Section className="py-24 md:py-32">
         <Container>
           <div className="grid lg:grid-cols-12 gap-12">
@@ -64,14 +74,14 @@ export default function AboutPage() {
           </FadeIn>
           <div className="mt-14 grid md:grid-cols-2 gap-5">
             {[
-              { t: 'Receiving & Inspection', c: 'Product intake, checking, and issue identification.' },
-              { t: 'Project Staging', c: 'Organized furniture staged for upcoming jobs.' },
-              { t: 'Secure Warehousing', c: 'Warehouse scale, racking, and tagged inventory.' },
-              { t: 'On-Site Installation', c: 'Installers actively working in commercial environments.' },
+              { t: 'Receiving & Inspection', c: 'Product intake, checking, and issue identification.', img: '/photos/warehouse-steelcase-stock.png' },
+              { t: 'Project Staging', c: 'Organized furniture staged for upcoming jobs.', img: '/photos/warehouse-chairs-staged.png' },
+              { t: 'Secure Warehousing', c: 'Warehouse scale, racking, and tagged inventory.', img: '/photos/warehouse-racking.png' },
+              { t: 'On-Site Installation', c: 'Installers actively working in commercial environments.', img: '/photos/install-in-progress.jpg' },
             ].map((it,i) => (
               <FadeIn key={it.t} delay={i*0.08}>
                 <div className="aspect-[5/3] rounded-2xl overflow-hidden bg-[#EEEEE8]">
-                  <ImgOrPlaceholder caption={`OPS PHOTO — ${it.t.toUpperCase()}`} />
+                  <ImgOrPlaceholder src={it.img} alt={it.t} />
                 </div>
                 <div className="mt-4">
                   <h4 className="font-display font-bold text-lg">{it.t}</h4>

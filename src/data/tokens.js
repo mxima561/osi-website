@@ -26,11 +26,11 @@ export const SERVICES = [
 ];
 
 export const INDUSTRIES = [
-  { slug: 'corporate-office', title: 'Corporate Office', blurb: 'From private offices to multi-floor campuses, OSI supports the installations, reconfigurations, relocations, and ongoing service needs of active workplaces.', img: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1400&q=80' },
-  { slug: 'healthcare', title: 'Healthcare', blurb: 'OSI supports furniture projects in healthcare environments where coordination, cleanliness, and minimal disruption matter.', img: 'https://images.unsplash.com/photo-1631248055158-edec7a3c072b?w=1400&q=80' },
-  { slug: 'education', title: 'Education', blurb: 'From administrative offices to classrooms, libraries, and campus facilities, OSI helps education clients complete furniture work on schedule and with care.', img: 'https://images.unsplash.com/photo-1606761568499-6d2451b23c66?w=1400&q=80' },
-  { slug: 'hospitality', title: 'Hospitality', blurb: 'OSI supports furniture installation, replacement, and transition work in hospitality environments where timing, presentation, and coordination are critical.', img: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1400&q=80' },
-  { slug: 'government', title: 'Government', blurb: 'OSI provides dependable support for public-sector offices, departments, and facilities that require organized execution and a professional local partner.', img: 'https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=1400&q=80' },
+  { slug: 'corporate-office', title: 'Corporate Office', blurb: 'From private offices to multi-floor campuses, OSI supports the installations, reconfigurations, relocations, and ongoing service needs of active workplaces.', img: '/photos/hero-open-plan.jpg' },
+  { slug: 'healthcare', title: 'Healthcare', blurb: 'OSI supports furniture projects in healthcare environments where coordination, cleanliness, and minimal disruption matter.', img: '/photos/project-privacy-desks.jpg' },
+  { slug: 'education', title: 'Education', blurb: 'From administrative offices to classrooms, libraries, and campus facilities, OSI helps education clients complete furniture work on schedule and with care.', img: '/photos/project-training-room.jpg' },
+  { slug: 'hospitality', title: 'Hospitality', blurb: 'OSI supports furniture installation, replacement, and transition work in hospitality environments where timing, presentation, and coordination are critical.', img: '/photos/project-cafe-lounge.jpg' },
+  { slug: 'government', title: 'Government', blurb: 'OSI provides dependable support for public-sector offices, departments, and facilities that require organized execution and a professional local partner.', img: '/photos/install-cubicle-floor.jpg' },
 ];
 
 export const MANUFACTURERS = [
@@ -40,15 +40,15 @@ export const MANUFACTURERS = [
 ];
 
 export const PROJECTS = [
-  { id: 1, tag: 'Tech HQ', cat: 'Corporate', title: 'Corporate Campus Installation', result: 'Installed 400 workstations across 3 floors in 5 days.', img: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1400&q=80' },
-  { id: 2, tag: 'Healthcare', cat: 'Healthcare', title: 'Medical Center Furniture Program', result: 'Completed a facility-wide furniture refresh for a 120-bed healthcare environment.', img: 'https://images.unsplash.com/photo-1631248055158-edec7a3c072b?w=1400&q=80' },
-  { id: 3, tag: 'Higher Ed', cat: 'Higher Ed', title: 'University Library Renovation', result: 'Supported a 15,000 sq. ft. collaborative renovation with furniture installation and modular wall integration.', img: 'https://images.unsplash.com/photo-1606761568499-6d2451b23c66?w=1400&q=80' },
-  { id: 4, tag: 'Corporate', cat: 'Corporate', title: 'Multi-Building Campus Relocation', result: 'Coordinated a phased relocation across 4 buildings with zero business interruption.', img: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1400&q=80', placeholder: true },
-  { id: 5, tag: 'Government', cat: 'Government', title: 'State Agency Workspace Refresh', result: 'Reconfigured departmental workstations across 2 floors with minimal disruption to operations.', img: 'https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=1400&q=80', placeholder: true },
-  { id: 6, tag: 'Hospitality', cat: 'Hospitality', title: 'Resort Back-of-House Install', result: 'Staged and installed new administrative furniture ahead of peak season.', img: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1400&q=80', placeholder: true },
-  { id: 7, tag: 'Corporate', cat: 'Corporate', title: 'Downtown Tower Restack', result: 'Multi-floor workstation reconfiguration completed over three weekends.', img: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=1400&q=80', placeholder: true },
-  { id: 8, tag: 'Healthcare', cat: 'Healthcare', title: 'Ambulatory Clinic Fit-Out', result: 'Exam-room casework and waiting-area installation phased around clinic hours.', img: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=1400&q=80', placeholder: true },
-  { id: 9, tag: 'Higher Ed', cat: 'Higher Ed', title: 'Student Services Center', result: 'Classroom and advising-suite furniture delivered over summer break window.', img: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1400&q=80', placeholder: true },
+  { id: 1, tag: 'Corporate', cat: 'Corporate', title: 'Corporate Campus Installation', result: 'Installed 400 workstations across 3 floors in 5 days.', img: '/photos/hero-open-plan.jpg' },
+  { id: 2, tag: 'Corporate', cat: 'Corporate', title: 'Open Plan Workstation Deployment', result: 'Full open-plan office with monitor arms and privacy screens delivered on schedule.', img: '/photos/install-finished-workstations.jpg' },
+  { id: 3, tag: 'Training', cat: 'Corporate', title: 'Training Center Build-Out', result: 'Training room tables, seating, and AV furniture installed across two floors.', img: '/photos/project-training-room-2.jpg' },
+  { id: 4, tag: 'Corporate', cat: 'Corporate', title: 'Multi-Building Campus Relocation', result: 'Coordinated a phased relocation across 4 buildings with zero business interruption.', img: '/photos/project-open-plan-glass.jpg' },
+  { id: 5, tag: 'Modular', cat: 'Corporate', title: 'Framery Pod & Privacy Suite', result: 'Installed phone booths and meeting pods across a 60,000 sq ft corporate floor.', img: '/photos/framery-meeting-pod.jpg' },
+  { id: 6, tag: 'Hospitality', cat: 'Hospitality', title: 'Café & Lounge Installation', result: 'Collaborative lounge, café seating, and booth furniture delivered for a corporate amenity space.', img: '/photos/project-cafe-lounge.jpg' },
+  { id: 7, tag: 'Corporate', cat: 'Corporate', title: 'Downtown Tower Restack', result: 'Multi-floor workstation reconfiguration completed over three weekends.', img: '/photos/install-cubicle-floor.jpg' },
+  { id: 8, tag: 'Corporate', cat: 'Corporate', title: 'Executive Suite Fit-Out', result: 'Private offices with casegoods, monitor arms, and guest seating installed in a single weekend.', img: '/photos/project-executive-office.jpg' },
+  { id: 9, tag: 'Modular', cat: 'Corporate', title: 'Wire-Frame Pod & Lounge', result: 'Architectural pod and lounge seating installed in a new corporate lobby.', img: '/photos/project-wire-pod-lounge.jpg' },
 ];
 
 export const CLIENT_LOGOS = ['Choice Hotels','Wells Fargo','Amazon','State Farm','Phoenix Suns'];
