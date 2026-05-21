@@ -20,6 +20,7 @@ export function QuoteProvider({ children }) {
 
 // eslint-disable-next-line no-unused-vars
 export function QuoteForm({ inline = false, prefill = {} }) {
+  const quote = useQuote();
   const [state, setState] = useState({
     first_name: '', last_name: '', title: '', company: '',
     email: '', phone: '', description: '', lead_source: ''
@@ -72,6 +73,14 @@ export function QuoteForm({ inline = false, prefill = {} }) {
     if (Object.keys(newErrors).length > 0) {
       e.preventDefault();
       setErrors(newErrors);
+      return;
+    }
+
+    // In local dev, skip reCAPTCHA and Salesforce POST — redirect to thank-you page
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+      e.preventDefault();
+      quote.close();
+      setTimeout(() => { window.location.hash = '/thank-you'; }, 100);
       return;
     }
 
