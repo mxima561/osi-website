@@ -35,8 +35,8 @@ export function ServicesLandingPage() {
               More than installers. A true <Green>service platform</Green>.
             </SectionHeading>
             <div className="mt-8 max-w-3xl mx-auto text-center text-lg text-[#4A4A4A] leading-relaxed space-y-5">
-              <p>OSI provides commercial furniture support across the full project lifecycle — from receiving and warehousing to installation, MAC work, decommissioning, modular walls, and long-term asset management.</p>
-              <p>Some clients come to us for a single installation. Others rely on us as an ongoing Phoenix partner. Either way, the value is the same: one accountable team that understands how to execute commercial furniture work with less friction and better follow-through.</p>
+              <p>OSI provides commercial furniture support across the full project lifecycle — from receiving and warehousing to installation, MAC work, decommissioning, modular walls, and asset management.</p>
+              <p>Some clients come to us for a single installation. Others rely on us as an ongoing Arizona partner. Either way, the value is the same: one accountable team that understands how to execute commercial furniture work with less friction and better follow-through.</p>
             </div>
           </FadeIn>
         </Container>
@@ -53,12 +53,12 @@ export function ServicesLandingPage() {
             {SERVICES.map((s,i) => (
               <FadeIn key={s.slug} delay={i*0.05}>
                 <Link to={`/services/${s.slug}`} className="group block h-full rounded-2xl border border-[#EAEAEA] p-8 bg-white hover:border-[#1A1A1A] transition">
-                  <div className="w-14 h-14 rounded-xl bg-[#E4FFC9] flex items-center justify-center text-[#5AD400]">
+                  <div className="w-14 h-14 rounded-xl bg-[#E8F4DC] flex items-center justify-center text-[#6AA63F]">
                     <Icon name={s.icon} className="w-6 h-6"/>
                   </div>
                   <h3 className="font-display font-bold text-[22px] mt-6 tracking-tight">{s.title}</h3>
                   <p className="mt-3 text-[#4A4A4A] leading-relaxed">{s.blurb}</p>
-                  <div className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-[#5AD400] group-hover:gap-3 transition-all">Learn More <Icon name="ArrowRight" className="w-4 h-4"/></div>
+                  <div className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-[#6AA63F] group-hover:gap-3 transition-all">Learn More <Icon name="ArrowRight" className="w-4 h-4"/></div>
                 </Link>
               </FadeIn>
             ))}
@@ -74,16 +74,16 @@ export function ServicesLandingPage() {
                 One local partner across the full <Green>furniture lifecycle</Green>
               </SectionHeading>
             </FadeIn>
-            <div className="lg:col-span-7 space-y-6">
+            <div className="lg:col-span-7 grid sm:grid-cols-2 gap-6">
               {[
-                ['Operational depth', 'Receiving, staging, warehousing, delivery, installation, and follow-through under one roof.'],
-                ['Local scale', 'The crews, warehouse capacity, and Phoenix presence to support larger, more complex work.'],
-                ['Ongoing support', 'Services that continue beyond the initial install, including MAC, decommissions, modular walls, and asset programs.'],
-                ['Better coordination', 'Fewer handoffs, fewer gaps, and one team that understands the full picture.'],
+                ['Organized before install day', 'Receiving, inspection, warehousing, staging, and dispatch support keep projects controlled before product reaches the site.'],
+                ['Built for complex work', 'Experienced crews, warehouse capacity, trucks, and field coordination help OSI support larger, phased, and schedule-sensitive projects.'],
+                ['Support after the install', 'MAC work, reconfigurations, repairs, relocations, decommissions, modular walls, and asset management keep clients supported long term.'],
+                ['One accountable partner', 'Fewer vendors, fewer handoffs, and better follow-through across the full furniture lifecycle.'],
               ].map(([t,b], i) => (
                 <FadeIn key={t} delay={i*0.05}>
-                  <div className="flex gap-5 pb-6 border-b border-[#EAEAEA]">
-                    <div className="w-10 h-10 rounded-full bg-[#E4FFC9] flex items-center justify-center text-[#5AD400] shrink-0 mt-1">
+                  <div className="flex gap-5 pb-6">
+                    <div className="w-10 h-10 rounded-full bg-[#E8F4DC] flex items-center justify-center text-[#6AA63F] shrink-0 mt-1">
                       <Icon name="Check" className="w-4 h-4" strokeWidth={3}/>
                     </div>
                     <div>
@@ -106,13 +106,13 @@ export function ServicesLandingPage() {
           <div className="mt-14 grid md:grid-cols-2 gap-5 max-w-5xl mx-auto">
             <FadeIn delay={0.05}>
               <div className="bg-white rounded-2xl p-10">
-                <h3 className="font-display font-bold text-2xl">For Dealers, PMs & A&D</h3>
-                <p className="mt-4 text-[#4A4A4A] leading-relaxed">OSI acts as your Phoenix execution partner, helping protect the client relationship while keeping the project organized and on schedule.</p>
+                <h3 className="font-display font-bold text-2xl">For Dealers, Project Managers & A&D Teams</h3>
+                <p className="mt-4 text-[#4A4A4A] leading-relaxed">OSI acts as your Arizona execution partner, helping protect the client relationship while keeping the project organized and on schedule.</p>
               </div>
             </FadeIn>
             <FadeIn delay={0.1}>
               <div className="bg-[#1A1A1A] text-white rounded-2xl p-10">
-                <h3 className="font-display font-bold text-2xl">For Enterprise & Facility Teams</h3>
+                <h3 className="font-display font-bold text-2xl">For Enterprise Clients & Facility Teams</h3>
                 <p className="mt-4 text-white/70 leading-relaxed">OSI supports the furniture and facility work that internal teams often do not have the time, labor, or infrastructure to manage well on their own.</p>
               </div>
             </FadeIn>
@@ -120,13 +120,14 @@ export function ServicesLandingPage() {
         </Container>
       </Section>
 
-      <FinalCTA title={<>Need the right <Green>service partner</Green> in Phoenix?</>} subtitle="Whether you need support for one project or a long-term local partner, OSI is ready to help." />
+      <FinalCTA title={<>Need the right <Green>service partner</Green> in Arizona?</>} subtitle="Whether you need support for one project or a long-term local partner, OSI is ready to help." />
     </>
   );
 }
 
 export function ServiceSubpage({ slug }) {
-  const d = SERVICE_PAGES[slug];
+  const resolvedSlug = slug === 'asset-management' ? 'asset-management-storage' : slug;
+  const d = SERVICE_PAGES[resolvedSlug];
   const quote = useQuote();
   if (!d) return <NotFoundPage />;
   return (
@@ -170,7 +171,7 @@ export function ServiceSubpage({ slug }) {
               {d.supportList.map((s,i) => (
                 <FadeIn key={s} delay={i*0.04}>
                   <div className="bg-white rounded-xl p-5 flex items-start gap-3">
-                    <Icon name="Check" className="w-4 h-4 text-[#5AD400] mt-1 shrink-0" strokeWidth={3}/>
+                    <Icon name="Check" className="w-4 h-4 text-[#6AA63F] mt-1 shrink-0" strokeWidth={3}/>
                     <span className="text-[15px] text-[#1A1A1A]">{s}</span>
                   </div>
                 </FadeIn>
@@ -192,7 +193,7 @@ export function ServiceSubpage({ slug }) {
                   <ul className="mt-6 space-y-3">
                     {d.extra.list.map(l => (
                       <li key={l} className="flex items-start gap-3">
-                        <span className="mt-2.5 w-1.5 h-1.5 rounded-full bg-[#6DFF00] shrink-0" />
+                        <span className="mt-2.5 w-1.5 h-1.5 rounded-full bg-[#6AA63F] shrink-0" />
                         <span className="text-[#1A1A1A]">{l}</span>
                       </li>
                     ))}
@@ -209,7 +210,7 @@ export function ServiceSubpage({ slug }) {
           <Container>
             <FadeIn>
               <div className="text-center">
-                <div className="font-display font-black text-[120px] md:text-[200px] leading-none text-[#6DFF00] tracking-tight">
+                <div className="font-display font-black text-[120px] md:text-[200px] leading-none text-[#6AA63F] tracking-tight">
                   <CountUp to={d.statCallout.n} />{d.statCallout.suffix}
                 </div>
                 <div className="font-mono text-sm tracking-[0.3em] text-white/60 mt-2">{d.statCallout.label}</div>
@@ -231,7 +232,7 @@ export function ServiceSubpage({ slug }) {
                 <ul className="mt-6 space-y-3">
                   {d.whyList.map(w => (
                     <li key={w} className="flex items-start gap-3 text-[#1A1A1A]">
-                      <Icon name="Check" className="w-4 h-4 text-[#5AD400] mt-1 shrink-0" strokeWidth={3}/>
+                      <Icon name="Check" className="w-4 h-4 text-[#6AA63F] mt-1 shrink-0" strokeWidth={3}/>
                       <span>{w}</span>
                     </li>
                   ))}

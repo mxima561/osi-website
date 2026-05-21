@@ -10,7 +10,7 @@ function NavDropdown({ label, items }) {
   const [open, setOpen] = useState(false);
   return (
     <div className="relative" onMouseEnter={()=>setOpen(true)} onMouseLeave={()=>setOpen(false)}>
-      <button className="inline-flex items-center gap-1 text-[14px] font-medium text-[#1A1A1A] hover:text-[#5AD400] transition py-2">
+      <button className="inline-flex items-center gap-1 text-[14px] font-medium text-[#1A1A1A] hover:text-[#6AA63F] transition py-2">
         {label}
         <Icon name="ChevronDown" className="w-3.5 h-3.5"/>
       </button>
@@ -62,16 +62,16 @@ export default function Nav() {
           </div>
 
           <div className="hidden lg:flex items-center gap-8">
-            <Link to="/" className="text-[14px] font-medium hover:text-[#5AD400]">Home</Link>
+            <Link to="/" className="text-[14px] font-medium hover:text-[#6AA63F]">Home</Link>
             <NavDropdown label="Services" items={[{to:'/services',label:'All Services',sub:'Overview of everything we do'}, ...servicesItems]}/>
             <NavDropdown label="Industries" items={[{to:'/industries',label:'All Industries',sub:'Environments we serve'}, ...industriesItems]}/>
-            <Link to="/projects" className="text-[14px] font-medium hover:text-[#5AD400]">Projects</Link>
-            <Link to="/about" className="text-[14px] font-medium hover:text-[#5AD400]">About</Link>
-            <Link to="/contact" className="text-[14px] font-medium hover:text-[#5AD400]">Contact</Link>
+            <Link to="/projects" className="text-[14px] font-medium hover:text-[#6AA63F]">Projects</Link>
+            <Link to="/about" className="text-[14px] font-medium hover:text-[#6AA63F]">About</Link>
+            <Link to="/contact" className="text-[14px] font-medium hover:text-[#6AA63F]">Contact</Link>
           </div>
 
           <div className="flex items-center gap-3">
-            <a href="tel:+16022539392" className="hidden md:inline-flex items-center gap-2 text-[14px] font-semibold text-[#1A1A1A] hover:text-[#5AD400] whitespace-nowrap">
+            <a href="tel:+16022539392" className="hidden md:inline-flex items-center gap-2 text-[14px] font-semibold text-[#1A1A1A] hover:text-[#6AA63F] whitespace-nowrap">
               <Icon name="Phone" className="w-4 h-4"/>
               <span className="whitespace-nowrap">(602) 253-9392</span>
             </a>
@@ -104,7 +104,7 @@ export default function Nav() {
                 {to:'/contact', label:'Contact'},
               ].map((l, i) => (
                 <motion.div key={l.to} initial={{opacity:0,x:-20}} animate={{opacity:1,x:0}} transition={{delay:0.1+i*0.06}}>
-                  <Link to={l.to} onClick={()=>setMobileOpen(false)} className="block font-display font-black text-4xl hover:text-[#6DFF00]">{l.label}</Link>
+                  <Link to={l.to} onClick={()=>setMobileOpen(false)} className="block font-display font-black text-4xl hover:text-[#6AA63F]">{l.label}</Link>
                 </motion.div>
               ))}
               <div className="pt-6 border-t border-white/10 space-y-4">

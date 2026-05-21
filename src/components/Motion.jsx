@@ -78,7 +78,7 @@ export function CountUp({ to, duration = 1.6, suffix = '', className = '' }) {
   return <span ref={ref} className={`whitespace-nowrap ${className}`}>{val.toLocaleString()}{suffix}</span>;
 }
 
-export function RotatingWord({ words, interval = 2800, color = '#6DFF00' }) {
+export function RotatingWord({ words, interval = 2800, color = '#6AA63F' }) {
   const [i, setI] = useState(0);
   const reduced = useReducedMotion();
   const { query } = useRoute();

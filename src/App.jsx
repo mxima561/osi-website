@@ -9,6 +9,7 @@ import { IndustriesLandingPage, IndustrySubpage } from './pages/IndustriesPage';
 import ProjectsPage from './pages/ProjectsPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
+import ThankYouPage from './pages/ThankYouPage';
 import NotFoundPage from './pages/NotFoundPage';
 
 function useDocumentTitle(title) {
@@ -32,6 +33,7 @@ function PageShell({ path }) {
   if (path === '/projects') { useDocumentTitle('Projects — OSI'); return <ProjectsPage/>; }
   if (path === '/about') { useDocumentTitle('About — OSI'); return <AboutPage/>; }
   if (path === '/contact') { useDocumentTitle('Contact — OSI'); return <ContactPage/>; }
+  if (path === '/thank-you') { useDocumentTitle('Thank You — OSI'); return <ThankYouPage/>; }
   useDocumentTitle('404 — OSI');
   return <NotFoundPage/>;
 }

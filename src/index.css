@@ -4,6 +4,10 @@
   --font-display: 'Archivo', system-ui, sans-serif;
   --font-sans: 'Inter', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --color-brand-green: #6AA63F;
+  --color-brand-green-hover: #5A8E35;
+  --color-brand-navy: #0F1E3D;
+  --color-brand-navy-hover: #1A2D5C;
 }
 
 html, body {
@@ -19,8 +23,8 @@ html, body {
 }
 
 ::selection {
-  background: #6DFF00;
-  color: #0A0A0A;
+  background: #6AA63F;
+  color: #FFFFFF;
 }
 
 .no-scrollbar::-webkit-scrollbar { display: none; }

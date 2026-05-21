@@ -15,7 +15,7 @@ export default function AboutPage() {
             <h1 className="mt-5 font-display font-black tracking-tight leading-[1.02] text-5xl md:text-6xl lg:text-7xl max-w-6xl">
               Built to Support Commercial Furniture Projects <Green>the Right Way</Green>
             </h1>
-            <p className="mt-7 max-w-3xl text-lg text-[#4A4A4A] leading-relaxed">OSI is a Phoenix-based commercial furniture services company providing installation, warehousing, receiving, MAC work, decommissioning, modular walls, and long-term asset management for dealers, enterprise clients, and facility teams.</p>
+            <p className="mt-7 max-w-3xl text-lg text-[#4A4A4A] leading-relaxed">OSI is an Arizona-based commercial furniture services company providing installation, warehousing, receiving, MAC work, decommissioning, modular walls, and asset management for dealers, enterprise clients, and facility teams.</p>
             <div className="mt-10 flex flex-wrap gap-3">
               <Button variant="primary" size="lg" onClick={() => quote.open()}>Talk to OSI</Button>
               <Button variant="outlineDark" size="lg" onClick={() => quote.open()} iconRight={null}>Request a Quote</Button>
@@ -28,7 +28,7 @@ export default function AboutPage() {
         <Container>
           <FadeIn>
             <div className="aspect-[16/6] rounded-2xl overflow-hidden">
-              <ImgOrPlaceholder src="/photos/osi-building.jpg" alt="OSI Phoenix warehouse and office building" className="w-full h-full object-cover" />
+              <ImgOrPlaceholder src="/photos/osi-building.jpg" alt="OSI Arizona warehouse and office building" className="w-full h-full object-cover" />
             </div>
           </FadeIn>
         </Container>
@@ -43,7 +43,7 @@ export default function AboutPage() {
             <FadeIn className="lg:col-span-7 space-y-5 text-lg text-[#4A4A4A] leading-relaxed" delay={0.1}>
               <p>OSI was built around a simple idea: furniture projects go better when the client has one dependable local partner who can support the work before, during, and after install day.</p>
               <p>That means more than just installation labor. It means receiving, warehousing, staging, delivery, punch, reconfigurations, decommissions, modular walls, and ongoing support that keeps projects moving long after the initial install is complete.</p>
-              <p>Today, OSI supports dealers, project managers, facility teams, and enterprise clients across the Phoenix market with the people, warehouse capacity, and operational infrastructure needed to handle real commercial furniture work.</p>
+              <p>Today, OSI supports dealers, project managers, facility teams, and enterprise clients across the Arizona market with the people, warehouse capacity, and operational infrastructure needed to handle real commercial furniture work.</p>
             </FadeIn>
           </div>
         </Container>
@@ -68,24 +68,28 @@ export default function AboutPage() {
       <Section className="py-24 md:py-32">
         <Container>
           <FadeIn>
-            <SectionHeading eyebrow="Operations" sub="The difference is not just the install crews. It's the operation behind them — receiving, staging, warehouse support, field execution, and ongoing service all working together to keep projects moving.">
+            <SectionHeading eyebrow="Operations">
               The Infrastructure <Green>Behind the Work</Green>
             </SectionHeading>
+            <p className="mt-5 max-w-3xl text-lg text-[#4A4A4A] leading-relaxed">The difference is not just the install crews. It's the operation behind them — receiving, warehousing, installation, relocation, asset management, modular walls, and ongoing service working together to keep projects moving.</p>
           </FadeIn>
-          <div className="mt-14 grid md:grid-cols-2 gap-5">
+          <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {[
-              { t: 'Receiving & Inspection', c: 'Product intake, checking, and issue identification.', img: '/photos/warehouse-steelcase-stock.png' },
-              { t: 'Project Staging', c: 'Organized furniture staged for upcoming jobs.', img: '/photos/warehouse-chairs-staged.png' },
-              { t: 'Secure Warehousing', c: 'Warehouse scale, racking, and tagged inventory.', img: '/photos/warehouse-racking.png' },
-              { t: 'On-Site Installation', c: 'Installers actively working in commercial environments.', img: '/photos/install-in-progress.jpg' },
+              { t: 'Commercial Furniture Installation', c: 'Experienced crews install workstations, private offices, conference rooms, seating, and furniture systems across active commercial environments.', img: '/photos/install-in-progress.jpg' },
+              { t: 'Warehousing & Receiving', c: 'OSI receives, inspects, stores, stages, and dispatches furniture so projects are organized before product reaches the site.', img: '/photos/warehouse-steelcase-stock.png' },
+              { t: 'Decommissioning & Relocation', c: 'We help clients remove, relocate, store, redeploy, or dispose of furniture during office moves, closures, renovations, and transitions.', img: '/photos/warehouse-racking.png' },
+              { t: 'Asset Management & Storage', c: 'Our asset programs give clients secure storage, inventory visibility, reporting, and redeployment support for furniture they already own.', img: '/photos/warehouse-chairs-staged.png' },
+              { t: 'Modular Walls', c: 'OSI supports demountable wall and modular environment installations that require careful sequencing, coordination, and finish quality.', img: '/photos/install-finished-workstations.jpg' },
+              { t: 'MAC & Day 2 Services', c: 'We provide ongoing support for moves, adds, changes, repairs, reconfigurations, and the furniture work that continues after install day.', img: '/photos/hero-open-plan.jpg' },
             ].map((it,i) => (
               <FadeIn key={it.t} delay={i*0.08}>
+                {/* TODO(jesse): replace with specific photo for each service */}
                 <div className="aspect-[5/3] rounded-2xl overflow-hidden bg-[#EEEEE8]">
                   <ImgOrPlaceholder src={it.img} alt={it.t} />
                 </div>
                 <div className="mt-4">
                   <h4 className="font-display font-bold text-lg">{it.t}</h4>
-                  <p className="mt-1 text-[#4A4A4A]">{it.c}</p>
+                  <p className="mt-1 text-[#4A4A4A] text-[15px] leading-relaxed">{it.c}</p>
                 </div>
               </FadeIn>
             ))}
@@ -102,13 +106,13 @@ export default function AboutPage() {
           </FadeIn>
           <div className="mt-12 space-y-6 max-w-4xl">
             {[
-              'Dealers, project managers, and A&D teams rely on OSI as their Phoenix execution partner — the team on the ground that helps protect the client relationship and keep projects organized.',
+              'Dealers, project managers, and A&D teams rely on OSI as their Arizona execution partner — the team on the ground that helps protect the client relationship and keep projects organized.',
               'Enterprise clients and facility teams rely on OSI for the furniture and workplace support work that internal teams often do not have the time, labor, or infrastructure to manage well on their own.',
               'Across both groups, the value is the same: one accountable local partner with the ability to execute and follow through.',
             ].map((t,i) => (
               <FadeIn key={i} delay={i*0.05}>
                 <div className="flex items-start gap-4">
-                  <div className="w-8 h-8 rounded-full bg-[#6DFF00] flex items-center justify-center shrink-0 mt-0.5"><Icon name="Check" className="w-4 h-4" strokeWidth={3}/></div>
+                  <div className="w-8 h-8 rounded-full bg-[#6AA63F] flex items-center justify-center shrink-0 mt-0.5"><Icon name="Check" className="w-4 h-4 text-white" strokeWidth={3}/></div>
                   <p className="text-lg text-[#1A1A1A] leading-relaxed">{t}</p>
                 </div>
               </FadeIn>
@@ -123,10 +127,8 @@ export default function AboutPage() {
             <FadeIn className="lg:col-span-5">
               <SectionHeading eyebrow="Our Approach">Practical, organized, and built for <Green>follow-through</Green></SectionHeading>
             </FadeIn>
-            <FadeIn className="lg:col-span-7 space-y-5 text-lg text-[#4A4A4A] leading-relaxed" delay={0.1}>
-              <p>OSI is built around the realities of commercial furniture work.</p>
-              <p>Projects change. Shipments arrive in phases. Schedules shift. Punch items happen. Teams move. Clients need support after the install, not just on the install.</p>
-              <p>Our approach is to bring structure to that process with clear coordination, dependable execution, and the operational support needed to keep the work moving. We focus on being responsive, professional, and easy to work with — while still having the depth to handle demanding projects.</p>
+            <FadeIn className="lg:col-span-7 text-lg text-[#4A4A4A] leading-relaxed" delay={0.1}>
+              <p>OSI is built around the realities of commercial furniture work. Projects change. Shipments arrive in phases. Schedules shift. Punch items happen. Teams move. Clients need support after the install, not just on the install. Our approach is to bring structure to that process with clear coordination, dependable execution, and the operational support needed to keep the work moving. We focus on being responsive, professional, and easy to work with — while still having the depth to handle demanding projects.</p>
             </FadeIn>
           </div>
         </Container>
@@ -160,16 +162,16 @@ export default function AboutPage() {
       <Section dark className="py-24 md:py-32">
         <Container>
           <FadeIn>
-            <SectionHeading dark align="center" eyebrow="Scale">Local scale that supports <Green>real project demands</Green></SectionHeading>
+            <SectionHeading dark align="center" eyebrow="Scale">Built for <Green>real project demands</Green></SectionHeading>
           </FadeIn>
-          <div className="mt-16 grid md:grid-cols-3 gap-10 text-center">
+          <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
             {[
               { n:80, suf:'+', label:'Installers' },
               { n:60000, suf:'', label:'Sq. Ft. Warehouse' },
-              { n:20, suf:'+', label:'Years in Phoenix' },
+              { n:20, suf:'+', label:'Years in Arizona' },
             ].map((s,i) => (
               <FadeIn key={s.label} delay={i*0.08}>
-                <div className="font-display font-black text-7xl md:text-8xl text-[#6DFF00] tracking-tight leading-none"><CountUp to={s.n}/>{s.suf}</div>
+                <div className="font-display font-black text-6xl sm:text-7xl md:text-8xl text-[#6AA63F] tracking-tight leading-none"><CountUp to={s.n}/>{s.suf}</div>
                 <div className="mt-4 text-white/70 text-lg">{s.label}</div>
               </FadeIn>
             ))}
