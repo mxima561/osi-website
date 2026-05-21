@@ -1,15 +1,7 @@
-// TODO(karim): Salesforce Web-to-Lead integration
-// Client (Jesse/Sarah) will provide the Salesforce intake script.
-// Once received, replace the placeholder onSubmit handler below with the
-// Salesforce-provided form action / fetch call. Field name attributes
-// may need to be remapped to Salesforce field IDs (e.g. first_name -> 00N...).
-// Until then: form does not submit anywhere. Submit button shows a
-// placeholder success state for visual QA only.
-
-import { useState, useEffect, createContext, useContext, useRef } from 'react';
+import { useState, useEffect, createContext, useContext } from 'react';
 import { motion, AnimatePresence } from './Motion';
 import Icon from './Icon';
-import { Eyebrow, Button, Green } from './Primitives';
+import { Eyebrow, Green } from './Primitives';
 
 const QuoteCtx = createContext({ open: () => {} });
 export const useQuote = () => useContext(QuoteCtx);
@@ -27,71 +19,95 @@ export function QuoteProvider({ children }) {
 }
 
 // eslint-disable-next-line no-unused-vars
-export function QuoteForm({ inline = false, prefill = {}, onSuccess }) {
+export function QuoteForm({ inline = false, prefill = {} }) {
   const [state, setState] = useState({
     first_name: '', last_name: '', title: '', company: '',
-    email: '', phone: '', product_description: '',
-    attachments: [], referral_source: ''
+    email: '', phone: '', description: '', lead_source: ''
   });
-  const [status, setStatus] = useState('idle');
-  const fileInputRef = useRef(null);
-  const [dragOver, setDragOver] = useState(false);
+  const [errors, setErrors] = useState({});
+  const [recaptchaError, setRecaptchaError] = useState('');
 
   const update = (k, v) => setState(s => ({ ...s, [k]: v }));
 
-  const handleFiles = (files) => {
-    const validTypes = ['application/pdf','image/jpeg','image/png','application/vnd.openxmlformats-officedocument.wordprocessingml.document','application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'];
-    const maxSize = 10 * 1024 * 1024;
-    const maxFiles = 5;
-    const current = state.attachments;
-    const newFiles = Array.from(files).filter(f => validTypes.includes(f.type) && f.size <= maxSize);
-    const combined = [...current, ...newFiles].slice(0, maxFiles);
-    update('attachments', combined);
-  };
+  useEffect(() => {
+    if (!document.querySelector('script[src*="recaptcha/api.js"]')) {
+      const script = document.createElement('script');
+      script.src = 'https://www.google.com/recaptcha/api.js';
+      script.async = true;
+      script.defer = true;
+      document.head.appendChild(script);
+    }
+  }, []);
 
-  const removeFile = (idx) => {
-    update('attachments', state.attachments.filter((_, i) => i !== idx));
-  };
+  useEffect(() => {
+    const updateTimestamp = () => {
+      const response = document.getElementById('g-recaptcha-response');
+      if (response == null || response.value.trim() === '') {
+        const captchaSettingsEl = document.querySelector('input[name="captcha_settings"]');
+        if (captchaSettingsEl) {
+          try {
+            const elems = JSON.parse(captchaSettingsEl.value);
+            elems.ts = JSON.stringify(new Date().getTime());
+            captchaSettingsEl.value = JSON.stringify(elems);
+          } catch (e) {
+            // captcha_settings not yet rendered or malformed; skip this tick
+          }
+        }
+      }
+    };
+    const intervalId = setInterval(updateTimestamp, 500);
+    return () => clearInterval(intervalId);
+  }, []);
 
-  // TODO(karim): Salesforce Web-to-Lead integration
-  // Client (Jesse/Sarah) will provide the Salesforce intake script.
-  // Once received, replace the placeholder onSubmit handler below with the
-  // Salesforce-provided form action / fetch call. Field name attributes
-  // may need to be remapped to Salesforce field IDs (e.g. first_name -> 00N...).
-  // Until then: form does not submit anywhere. Submit button shows a
-  // placeholder success state for visual QA only.
-  async function handleSubmit(e) {
-    e.preventDefault();
-    if (!state.first_name || !state.last_name || !state.title || !state.company || !state.email || !state.phone || !state.product_description) {
-      setStatus('error');
+  function handleSubmit(e) {
+    const newErrors = {};
+    if (!state.first_name.trim()) newErrors.first_name = true;
+    if (!state.last_name.trim()) newErrors.last_name = true;
+    if (!state.title.trim()) newErrors.title = true;
+    if (!state.company.trim()) newErrors.company = true;
+    if (!state.email.trim()) newErrors.email = true;
+    if (!state.phone.trim()) newErrors.phone = true;
+    if (!state.description.trim()) newErrors.description = true;
+
+    if (Object.keys(newErrors).length > 0) {
+      e.preventDefault();
+      setErrors(newErrors);
       return;
     }
-    setStatus('submitting');
-    // PLACEHOLDER — simulates submission for visual QA only
-    await new Promise(r => setTimeout(r, 900));
-    setStatus('success');
-    if (onSuccess) onSuccess();
+
+    const recaptchaResponse = window.grecaptcha?.getResponse?.();
+    if (!recaptchaResponse || recaptchaResponse.length === 0) {
+      e.preventDefault();
+      setRecaptchaError('Please complete the reCAPTCHA before submitting.');
+      return;
+    }
+
+    setRecaptchaError('');
+    setErrors({});
+    // Native form POST proceeds — browser navigates to Salesforce, which redirects to retURL
   }
 
-  if (status === 'success') {
-    return (
-      <div className="flex flex-col items-start gap-4 p-8 bg-[#E8F4DC] rounded-2xl border border-[#6AA63F]/40">
-        <div className="w-12 h-12 rounded-full bg-[#6AA63F] flex items-center justify-center text-white">
-          <Icon name="Check" className="w-6 h-6" strokeWidth={3} />
-        </div>
-        <h3 className="font-display font-black text-2xl">Thanks — your request is recorded.</h3>
-        <p className="text-[#4A4A4A]">We'll be in touch within one business day.</p>
-      </div>
-    );
-  }
-
-  const fieldCls = 'w-full bg-white border border-[#EAEAEA] rounded-xl px-4 py-3.5 text-[15px] focus:border-[#6AA63F] focus:ring-2 focus:ring-[#6AA63F]/20 outline-none transition placeholder:text-[#8A8A8A]';
+  const fieldCls = (field) => `w-full bg-white border rounded-xl px-4 py-3.5 text-[15px] focus:border-[#6AA63F] focus:ring-2 focus:ring-[#6AA63F]/20 outline-none transition placeholder:text-[#8A8A8A] ${errors[field] ? 'border-red-300' : 'border-[#EAEAEA]'}`;
   const labelCls = 'block text-[11px] font-semibold uppercase tracking-[0.15em] text-[#8A8A8A] mb-2';
   const sectionCls = 'space-y-4';
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-0">
-      {status === 'error' && (
+    <form
+      action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00Dao00001Y21VT"
+      method="POST"
+      onSubmit={handleSubmit}
+      className="space-y-0"
+    >
+      {/* Hidden Salesforce fields */}
+      <input type="hidden" name="oid" value="00Dao00001Y21VT" />
+      <input type="hidden" name="retURL" value="https://osiwebdraft1.vercel.app/thank-you" />
+      <input
+        type="hidden"
+        name="captcha_settings"
+        defaultValue='{"keyname":"captchamaxim","fallback":"true","orgId":"00Dao00001Y21VT","ts":""}'
+      />
+
+      {Object.keys(errors).length > 0 && (
         <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-sm text-red-800 mb-6">
           Please fill out all required fields. Or call (602) 253-9392 or email requestaquote@osinstall.com.
         </div>
@@ -106,27 +122,27 @@ export function QuoteForm({ inline = false, prefill = {}, onSuccess }) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label className={labelCls}>First Name *</label>
-            <input required name="first_name" className={fieldCls} value={state.first_name} onChange={e=>update('first_name', e.target.value)} placeholder="Jane" />
+            <input required name="first_name" maxLength={40} className={fieldCls('first_name')} value={state.first_name} onChange={e=>update('first_name', e.target.value)} placeholder="Jane" />
           </div>
           <div>
             <label className={labelCls}>Last Name *</label>
-            <input required name="last_name" className={fieldCls} value={state.last_name} onChange={e=>update('last_name', e.target.value)} placeholder="Smith" />
+            <input required name="last_name" maxLength={80} className={fieldCls('last_name')} value={state.last_name} onChange={e=>update('last_name', e.target.value)} placeholder="Smith" />
           </div>
           <div>
             <label className={labelCls}>Title *</label>
-            <input required name="title" className={fieldCls} value={state.title} onChange={e=>update('title', e.target.value)} placeholder="Project Manager" />
+            <input required name="title" maxLength={40} className={fieldCls('title')} value={state.title} onChange={e=>update('title', e.target.value)} placeholder="Project Manager" />
           </div>
           <div>
             <label className={labelCls}>Company *</label>
-            <input required name="company" className={fieldCls} value={state.company} onChange={e=>update('company', e.target.value)} placeholder="Acme Corp" />
+            <input required name="company" maxLength={40} className={fieldCls('company')} value={state.company} onChange={e=>update('company', e.target.value)} placeholder="Acme Corp" />
           </div>
           <div>
             <label className={labelCls}>Email *</label>
-            <input required type="email" name="email" className={fieldCls} value={state.email} onChange={e=>update('email', e.target.value)} placeholder="jane@acme.com" />
+            <input required type="email" name="email" maxLength={80} className={fieldCls('email')} value={state.email} onChange={e=>update('email', e.target.value)} placeholder="jane@acme.com" />
           </div>
           <div>
             <label className={labelCls}>Phone Number *</label>
-            <input required type="tel" name="phone" className={fieldCls} value={state.phone} onChange={e=>update('phone', e.target.value)} placeholder="(555) 000-0000" />
+            <input required type="tel" name="phone" maxLength={40} className={fieldCls('phone')} value={state.phone} onChange={e=>update('phone', e.target.value)} placeholder="(555) 000-0000" />
           </div>
         </div>
       </div>
@@ -141,51 +157,20 @@ export function QuoteForm({ inline = false, prefill = {}, onSuccess }) {
         </div>
         <div>
           <label className={labelCls}>Product Description *</label>
-          <textarea required rows={4} name="product_description" className={fieldCls} value={state.product_description} onChange={e=>update('product_description', e.target.value)} placeholder="Brief overview of scope, timeline, or any special requirements..." />
+          <textarea required rows={5} name="description" maxLength={5000} className={fieldCls('description')} value={state.description} onChange={e=>update('description', e.target.value)} placeholder="Brief overview of scope, timeline, or any special requirements..." />
           <p className="mt-1.5 text-xs text-[#8A8A8A]">Please include any details that may be critical for accurate pricing (over-time, stair-carry, etc).</p>
-        </div>
-        <div>
-          <label className={labelCls}>Attachments <span className="normal-case tracking-normal font-normal">(optional — PDF, JPG, PNG, DOCX, XLSX, max 10MB each, up to 5 files)</span></label>
-          <div
-            className={`border-2 border-dashed rounded-xl p-6 text-center cursor-pointer transition ${dragOver ? 'border-[#6AA63F] bg-[#E8F4DC]/30' : 'border-[#EAEAEA] hover:border-[#6AA63F]'}`}
-            onClick={() => fileInputRef.current?.click()}
-            onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
-            onDragLeave={() => setDragOver(false)}
-            onDrop={(e) => { e.preventDefault(); setDragOver(false); handleFiles(e.dataTransfer.files); }}
-          >
-            <Icon name="Upload" className="w-6 h-6 mx-auto text-[#8A8A8A] mb-2" />
-            <p className="text-sm text-[#8A8A8A]">Drag & drop files here, or click to browse</p>
-            <input
-              ref={fileInputRef}
-              type="file"
-              name="attachments"
-              multiple
-              accept=".pdf,.jpg,.jpeg,.png,.docx,.xlsx"
-              className="hidden"
-              onChange={(e) => handleFiles(e.target.files)}
-            />
-          </div>
-          {state.attachments.length > 0 && (
-            <div className="mt-3 space-y-2">
-              {state.attachments.map((f, i) => (
-                <div key={i} className="flex items-center gap-2 text-sm text-[#4A4A4A] bg-[#F4F4F4] rounded-lg px-3 py-2">
-                  <Icon name="File" className="w-4 h-4 shrink-0" />
-                  <span className="truncate flex-grow">{f.name}</span>
-                  <button type="button" onClick={() => removeFile(i)} className="text-[#8A8A8A] hover:text-red-500"><Icon name="X" className="w-3.5 h-3.5" /></button>
-                </div>
-              ))}
-            </div>
-          )}
+          <p className="mt-2 text-sm text-gray-500">Need to send drawings, floor plans, or photos? Email them to <a href="mailto:requestaquote@osinstall.com" className="font-semibold text-[#0F1E3D] hover:text-[#6AA63F] transition">requestaquote@osinstall.com</a> after submitting this form.</p>
         </div>
         <div>
           <label className={labelCls}>How did you hear about us?</label>
-          <select name="referral_source" className={fieldCls} value={state.referral_source} onChange={e=>update('referral_source', e.target.value)}>
+          <select name="lead_source" className={fieldCls('')} value={state.lead_source} onChange={e=>update('lead_source', e.target.value)}>
             <option value="">— Select one —</option>
             <option value="Referral">Referral</option>
             <option value="Search engine">Search engine</option>
-            <option value="Trade show">Trade show</option>
+            <option value="Trade Show">Trade show</option>
             <option value="Social media">Social media</option>
             <option value="Previous project">Previous project</option>
+            <option value="Existing client">Existing client</option>
             <option value="Other">Other</option>
           </select>
         </div>
@@ -193,11 +178,26 @@ export function QuoteForm({ inline = false, prefill = {}, onSuccess }) {
 
       <div className="border-t border-dashed border-[#EAEAEA] my-7" />
 
+      {/* reCAPTCHA */}
+      <div className="mb-6">
+        <div
+          className="g-recaptcha"
+          data-sitekey="6Ldl3_UsAAAAALKiS4R7PjqWxwBmHV7bxhsdeKfw"
+        />
+        {recaptchaError && <p className="text-red-600 text-sm mt-2">{recaptchaError}</p>}
+      </div>
+
       {/* Submit */}
       <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-        <Button type="submit" onClick={handleSubmit} size="lg" variant="primary">
-          {status === 'submitting' ? 'Sending…' : 'Submit Request'}
-        </Button>
+        <button
+          type="submit"
+          className="inline-flex items-center justify-center gap-2 font-semibold rounded-full transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-[#6AA63F] focus-visible:ring-offset-2 px-7 py-4 text-base bg-[#6AA63F] text-white hover:bg-[#5A8E35]"
+        >
+          <span className="inline-flex items-center gap-2 whitespace-nowrap">
+            <span>Submit Request</span>
+            <Icon name="ArrowRight" className="w-4 h-4" />
+          </span>
+        </button>
         <p className="text-xs text-[#8A8A8A]">We'll respond within one business day.<br className="hidden sm:block" /> Or call <a className="underline text-[#6AA63F] hover:text-[#5A8E35]" href="tel:+16022539392">(602) 253-9392</a>.</p>
       </div>
     </form>
@@ -233,7 +233,7 @@ function QuoteModal({ isOpen, onClose, prefill }) {
               <p className="text-[#4A4A4A] text-[15px] mb-6">We look forward to serving you — complete for immediate assistance.</p>
             </div>
             <div className="overflow-y-auto px-6 md:px-10 pb-6 md:pb-10">
-              <QuoteForm prefill={prefill} onSuccess={() => setTimeout(onClose, 2000)} />
+              <QuoteForm prefill={prefill} />
             </div>
           </motion.div>
         </motion.div>
