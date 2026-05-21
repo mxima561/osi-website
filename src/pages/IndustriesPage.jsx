@@ -57,7 +57,7 @@ export function IndustriesLandingPage() {
                   <div className="p-7">
                     <h3 className="font-display font-bold text-xl tracking-tight">{it.title}</h3>
                     <p className="mt-3 text-[15px] text-[#4A4A4A] leading-relaxed">{it.blurb}</p>
-                    <div className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[#5AD400] group-hover:gap-3 transition-all">Learn More <Icon name="ArrowRight" className="w-4 h-4"/></div>
+                    <div className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[#6AA63F] group-hover:gap-3 transition-all">Learn More <Icon name="ArrowRight" className="w-4 h-4"/></div>
                   </div>
                 </Link>
               </FadeIn>
@@ -70,20 +70,20 @@ export function IndustriesLandingPage() {
         <Container>
           <div className="grid lg:grid-cols-12 gap-12">
             <FadeIn className="lg:col-span-5">
-              <SectionHeading eyebrow="Why OSI" sub="Clients across industries rely on OSI for the same core reasons:">
+              <SectionHeading eyebrow="Why OSI" sub="Clients choose OSI because every environment has different demands — and the work still has to be organized, professional, and done right.">
                 One partner across <Green>different project environments</Green>
               </SectionHeading>
             </FadeIn>
             <div className="lg:col-span-7 grid sm:grid-cols-2 gap-6">
               {[
-                ['Commercial furniture expertise','A team built for real furniture projects, not generic moving labor.'],
-                ['Operational support','Receiving, warehousing, staging, installation, MAC work, relocation, and long-term asset support.'],
-                ['Local execution','Phoenix-based crews and infrastructure that help projects move with fewer handoff issues.'],
-                ['Professional follow-through','Organized, reliable support before, during, and after install day.'],
+                ['Built for every environment','Offices, hospitals, schools, resorts, and public-sector environments all operate differently. OSI understands how to adapt the work around schedules, access, occupants, and site conditions.'],
+                ['Beyond standard office installs','We support more than standard office installs — including classrooms, clinical spaces, guest-facing hospitality areas, staff spaces, common areas, specialty facilities, and multi-site programs.'],
+                ['Infrastructure to control the process','Receiving, warehousing, staging, delivery, installation, relocation, MAC work, decommissioning, and asset support help keep projects organized from start to finish.'],
+                ['Dependable execution in active spaces','Whether the project is happening around employees, students, patients, guests, or public-sector operations, OSI helps minimize disruption and keep the work moving.'],
               ].map(([t,b],i) => (
                 <FadeIn key={t} delay={i*0.05}>
                   <div>
-                    <div className="w-10 h-10 rounded-xl bg-[#E4FFC9] flex items-center justify-center text-[#5AD400]"><Icon name="Check" className="w-4 h-4" strokeWidth={3}/></div>
+                    <div className="w-10 h-10 rounded-xl bg-[#E8F4DC] flex items-center justify-center text-[#6AA63F]"><Icon name="Check" className="w-4 h-4" strokeWidth={3}/></div>
                     <h4 className="mt-4 font-display font-bold text-lg">{t}</h4>
                     <p className="mt-2 text-[#4A4A4A] leading-relaxed">{b}</p>
                   </div>
@@ -151,7 +151,7 @@ export function IndustrySubpage({ slug }) {
               {d.supportList.map((s,i) => (
                 <FadeIn key={s} delay={i*0.04}>
                   <div className="bg-white rounded-xl p-5 flex items-start gap-3">
-                    <Icon name="Check" className="w-4 h-4 text-[#5AD400] mt-1 shrink-0" strokeWidth={3}/>
+                    <Icon name="Check" className="w-4 h-4 text-[#6AA63F] mt-1 shrink-0" strokeWidth={3}/>
                     <span className="text-[15px]">{s}</span>
                   </div>
                 </FadeIn>

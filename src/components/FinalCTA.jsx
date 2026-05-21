@@ -11,7 +11,7 @@ export default function FinalCTA({ title, subtitle }) {
         <FadeIn>
           <div className="max-w-4xl">
             <h2 className="font-display font-black tracking-tight leading-[1.05] text-4xl md:text-6xl lg:text-7xl">
-              {title || <>Need a <Green>stronger furniture services partner</Green> in Phoenix?</>}
+              {title || <>Need a <Green>stronger furniture services partner</Green> in Arizona?</>}
             </h2>
             <p className="mt-6 max-w-2xl text-lg text-white/70 leading-relaxed">
               {subtitle || 'Whether you are managing a client project, planning a relocation, or building a long-term support program, OSI is ready to help.'}

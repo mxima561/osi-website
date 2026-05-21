@@ -37,11 +37,11 @@ export default function ContactPage() {
             <FadeIn className="lg:col-span-5 space-y-8" delay={0.1}>
               <div>
                 <div className="text-xs font-semibold uppercase tracking-[0.2em] text-[#8A8A8A]">Call us</div>
-                <a href="tel:+16022539392" className="mt-2 block font-display font-black text-4xl text-[#6DFF00] hover:text-[#5AD400]">(602) 253-9392</a>
+                <a href="tel:+16022539392" className="mt-2 block font-display font-black text-4xl text-[#6AA63F] hover:text-[#5A8E35]">(602) 253-9392</a>
               </div>
               <div>
                 <div className="text-xs font-semibold uppercase tracking-[0.2em] text-[#8A8A8A]">Email</div>
-                <a href="mailto:info@osinstall.com" className="mt-2 block font-display font-bold text-xl text-[#1A1A1A] hover:text-[#5AD400]">info@osinstall.com</a>
+                <a href="mailto:requestaquote@osinstall.com" className="mt-2 block font-display font-bold text-xl text-[#1A1A1A] hover:text-[#6AA63F]">requestaquote@osinstall.com</a>
               </div>
               <div className="grid grid-cols-2 gap-6">
                 <div>
@@ -79,11 +79,11 @@ export default function ContactPage() {
           <FadeIn>
             <div className="grid md:grid-cols-2 gap-5">
               <div className="rounded-2xl overflow-hidden border border-[#EAEAEA] aspect-[4/3] bg-[#F4F4F4]">
-                <img src="/photos/osi-building.jpg" alt="OSI Phoenix building" className="w-full h-full object-cover" />
+                <img src="/photos/osi-building.jpg" alt="OSI Arizona building" className="w-full h-full object-cover" />
               </div>
               <div className="rounded-2xl overflow-hidden border border-[#EAEAEA] aspect-[4/3] bg-[#F4F4F4]">
                 <iframe
-                  title="OSI Phoenix location"
+                  title="OSI Arizona location"
                   src="https://www.google.com/maps?q=135+E+Watkins+St,+Phoenix,+AZ+85004&output=embed"
                   className="w-full h-full border-0"
                   loading="lazy"

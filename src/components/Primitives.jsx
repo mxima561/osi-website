@@ -31,14 +31,14 @@ export function Button({ variant = 'primary', size = 'md', children, onClick, to
     lg: 'px-7 py-4 text-base',
   };
   const variants = {
-    primary: 'bg-[#6DFF00] text-[#0A0A0A] hover:bg-[#5AD400]',
+    primary: 'bg-[#6AA63F] text-white hover:bg-[#5A8E35]',
     outlineDark: 'border border-[#1A1A1A]/20 text-[#1A1A1A] hover:border-[#1A1A1A] hover:bg-[#1A1A1A] hover:text-white',
     outlineLight: 'border border-white/30 text-white hover:border-white hover:bg-white hover:text-black',
-    ghost: 'text-[#1A1A1A] hover:text-[#5AD400]',
+    ghost: 'text-[#1A1A1A] hover:text-[#6AA63F]',
     ghostLight: 'text-white/80 hover:text-white',
     dark: 'bg-[#1A1A1A] text-white hover:bg-[#2A2A2A]',
   };
-  const cls = `inline-flex items-center justify-center gap-2 font-semibold rounded-full transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-[#6DFF00] focus-visible:ring-offset-2 ${sizes[size]} ${variants[variant]} ${className}`;
+  const cls = `inline-flex items-center justify-center gap-2 font-semibold rounded-full transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-[#6AA63F] focus-visible:ring-offset-2 ${sizes[size]} ${variants[variant]} ${className}`;
   const inner = (
     <span className="inline-flex items-center gap-2 whitespace-nowrap">
       <span key="label">{children}</span>
@@ -76,7 +76,7 @@ export function SectionHeading({ eyebrow, children, sub, dark = false, align = '
 }
 
 export function Green({ children }) {
-  return <span className="text-[#6DFF00]">{children}</span>;
+  return <span className="text-[#6AA63F]">{children}</span>;
 }
 
 export function Placeholder({ className = '', label = 'PHOTO', caption, dark = false }) {
@@ -111,11 +111,14 @@ export function ImgOrPlaceholder({ src, alt, caption, className = '', imgClassNa
 }
 
 export function OSILogo({ variant = 'dark', className = '' }) {
+  const filter = variant === 'light'
+    ? 'brightness-0 invert'
+    : 'brightness-0 sepia saturate-[10] hue-rotate-[200deg] brightness-[0.2]';
   return (
     <img
       src="/osi_logo_main.svg"
       alt="OSI — Office Systems Installation"
-      className={`h-16 w-auto ${variant === 'light' ? 'brightness-0 invert' : ''} ${className}`}
+      className={`h-16 w-auto ${filter} ${className}`}
     />
   );
 }

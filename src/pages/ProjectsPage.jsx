@@ -43,9 +43,9 @@ export default function ProjectsPage() {
                     <div className="absolute inset-0 group-hover:scale-105 transition-transform duration-700">
                       <ImgOrPlaceholder src={p.img} alt={p.title} caption={p.placeholder ? 'PLACEHOLDER' : `PROJECT — ${p.title.toUpperCase()}`} />
                     </div>
-                    <span className="absolute top-4 left-4 inline-flex items-center px-3 py-1 rounded-full bg-white/90 text-[#2D7A00] text-xs font-semibold tracking-wider uppercase">{p.tag}</span>
+                    <span className="absolute top-4 left-4 inline-flex items-center px-3 py-1 rounded-full bg-white/90 text-[#3D7A1C] text-xs font-semibold tracking-wider uppercase">{p.tag}</span>
                   </div>
-                  <h3 className="mt-5 font-display font-bold text-xl tracking-tight"><span className="group-hover:text-[#6DFF00] transition">{p.title.split(' ')[0]}</span>{' ' + p.title.split(' ').slice(1).join(' ')}</h3>
+                  <h3 className="mt-5 font-display font-bold text-xl tracking-tight group-hover:text-[#6AA63F] transition">{p.title}</h3>
                   <p className="mt-2 text-[15px] text-[#4A4A4A] leading-relaxed">{p.result}</p>
                 </div>
               </FadeIn>
