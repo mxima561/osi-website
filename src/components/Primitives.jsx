@@ -9,7 +9,7 @@ export function Container({ children, className = '' }) {
 
 export function Section({ children, className = '', dark = false, id }) {
   return (
-    <section id={id} className={`relative ${dark ? 'bg-[#0E0E0E] text-white' : ''} ${className}`}>
+    <section id={id} className={`relative ${dark ? 'bg-[#0F1E3D] text-white' : ''} ${className}`}>
       {children}
     </section>
   );
@@ -31,14 +31,14 @@ export function Button({ variant = 'primary', size = 'md', children, onClick, to
     lg: 'px-7 py-4 text-base',
   };
   const variants = {
-    primary: 'bg-[#6AA63F] text-white hover:bg-[#5A8E35]',
+    primary: 'bg-[#4aa25a] text-white hover:bg-[#3d8f4e]',
     outlineDark: 'border border-[#1A1A1A]/20 text-[#1A1A1A] hover:border-[#1A1A1A] hover:bg-[#1A1A1A] hover:text-white',
     outlineLight: 'border border-white/30 text-white hover:border-white hover:bg-white hover:text-black',
-    ghost: 'text-[#1A1A1A] hover:text-[#6AA63F]',
+    ghost: 'text-[#1A1A1A] hover:text-[#4aa25a]',
     ghostLight: 'text-white/80 hover:text-white',
     dark: 'bg-[#1A1A1A] text-white hover:bg-[#2A2A2A]',
   };
-  const cls = `inline-flex items-center justify-center gap-2 font-semibold rounded-full transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-[#6AA63F] focus-visible:ring-offset-2 ${sizes[size]} ${variants[variant]} ${className}`;
+  const cls = `inline-flex items-center justify-center gap-2 font-semibold rounded-full transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-[#4aa25a] focus-visible:ring-offset-2 ${sizes[size]} ${variants[variant]} ${className}`;
   const inner = (
     <span className="inline-flex items-center gap-2 whitespace-nowrap">
       <span key="label">{children}</span>
@@ -76,7 +76,7 @@ export function SectionHeading({ eyebrow, children, sub, dark = false, align = '
 }
 
 export function Green({ children }) {
-  return <span className="text-[#6AA63F]">{children}</span>;
+  return <span className="text-[#4aa25a]">{children}</span>;
 }
 
 export function Placeholder({ className = '', label = 'PHOTO', caption, dark = false }) {
@@ -111,14 +111,20 @@ export function ImgOrPlaceholder({ src, alt, caption, className = '', imgClassNa
 }
 
 export function OSILogo({ variant = 'dark', className = '' }) {
-  const filter = variant === 'light'
-    ? 'brightness-0 invert'
-    : 'brightness-0 sepia saturate-[10] hue-rotate-[200deg] brightness-[0.2]';
+  if (variant === 'light') {
+    // Dark/navy backgrounds: seat the white-background logo on a clean white chip
+    return (
+      <span className={`inline-flex items-center rounded-lg bg-white px-3 py-2 ${className}`}>
+        <img src="/osi-logo-wave.jpg" alt="OSI — Office Systems Installation" className="h-9 w-auto" />
+      </span>
+    );
+  }
+  // Light backgrounds: multiply makes the white logo background blend seamlessly into the surface
   return (
     <img
-      src="/osi_logo_main.svg"
+      src="/osi-logo-wave.jpg"
       alt="OSI — Office Systems Installation"
-      className={`h-16 w-auto ${filter} ${className}`}
+      className={`h-16 w-auto mix-blend-multiply ${className}`}
     />
   );
 }

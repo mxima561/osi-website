@@ -11,7 +11,7 @@ export function IndustriesLandingPage() {
   const quote = useQuote();
   return (
     <>
-      <Section className="pt-20 pb-20 md:pt-28 md:pb-28 bg-[#F9F9F5]">
+      <Section className="pt-20 pb-20 md:pt-28 md:pb-28 bg-[#F1F2F3]">
         <Container>
           <FadeIn>
             <Eyebrow>Industries</Eyebrow>
@@ -21,7 +21,7 @@ export function IndustriesLandingPage() {
             <p className="mt-7 max-w-2xl text-lg text-[#4A4A4A] leading-relaxed">OSI supports commercial furniture projects across a wide range of environments, from corporate offices and hospitals to universities, hospitality spaces, and government facilities.</p>
             <div className="mt-10 flex flex-wrap gap-3">
               <Button variant="primary" size="lg" onClick={() => quote.open()}>Request a Quote</Button>
-              <Button variant="outlineDark" size="lg" onClick={() => quote.open()} iconRight={null}>Talk to OSI</Button>
+              <a href="tel:+16022539392" className="inline-flex items-center gap-2 px-7 py-4 text-base font-semibold rounded-full border border-[#1A1A1A]/20 text-[#1A1A1A] hover:border-[#1A1A1A] hover:bg-[#1A1A1A] hover:text-white transition-colors duration-200">Call (602) 253-9392</a>
             </div>
           </FadeIn>
         </Container>
@@ -30,7 +30,7 @@ export function IndustriesLandingPage() {
       <Section className="py-24 md:py-28">
         <Container>
           <FadeIn>
-            <SectionHeading align="center" maxW="max-w-3xl">
+            <SectionHeading eyebrow="Our Approach" align="center" maxW="max-w-3xl">
               Built for the <Green>demands of different environments</Green>
             </SectionHeading>
             <p className="mt-8 max-w-3xl mx-auto text-center text-lg text-[#4A4A4A] leading-relaxed">
@@ -57,7 +57,7 @@ export function IndustriesLandingPage() {
                   <div className="p-7">
                     <h3 className="font-display font-bold text-xl tracking-tight">{it.title}</h3>
                     <p className="mt-3 text-[15px] text-[#4A4A4A] leading-relaxed">{it.blurb}</p>
-                    <div className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[#6AA63F] group-hover:gap-3 transition-all">Learn More <Icon name="ArrowRight" className="w-4 h-4"/></div>
+                    <div className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[#4aa25a] group-hover:gap-3 transition-all">Learn More <Icon name="ArrowRight" className="w-4 h-4"/></div>
                   </div>
                 </Link>
               </FadeIn>
@@ -83,7 +83,7 @@ export function IndustriesLandingPage() {
               ].map(([t,b],i) => (
                 <FadeIn key={t} delay={i*0.05}>
                   <div>
-                    <div className="w-10 h-10 rounded-xl bg-[#E8F4DC] flex items-center justify-center text-[#6AA63F]"><Icon name="Check" className="w-4 h-4" strokeWidth={3}/></div>
+                    <div className="w-10 h-10 rounded-xl bg-[#E8F4DC] flex items-center justify-center text-[#4aa25a]"><Icon name="Check" className="w-4 h-4" strokeWidth={3}/></div>
                     <h4 className="mt-4 font-display font-bold text-lg">{t}</h4>
                     <p className="mt-2 text-[#4A4A4A] leading-relaxed">{b}</p>
                   </div>
@@ -108,7 +108,7 @@ export function IndustrySubpage({ slug }) {
   if (!d) return <NotFoundPage />;
   return (
     <>
-      <Section className="bg-[#F9F9F5] pt-16 pb-16 md:pt-20 md:pb-20">
+      <Section className="bg-[#F1F2F3] pt-16 pb-16 md:pt-20 md:pb-20">
         <Container>
           <div className="grid lg:grid-cols-12 gap-10 items-center">
             <FadeIn className="lg:col-span-7">
@@ -119,7 +119,7 @@ export function IndustrySubpage({ slug }) {
               <p className="mt-6 max-w-2xl text-lg text-[#4A4A4A] leading-relaxed">{d.sub}</p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Button variant="primary" size="lg" onClick={() => quote.open()}>Request a Quote</Button>
-                <Button variant="outlineDark" size="lg" onClick={() => quote.open()} iconRight={null}>Talk to OSI</Button>
+                <a href="tel:+16022539392" className="inline-flex items-center gap-2 px-7 py-4 text-base font-semibold rounded-full border border-[#1A1A1A]/20 text-[#1A1A1A] hover:border-[#1A1A1A] hover:bg-[#1A1A1A] hover:text-white transition-colors duration-200">Call (602) 253-9392</a>
               </div>
             </FadeIn>
             <FadeIn className="lg:col-span-5" delay={0.1}>
@@ -134,7 +134,15 @@ export function IndustrySubpage({ slug }) {
       <Section className="py-24 md:py-28">
         <Container>
           <FadeIn>
-            <p className="max-w-3xl mx-auto text-center text-lg text-[#4A4A4A] leading-relaxed">{d.intro}</p>
+            <div className="max-w-3xl mx-auto">
+              {d.introEyebrow && (
+                <div className="text-center mb-8">
+                  <Eyebrow className="justify-center">{d.introEyebrow}</Eyebrow>
+                  <h2 className="mt-4 font-display font-black text-3xl md:text-4xl tracking-tight text-[#1A1A1A]">{d.introHeader}</h2>
+                </div>
+              )}
+              <p className="text-center text-lg text-[#4A4A4A] leading-relaxed">{d.intro}</p>
+            </div>
           </FadeIn>
         </Container>
       </Section>
@@ -151,7 +159,7 @@ export function IndustrySubpage({ slug }) {
               {d.supportList.map((s,i) => (
                 <FadeIn key={s} delay={i*0.04}>
                   <div className="bg-white rounded-xl p-5 flex items-start gap-3">
-                    <Icon name="Check" className="w-4 h-4 text-[#6AA63F] mt-1 shrink-0" strokeWidth={3}/>
+                    <Icon name="Check" className="w-4 h-4 text-[#4aa25a] mt-1 shrink-0" strokeWidth={3}/>
                     <span className="text-[15px]">{s}</span>
                   </div>
                 </FadeIn>
@@ -166,7 +174,8 @@ export function IndustrySubpage({ slug }) {
           <FadeIn>
             <div className="max-w-3xl">
               <Eyebrow>Why OSI</Eyebrow>
-              <p className="mt-6 text-xl leading-relaxed text-[#1A1A1A]">{d.why}</p>
+              {d.whyHeader && <h3 className="mt-4 font-display font-bold text-2xl md:text-3xl tracking-tight text-[#1A1A1A]">{d.whyHeader}</h3>}
+              <p className="mt-5 text-lg leading-relaxed text-[#4A4A4A]">{d.why}</p>
             </div>
           </FadeIn>
         </Container>

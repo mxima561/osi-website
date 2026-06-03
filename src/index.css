@@ -4,10 +4,11 @@
   --font-display: 'Archivo', system-ui, sans-serif;
   --font-sans: 'Inter', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
-  --color-brand-green: #6AA63F;
-  --color-brand-green-hover: #5A8E35;
+  --color-brand-green: #4aa25a;
+  --color-brand-green-hover: #3d8f4e;
   --color-brand-navy: #0F1E3D;
   --color-brand-navy-hover: #1A2D5C;
+  --color-surface: #F1F2F3;
 }
 
 html, body {
@@ -23,7 +24,7 @@ html, body {
 }
 
 ::selection {
-  background: #6AA63F;
+  background: #4aa25a;
   color: #FFFFFF;
 }
 
@@ -49,3 +50,17 @@ html { scroll-behavior: smooth; }
 .skip:focus { left: 12px; top: 12px; }
 
 .line-clamp-4 { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* Typewriter caret for the hero TypingWord */
+.typed-caret {
+  display: inline-block;
+  width: 0.06em;
+  height: 0.82em;
+  margin-left: 0.07em;
+  background: currentColor;
+  vertical-align: -0.04em;
+  border-radius: 1px;
+  animation: caret-blink 1.05s steps(1) infinite;
+}
+@keyframes caret-blink { 0%, 50% { opacity: 1; } 50.01%, 100% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .typed-caret { animation: none; } }

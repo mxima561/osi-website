@@ -11,6 +11,8 @@ import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import ThankYouPage from './pages/ThankYouPage';
 import NotFoundPage from './pages/NotFoundPage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import TermsOfUsePage from './pages/TermsOfUsePage';
 
 function useDocumentTitle(title) {
   useEffect(() => { document.title = title; }, [title]);
@@ -34,6 +36,8 @@ function PageShell({ path }) {
   if (path === '/about') { useDocumentTitle('About — OSI'); return <AboutPage/>; }
   if (path === '/contact') { useDocumentTitle('Contact — OSI'); return <ContactPage/>; }
   if (path === '/thank-you') { useDocumentTitle('Thank You — OSI'); return <ThankYouPage/>; }
+  if (path === '/privacy-policy') { useDocumentTitle('Privacy Policy — OSI'); return <PrivacyPolicyPage/>; }
+  if (path === '/terms-of-use') { useDocumentTitle('Terms of Use — OSI'); return <TermsOfUsePage/>; }
   useDocumentTitle('404 — OSI');
   return <NotFoundPage/>;
 }

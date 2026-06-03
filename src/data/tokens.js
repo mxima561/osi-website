@@ -1,7 +1,7 @@
 export const TOKENS = {
   green: {
-    primary: '#6AA63F',
-    dark: '#5A8E35',
+    primary: '#4aa25a',
+    dark: '#3d8f4e',
     light: '#7FBF55',
     tint: '#E8F4DC',
   },
@@ -73,6 +73,8 @@ export const SERVICE_PAGES = {
     sub: 'From private offices to corporate campuses, OSI provides experienced installation crews for projects that need to be organized, professional, and completed with care.',
     ctas: ['Request an Installation Quote','Talk to OSI'],
     heroDark: true,
+    introEyebrow: 'SERVICE OVERVIEW',
+    introHeader: 'More than labor on install day',
     intro: [
       'Furniture installation is the core of what we do — but what makes OSI different is everything around it. We bring the labor, field leadership, warehouse support, and project coordination needed to execute installations with fewer surprises and better results.',
       'We support dealers, project managers, general contractors, and enterprise clients across a wide range of commercial environments throughout the Arizona market.'
@@ -82,6 +84,7 @@ export const SERVICE_PAGES = {
     supportList: ['Workstations, private offices, benching, conference rooms, and collaborative spaces','Seating, casegoods, ancillary furniture, training rooms, and common-area furniture','Multi-floor installations, campus deployments, phased rollouts, and restacks','Dealer-led projects, owner-direct work, tenant improvements, and general contractor support','Receiving, staging, delivery coordination, installation, punch, and post-install support','Reconfigurations, add-ons, warranty support, and follow-up service after install day'],
     extra: { title: 'What We Install', sub: 'Experienced across major commercial furniture systems.', body: 'OSI works across leading manufacturers, seating lines, casegoods, workstations, conference furniture, ancillary products, and modular environments. Our crews are built for commercial furniture work, not generic moving labor.' },
     whyTitle: 'Why OSI',
+    whyHeader: 'Installation backed by the right support',
     whyList: ['Experienced commercial furniture crews','Professional field execution and site coordination','Support for punch, warranty, and follow-through','Warehouse and receiving support when needed','An Arizona partner built for both dealer and enterprise work'],
     closingTitle: ['Installation is only one day.','The project is bigger than that.'],
     closingBody: 'That is why clients rely on OSI for more than labor. We help make sure the installation is supported by the right planning, staging, coordination, and follow-through before and after the work hits the floor.',
@@ -93,6 +96,8 @@ export const SERVICE_PAGES = {
     sub: 'A successful installation starts long before install day. OSI provides the warehouse space, receiving process, and staging support needed to keep furniture projects under control from the moment product arrives.',
     ctas: ['Discuss Warehouse Support','Request a Quote'],
     heroDark: false,
+    introEyebrow: 'SERVICE OVERVIEW',
+    introHeader: 'Organized before the first delivery',
     intro: [
       'For many projects, the real headaches start when furniture arrives in pieces, across multiple shipments, on inconsistent timelines. OSI helps bring order to that process with secure warehousing, receiving, inspection, staging, and dispatch support.',
       'For dealers, this means a dependable Arizona partner on the ground. For enterprise clients, it means better control over furniture assets, project timing, and site readiness.'
@@ -102,6 +107,7 @@ export const SERVICE_PAGES = {
     supportList: ['Receiving, shipment intake, inspection, and issue identification before install day','Secure short-term storage for projects with phased deliveries or changing site schedules','Product staging, labeling, organization, and dispatch by project, phase, floor, or location','Delivery coordination tied directly to installation schedules and site readiness','Support for out-of-state dealers shipping product into the Arizona market','Warehouse infrastructure that helps reduce missing product, bad handoffs, and install-day chaos'],
     extra: { title: 'Why It Matters', sub: 'Better warehouse support means fewer problems on install day.', body: 'When product is received, staged, and organized properly, the installation runs better. There is less scrambling, less confusion, and fewer avoidable delays caused by missing product, poor coordination, or bad handoffs.' },
     whyTitle: 'Why OSI',
+    whyHeader: 'Better projects start before install day',
     whyBody: 'With a 60,000 sq. ft. warehouse and a team built around commercial furniture work, OSI provides more than storage space. We provide the local infrastructure needed to support project execution.',
     statCallout: { n: 60000, suffix: '', label: 'SQ FT', caption: 'Secure warehouse in Arizona.' },
     closingTitle: ['Talk to us about','warehousing.'],
@@ -114,6 +120,8 @@ export const SERVICE_PAGES = {
     sub: 'Furniture work does not end after the initial install. OSI provides ongoing support for moves, adds, changes, reconfigurations, repairs, and day-to-day furniture needs across active workplaces.',
     ctas: ['Discuss Ongoing Support','Talk to OSI'],
     heroDark: true,
+    introEyebrow: 'SERVICE OVERVIEW',
+    introHeader: 'Support for the work that continues',
     intro: [
       'Many clients need more than project-based installation. They need a local partner who can respond to the work that continues after occupancy: employee moves, departmental changes, workstation reconfigurations, furniture adjustments, repairs, and small ongoing requests that internal teams do not always have the time or bandwidth to manage.',
       'That is where OSI fits.'
@@ -123,6 +131,7 @@ export const SERVICE_PAGES = {
     supportList: ['Moves, adds, changes, reconfigurations, and workstation adjustments','Small installs, furniture add-ons, repairs, punch items, and warranty support','Employee moves, department changes, seating updates, and space adjustments','Recurring service requests for active offices, campuses, and multi-site environments','Support programs by site, department, portfolio, or client-specific service need','A dependable local team that reduces the burden on internal facility staff'],
     extra: { title: 'Who This Is For', sub: 'Teams who need dependable ongoing support.', list: ['Enterprise clients and facility teams who need dependable local support','Dealers who want post-install service support for their clients','Organizations with growing, changing, or frequently reconfigured workplaces'] },
     whyTitle: 'Why Clients Use OSI',
+    whyHeader: 'Ongoing work still needs a professional team',
     whyList: ['Faster access to experienced furniture labor','A local team that already understands commercial environments','Less burden on internal staff','Better continuity after the initial project is complete'],
     closingTitle: ['Ongoing work still needs','a professional team.'],
     closingBody: 'OSI helps clients manage the work that never really stops — without having to build that capability entirely in-house.',
@@ -131,9 +140,11 @@ export const SERVICE_PAGES = {
   'decommissioning': {
     eyebrow: 'SERVICES / DECOMMISSIONING',
     title: ['Decommissioning & Relocation', 'Without the Chaos'],
-    sub: 'Clearing space, relocating teams, or planning what comes next.',
+    sub: 'OSI helps clients remove, relocate, and transition furniture in an organized way that minimizes disruption and keeps projects moving.',
     ctas: ['Discuss a Relocation Project','Request a Quote'],
     heroDark: false,
+    introEyebrow: 'SERVICE OVERVIEW',
+    introHeader: 'Structure for workplace transitions',
     intro: [
       'Office transitions can get messy quickly. Whether a client is consolidating space, relocating teams, closing a facility, or clearing furniture ahead of a renovation, OSI provides the labor and coordination needed to handle the process cleanly.',
       'We support both planned relocations and decommissioning projects that require furniture removal, internal moves, storage, redeployment, or disposal coordination.'
@@ -142,9 +153,10 @@ export const SERVICE_PAGES = {
     supportSub: 'Organized support for workplace transitions.',
     supportList: ['Office closures, consolidations, relocations, renovations, and space transitions','Furniture removal, breakdown, relocation, storage, redeployment, and disposal coordination','Internal moves, department shifts, restacks, and phased occupancy changes','Decommissioning ahead of lease turnover, renovation, or new workplace planning','Inventory separation for reuse, storage, donation, resale, disposal, or future deployment','Labor, trucks, warehouse support, and field coordination to keep transitions controlled'],
     whyTitle: 'Why OSI',
+    whyHeader: 'A better transition starts with a better process',
     whySub: 'A better transition starts with a better process.',
     whyBody: 'OSI helps clients bring structure to work that can otherwise become disruptive, disorganized, and expensive. Because we also provide warehousing, installation, and asset support, we can help clients think beyond removal and support what comes next.',
-    closingTitle: ['Moving out, moving over,','or starting fresh.'],
+    closingTitle: ['Clearing space, relocating teams,','or planning what comes next.'],
     closingBody: 'Whatever the transition looks like, OSI helps clients handle it with less disruption and one accountable local partner.',
     closingCta: 'Talk to OSI About Relocation',
   },
@@ -154,6 +166,8 @@ export const SERVICE_PAGES = {
     sub: 'Not every furniture asset should be discarded, and not every client wants to lose track of what they already own. OSI helps clients store, track, manage, and redeploy furniture with more visibility and control.',
     ctas: ['Discuss Asset Management','Talk to OSI'],
     heroDark: true,
+    introEyebrow: 'SERVICE OVERVIEW',
+    introHeader: 'Furniture assets need visibility',
     intro: [
       'For clients with surplus inventory, phased projects, changing headcount, or multiple locations, furniture assets can either become a resource or a headache. OSI helps make them useful.',
       'Our asset management and storage services are designed to support long-term furniture visibility, organization, and redeployment — especially for clients who want more than overflow storage.'
@@ -163,6 +177,7 @@ export const SERVICE_PAGES = {
     supportList: ['Secure, climate-controlled storage with 24/7 surveillance','Real-time inventory visibility with accurate reporting and full traceability','Component, build-up, and kit-level tracking for deployment readiness','Custom reporting to track usage and support smarter redeployment decisions','Redeployment support to help clients reuse furniture across future projects','Full-service support for complex inventory programs and demanding furniture needs'],
     extra: { title: 'Why It Matters', sub: 'Better asset management protects past furniture investment.', body: 'When furniture is stored and tracked properly, clients have more options. They can reuse assets, support future moves, reduce waste, and avoid unnecessary replacement costs.' },
     whyTitle: 'Why OSI',
+    whyHeader: 'More than a place to put furniture',
     whyBody: 'OSI combines warehouse capacity with operational support. That means clients get more than a place to put furniture — they get a partner who can help manage it, locate it, and put it back to work when needed.',
     closingTitle: ['Furniture is an asset.','Treat it like one.'],
     closingBody: 'Let us help you make sense of what you already own — and put it back to work.',
@@ -171,9 +186,11 @@ export const SERVICE_PAGES = {
   'modular-walls': {
     eyebrow: 'SERVICES / MODULAR WALLS',
     title: ['Modular Wall Installation with', 'the Right Field Support'],
-    sub: 'Modular wall systems require careful coordination, precise execution, and a team that understands commercial project conditions. OSI provides installation support for demountable wall systems and modular environments across the Arizona market that require careful sequencing, clean execution, and dependable field coordination.',
+    sub: 'Modular wall systems require careful coordination, precise execution, and a team that understands commercial project conditions. OSI provides installation support for demountable wall systems and modular environments that require careful sequencing, clean execution, and dependable field coordination.',
     ctas: ['Discuss a Modular Wall Project','Talk to OSI'],
     heroDark: false,
+    introEyebrow: 'SERVICE OVERVIEW',
+    introHeader: 'Built for precision field work',
     intro: [
       'Modular walls are different from standard furniture installation. They require tighter coordination, sequencing, finish awareness, and crews who understand how the system interacts with the surrounding space.',
       'OSI supports modular wall projects for manufacturers, contractors, and dealers who need a dependable installation partner for demountable environments.'
@@ -182,9 +199,10 @@ export const SERVICE_PAGES = {
     supportSub: 'Field support for demountable systems and modular environments.',
     supportList: ['Demountable wall system installation for office, conference, meeting, and specialty spaces','Modular environment build-outs tied to broader furniture and workplace projects','Coordination with dealers, manufacturers, general contractors, and surrounding trades','Sequencing support for projects where walls, furniture, power, finishes, and site conditions must align','Careful field execution for systems that demand precision, finish quality, and clean installation','Reconfiguration, relocation, and expansion support for modular wall environments over time'],
     whyTitle: 'Why OSI',
+    whyHeader: 'A stronger field partner for precision work',
     whySub: 'A stronger field partner for more demanding installations.',
     whyBody: 'OSI brings the labor, professionalism, and project mindset needed for work that has to be installed cleanly and coordinated carefully. For clients already relying on OSI for furniture services, modular walls are a natural extension of that support.',
-    closingTitle: ['The precision matters,','the partner matters.'],
+    closingTitle: ['Precision work needs','the right partner.'],
     closingBody: 'OSI helps clients execute modular wall work with the care and coordination these environments demand.',
     closingCta: 'Talk to OSI About Modular Walls',
   },
@@ -194,9 +212,12 @@ export const INDUSTRY_PAGES = {
   'corporate-office': {
     title: ['Furniture Services for','Corporate Office Environments'],
     sub: 'From private offices to multi-floor campuses, OSI supports the installation, relocation, reconfiguration, and ongoing service needs of active workplaces across Arizona.',
+    introEyebrow: 'ENVIRONMENT OVERVIEW',
+    introHeader: 'Built for active workplaces',
     intro: 'Corporate office environments often require more than a one-time install. Teams move. Departments grow. Floors are reconfigured. New employees come in. Furniture needs change over time. OSI helps corporate clients manage both project-based work and ongoing workplace support with the labor, warehouse capacity, and field coordination needed to keep things moving.',
     supportSub: 'Built for active workplaces, campuses, and changing teams.',
     supportList: ['Workstations, private offices, benching, conference rooms, and collaborative spaces','Executive offices, reception areas, training rooms, break rooms, and support spaces','Multi-floor installations, phased rollouts, reconfigurations, and restacks','Moves, adds, changes, workstation adjustments, and recurring Day 2 support','Furniture receiving, storage, staging, delivery, and installation coordination','Decommissioning, relocation, asset storage, and redeployment support'],
+    whyHeader: 'Built for active workplace change',
     why: 'Corporate office clients need a partner who can work professionally in occupied spaces, coordinate around schedules, and support the work that continues after the original project is complete. OSI is built for exactly that.',
     closing: ['A stronger partner for','workplace change.'],
     closingBody: 'Whether you are installing, reconfiguring, expanding, or relocating, OSI helps corporate office clients handle the work with less friction and better follow-through.',
@@ -206,9 +227,12 @@ export const INDUSTRY_PAGES = {
   'healthcare': {
     title: ['Furniture Services for','Healthcare Environments'],
     sub: 'OSI supports furniture installation, replacement, relocation, and ongoing service work in healthcare environments where coordination, cleanliness, and minimal disruption matter.',
+    introEyebrow: 'ENVIRONMENT OVERVIEW',
+    introHeader: 'Work that requires care and coordination',
     intro: 'Healthcare environments require a higher level of care in how work is planned and executed. Projects often need to be coordinated around patient areas, staff operations, phased schedules, and spaces that cannot tolerate unnecessary disruption. OSI helps healthcare clients and project partners execute furniture work with professionalism, organization, and respect for the environment.',
     supportSub: 'Healthcare furniture support across clinical and non-clinical spaces.',
     supportList: ['Exam rooms, treatment rooms, therapy areas, and clinical support spaces','Waiting areas, staff areas, administrative offices, and back-office environments','Medical furniture, carts, cabinets, stools, recliners, privacy screens, and related furnishings','Lab, phlebotomy, physical therapy, and specialty support-room furniture','Replacement, refresh, relocation, and phased installation projects','Decommissioning, furniture removal, and ongoing MAC support'],
+    whyHeader: 'Professional support for demanding environments',
     why: 'Healthcare clients need a team that understands how to work carefully, communicate clearly, and support the project without adding avoidable disruption. OSI provides dependable field execution backed by warehouse and coordination support when needed.',
     closing: ['Professional support for','more demanding environments.'],
     closingBody: 'OSI helps healthcare clients complete furniture projects with the organization, care, and follow-through these spaces demand.',
@@ -218,9 +242,12 @@ export const INDUSTRY_PAGES = {
   'education': {
     title: ['Furniture Services for','Education Environments'],
     sub: 'From classrooms and libraries to administrative offices and campus facilities, OSI supports furniture projects across education environments that need to be completed on schedule and with care.',
+    introEyebrow: 'ENVIRONMENT OVERVIEW',
+    introHeader: 'Built around school and campus schedules',
     intro: 'Education projects often come with tight schedules, phased work, limited access windows, and multiple stakeholder groups. Whether the work is happening in a K-12 setting, higher education environment, or campus administrative space, OSI helps bring structure to the process. We support installations, moves, reconfigurations, and transition work in education environments across Arizona.',
     supportSub: 'Furniture support for classrooms, campuses, and specialized learning environments.',
     supportList: ['Classroom furniture, teacher work areas, administrative offices, and staff spaces','Libraries, media centers, collaborative learning areas, lounges, and study spaces','Cafeterias, common areas, training rooms, technology centers, and specialty facilities','Early learning, K-12, higher education, autism centers, and behavioral support environments','Furniture receiving, staging, delivery, installation, reconfiguration, and replacement programs','Campus moves, phased installations, decommissioning, storage, and redeployment support'],
+    whyHeader: 'A dependable partner for school and campus projects',
     why: 'Education clients need a partner who can work within real scheduling constraints and help the project move efficiently. OSI provides the labor, organization, and local support needed to execute the work cleanly.',
     closing: ['A dependable partner for','school and campus projects.'],
     closingBody: 'OSI helps education clients complete furniture work with better coordination, less disruption, and one accountable local team.',
@@ -230,9 +257,12 @@ export const INDUSTRY_PAGES = {
   'hospitality': {
     title: ['Furniture Services for','Hospitality Environments'],
     sub: 'OSI supports furniture installation, replacement, and transition work in hospitality environments where timing, presentation, and coordination are critical.',
+    introEyebrow: 'ENVIRONMENT OVERVIEW',
+    introHeader: 'Presentation-sensitive work, managed carefully',
     intro: 'Hospitality spaces demand a polished result and a well-managed process. Whether the work involves guest-facing areas, back-of-house spaces, administrative offices, or phased furniture replacement, OSI helps clients execute the project in a way that feels organized and professional. We support installations, refreshes, relocations, and transition work across hospitality environments in the Arizona market.',
     supportSub: 'Furniture installation for guest-facing, operational, and luxury hospitality spaces.',
     supportList: ['Guest rooms, suites, lobbies, lounges, reception areas, and common spaces','Restaurants, bars, banquet areas, conference rooms, and event spaces','Spa, wellness, pool, cabana, patio, and outdoor resort furniture','Back-of-house offices, staff areas, administrative spaces, and support facilities','Phased refresh projects, replacement programs, staged delivery, and installation coordination','Furniture relocation, decommissioning, removal, storage, and ongoing support programs'],
+    whyHeader: 'Built for presentation-sensitive work',
     why: 'Hospitality projects require attention to schedule, coordination, and finish quality. OSI provides the field support and operational depth needed to help the work move smoothly and reflect well on the client.',
     closing: ['A stronger local partner','for hospitality projects.'],
     closingBody: 'OSI helps hospitality clients complete furniture work with better coordination, cleaner execution, and less disruption.',
@@ -242,9 +272,12 @@ export const INDUSTRY_PAGES = {
   'government': {
     title: ['Furniture Services for','Government Environments'],
     sub: 'OSI provides organized, dependable furniture support for government offices, departments, and public-sector facilities across the Arizona market.',
+    introEyebrow: 'ENVIRONMENT OVERVIEW',
+    introHeader: 'Structured support for public-sector spaces',
     intro: 'Government projects often require a professional partner who can execute the work reliably, communicate clearly, and support the project in a structured way. Whether the need is installation, relocation, reconfiguration, or long-term furniture support, OSI helps public-sector clients get the work done with less friction. We support a wide range of government environments, from administrative offices to larger departmental facilities.',
     supportSub: 'Furniture support for public-sector offices, departments, and large facility programs.',
     supportList: ['Administrative offices, department spaces, public-facing areas, and staff work environments','Workstations, private offices, conference rooms, training rooms, and support spaces','Multi-site furniture programs, phased installations, reconfigurations, and relocations','Moves, adds, changes, workstation adjustments, and ongoing facility support','Warehousing, receiving, staging, delivery, and installation coordination','Decommissioning, asset storage, inventory support, and redeployment across departments or locations'],
+    whyHeader: 'Dependable support for public-sector projects',
     why: 'Government clients need a partner who is organized, responsive, and capable of supporting the project beyond install day. OSI brings local labor, warehouse support, and ongoing service capability to work that often requires more than a one-time installation crew.',
     closing: ['Dependable support for','public-sector projects.'],
     closingBody: 'OSI helps government clients execute furniture work with one accountable local team and the infrastructure to support what comes next.',
