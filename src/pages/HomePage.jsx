@@ -1,5 +1,5 @@
-import { motion, useScroll, useTransform } from '../components/Motion';
-import { FadeIn, Stagger, StaggerItem, CountUp, RotatingWord } from '../components/Motion';
+import { FadeIn, Stagger, StaggerItem, CountUp, TypingWord } from '../components/Motion';
+import HeroProofCard from '../components/HeroProofCard';
 import { Section, Container, Eyebrow, Button, StatPill, SectionHeading, Green, ImgOrPlaceholder } from '../components/Primitives';
 import { Link } from '../components/Router';
 import Icon from '../components/Icon';
@@ -7,12 +7,12 @@ import { useQuote } from '../components/QuoteModal';
 import FinalCTA from '../components/FinalCTA';
 import { SERVICES, MANUFACTURERS, PROJECTS, CLIENT_LOGOS, REVIEWS } from '../data/tokens';
 
+const HERO_WORDS = ['Furniture Installation', 'Warehousing', 'Asset Management', 'MAC & Daily Services', 'Modular Walls'];
+
 function HeroHome() {
   const quote = useQuote();
-  const { scrollY } = useScroll();
-  const imgY = useTransform(scrollY, [0, 600], [0, -60]);
   return (
-    <Section className="relative overflow-hidden bg-[#F9F9F5]">
+    <Section className="relative overflow-hidden bg-white">
       <Container className="pt-8 pb-20 md:pt-12 md:pb-28">
         <div className="grid lg:grid-cols-12 gap-10 items-center">
           <div className="lg:col-span-8">
@@ -21,44 +21,149 @@ function HeroHome() {
                 <Eyebrow>Relax. You Found Us.</Eyebrow>
               </StaggerItem>
               <StaggerItem className="mt-6">
-                <h1 className="font-display font-black tracking-tight leading-[0.98] text-[44px] sm:text-[56px] md:text-[72px] lg:text-[76px] text-[#1A1A1A]">
+                <h1 aria-label="One partner for complete furniture services, and everything around it." className="font-display font-black tracking-tight leading-[0.98] text-[44px] sm:text-[56px] md:text-[72px] lg:text-[76px] text-[#1A1A1A]">
                   <span className="block">One partner for</span>
                   <span className="block min-h-[1.1em] leading-[1.1]">
-                    <RotatingWord words={['Furniture Installation','Warehousing & Receiving','Asset Management','MAC & Daily Services','Modular Walls']} />
+                    <TypingWord words={HERO_WORDS} />
                   </span>
                   <span className="block">and everything around it.</span>
                 </h1>
               </StaggerItem>
-              <StaggerItem className="mt-7">
-                <p className="max-w-xl text-[17px] md:text-lg text-[#4A4A4A] leading-relaxed">
-                  From receiving and warehousing to installation, decommissioning, modular walls, and asset management, OSI helps dealers and enterprise clients execute furniture projects with less friction and one accountable local partner.
-                </p>
-              </StaggerItem>
-              <StaggerItem className="mt-8">
-                <div className="flex flex-wrap gap-3">
-                  <StatPill n={80} suffix="+" label="Installers"/>
-                  <StatPill n={60000} label="Sq ft warehouse"/>
-                  <StatPill n={20} suffix="+" label="Years in Arizona"/>
-                </div>
-              </StaggerItem>
               <StaggerItem className="mt-10">
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-wrap gap-3 items-center">
                   <Button variant="primary" size="lg" onClick={() => quote.open()}>Request a Quote</Button>
-                  <Button variant="outlineDark" size="lg" onClick={() => quote.open()} iconRight={null}>Talk to OSI</Button>
+                  <Button variant="outlineDark" size="lg" to="/services" iconRight={null}>Explore Services</Button>
                 </div>
               </StaggerItem>
             </Stagger>
           </div>
 
           <div className="lg:col-span-4">
-            <motion.div style={{ y: imgY }} className="relative aspect-[4/5] lg:aspect-auto lg:h-[620px] rounded-2xl overflow-hidden bg-[#EEEEE8]">
-              <ImgOrPlaceholder src="/photos/hero-open-plan.jpg" alt="OSI-installed corporate office" />
-              <div className="absolute left-5 bottom-5 bg-white/95 backdrop-blur rounded-xl px-4 py-3 flex items-center gap-3">
-                <div className="w-2 h-2 rounded-full bg-[#6AA63F] animate-pulse" />
-                <span className="font-mono text-[11px] tracking-widest uppercase text-[#1A1A1A]">Arizona</span>
-              </div>
-            </motion.div>
+            <HeroProofCard />
           </div>
+        </div>
+      </Container>
+    </Section>
+  );
+}
+
+function StatsBar() {
+  return (
+    <div className="border-y border-[#EAEAEA] bg-white">
+      <Container>
+        <div className="py-6 flex flex-wrap gap-8 md:gap-16 items-center justify-center md:justify-start">
+          {[
+            { n: 80, suffix: '+', label: 'Field Installers' },
+            { n: 60000, suffix: '', label: 'Sq Ft Warehouse' },
+            { n: 20, suffix: '+', label: 'Years in Arizona' },
+          ].map((s) => (
+            <div key={s.label} className="flex items-baseline gap-2">
+              <span className="font-display font-black text-[32px] text-[#1A1A1A] leading-none">
+                <CountUp to={s.n} />{s.suffix}
+              </span>
+              <span className="text-[13px] font-medium text-[#8A8A8A] uppercase tracking-wider">{s.label}</span>
+            </div>
+          ))}
+        </div>
+      </Container>
+    </div>
+  );
+}
+
+function ServicesOverview() {
+  return (
+    <Section className="py-24 md:py-32 bg-white">
+      <Container>
+        <FadeIn>
+          <SectionHeading eyebrow="Services" sub="From receiving and installation to daily services and asset management, OSI provides one partner across the full furniture lifecycle.">
+            We do <Green>everything</Green> but sell furniture.
+          </SectionHeading>
+        </FadeIn>
+        <div className="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {SERVICES.map((s, i) => (
+            <FadeIn key={s.slug} delay={i*0.05}>
+              <Link to={`/services/${s.slug}`} className="group block h-full rounded-2xl border border-[#EAEAEA] p-7 bg-white hover:border-[#1A1A1A] transition">
+                {/* TODO(jesse): replace with provided photos */}
+                <div className="w-12 h-12 rounded-xl bg-[#E8F4DC] flex items-center justify-center text-[#4aa25a]">
+                  <Icon name={s.icon} className="w-5 h-5"/>
+                </div>
+                <h3 className="font-display font-bold text-xl mt-6 tracking-tight">{s.title}</h3>
+                <p className="mt-3 text-[#4A4A4A] leading-relaxed text-[15px]">{s.blurb}</p>
+                <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#4aa25a] group-hover:gap-3 transition-all">
+                  Learn More <Icon name="ArrowRight" className="w-4 h-4"/>
+                </div>
+              </Link>
+            </FadeIn>
+          ))}
+        </div>
+        <div className="mt-12 text-center">
+          <Button variant="outlineDark" to="/services">Explore All Services</Button>
+        </div>
+      </Container>
+    </Section>
+  );
+}
+
+function AudienceSplit() {
+  return (
+    <Section className="py-24 md:py-32 bg-white">
+      <Container>
+        <FadeIn>
+          <SectionHeading eyebrow="Who We Work With" sub="OSI supports two core groups with the same quality of service.">
+            Not just installation. <Green>Total project support.</Green>
+          </SectionHeading>
+        </FadeIn>
+        <div className="mt-16 grid lg:grid-cols-2 gap-8">
+          {/* Card 1: Dealers */}
+          <FadeIn delay={0.05}>
+            <div className="rounded-2xl overflow-hidden bg-[#F1F2F3]">
+              <div className="aspect-[16/9]">
+                <ImgOrPlaceholder
+                  src="/photos/audience-dealer.jpg"
+                  alt="Dealer coordination"
+                  caption="DEALERS / PROJECT MANAGERS / A&D"
+                />
+              </div>
+              <div className="p-8">
+                <div className="text-xs font-semibold uppercase tracking-[0.2em] text-[#8A8A8A] mb-3">For Dealers & Project Managers</div>
+                <h3 className="font-display font-bold text-2xl tracking-tight text-[#1A1A1A]">Your Arizona execution partner</h3>
+                <p className="mt-4 text-[#4A4A4A] leading-relaxed">OSI acts as the boots-on-the-ground team that helps dealers protect the client relationship and keep projects organized, on schedule, and professionally executed.</p>
+                <div className="mt-6 flex flex-wrap gap-3 text-[14px] text-[#4A4A4A]">
+                  {['Receiving & staging', 'Installation', 'Punch & follow-through', 'Ongoing MAC support'].map(t => (
+                    <span key={t} className="inline-flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#4aa25a]" />
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </FadeIn>
+          {/* Card 2: Enterprise */}
+          <FadeIn delay={0.1}>
+            <div className="rounded-2xl overflow-hidden bg-[#0F1E3D]">
+              <div className="aspect-[16/9]">
+                <ImgOrPlaceholder
+                  src="/photos/audience-enterprise.jpg"
+                  alt="Enterprise facility management"
+                  caption="ENTERPRISE / FACILITY TEAMS"
+                />
+              </div>
+              <div className="p-8">
+                <div className="text-xs font-semibold uppercase tracking-[0.2em] text-[#4aa25a] mb-3">For Enterprise Clients & Facility Teams</div>
+                <h3 className="font-display font-bold text-2xl tracking-tight text-white">The infrastructure you don't have to build</h3>
+                <p className="mt-4 text-white/70 leading-relaxed">OSI supports the furniture and facility work that internal teams often don't have the time, labor, or infrastructure to manage well — from large installs to daily ongoing service.</p>
+                <div className="mt-6 flex flex-wrap gap-3 text-[14px] text-white/70">
+                  {['Large-scale installs', 'Asset management', 'Decommissioning', 'Warehouse support'].map(t => (
+                    <span key={t} className="inline-flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#4aa25a]" />
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </FadeIn>
         </div>
       </Container>
     </Section>
@@ -73,7 +178,7 @@ function WhyOSI() {
     { icon: 'Repeat', title: 'Dealer and facility team fluency', body: 'We help dealers protect the client relationship and help facility teams manage the work they do not have the time, labor, or infrastructure to absorb.' },
   ];
   return (
-    <Section className="py-24 md:py-32 bg-[#F4F4F4]">
+    <Section className="py-24 md:py-32 bg-[#F1F2F3]">
       <Container>
         <div className="grid lg:grid-cols-12 gap-12 items-start">
           <FadeIn className="lg:col-span-5 lg:sticky lg:top-32">
@@ -89,7 +194,7 @@ function WhyOSI() {
             {items.map((it, i) => (
               <FadeIn key={it.title} delay={i*0.05}>
                 <div className="h-full bg-white rounded-2xl p-7 hover:-translate-y-1 transition-transform duration-300">
-                  <div className="w-12 h-12 rounded-xl bg-[#E8F4DC] flex items-center justify-center text-[#6AA63F]">
+                  <div className="w-12 h-12 rounded-xl bg-[#E8F4DC] flex items-center justify-center text-[#4aa25a]">
                     <Icon name={it.icon} className="w-5 h-5" strokeWidth={2}/>
                   </div>
                   <h3 className="font-display font-bold text-xl mt-5 tracking-tight">{it.title}</h3>
@@ -98,40 +203,6 @@ function WhyOSI() {
               </FadeIn>
             ))}
           </div>
-        </div>
-      </Container>
-    </Section>
-  );
-}
-
-function ServicesOverview() {
-  return (
-    <Section className="py-24 md:py-32">
-      <Container>
-        <FadeIn>
-          <SectionHeading eyebrow="Services" sub="From receiving and installation to daily services and asset management, OSI provides one partner across the full furniture lifecycle.">
-            We do <Green>everything</Green> but sell furniture.
-          </SectionHeading>
-        </FadeIn>
-        <div className="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {SERVICES.map((s, i) => (
-            <FadeIn key={s.slug} delay={i*0.05}>
-              <Link to={`/services/${s.slug}`} className="group block h-full rounded-2xl border border-[#EAEAEA] p-7 bg-white hover:border-[#1A1A1A] transition">
-                {/* TODO(jesse): replace with provided photos */}
-                <div className="w-12 h-12 rounded-xl bg-[#E8F4DC] flex items-center justify-center text-[#6AA63F]">
-                  <Icon name={s.icon} className="w-5 h-5"/>
-                </div>
-                <h3 className="font-display font-bold text-xl mt-6 tracking-tight">{s.title}</h3>
-                <p className="mt-3 text-[#4A4A4A] leading-relaxed text-[15px]">{s.blurb}</p>
-                <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#6AA63F] group-hover:gap-3 transition-all">
-                  Learn More <Icon name="ArrowRight" className="w-4 h-4"/>
-                </div>
-              </Link>
-            </FadeIn>
-          ))}
-        </div>
-        <div className="mt-12 text-center">
-          <Button variant="outlineDark" to="/services">Explore All Services</Button>
         </div>
       </Container>
     </Section>
@@ -191,8 +262,8 @@ function FeaturedProjects() {
                   </div>
                 </div>
                 <div className="mt-5">
-                  <span className="inline-flex items-center px-3 py-1 rounded-full bg-[#E8F4DC] text-[#3D7A1C] text-xs font-semibold tracking-wider uppercase">{p.tag}</span>
-                  <h3 className="mt-4 font-display font-bold text-xl tracking-tight group-hover:text-[#6AA63F] transition">{p.title}</h3>
+                  <span className="inline-flex items-center px-3 py-1 rounded-full bg-[#E8F4DC] text-[#3d8f4e] text-xs font-semibold tracking-wider uppercase">{p.tag}</span>
+                  <h3 className="mt-4 font-display font-bold text-xl tracking-tight group-hover:text-[#4aa25a] transition">{p.title}</h3>
                   <p className="mt-2 text-[#4A4A4A] text-[15px]">{p.result}</p>
                 </div>
               </Link>
@@ -206,6 +277,7 @@ function FeaturedProjects() {
 }
 
 function TrustedBy() {
+  const allLogos = [...CLIENT_LOGOS, ...CLIENT_LOGOS];
   return (
     <Section dark className="py-20">
       <Container>
@@ -218,9 +290,14 @@ function TrustedBy() {
             </p>
           </div>
           <div className="mt-10 marquee overflow-hidden">
-            <div className="marquee-track flex items-center gap-12 w-max">
-              {[...CLIENT_LOGOS, ...CLIENT_LOGOS].map((l, i) => (
-                <span key={i} className="font-display font-semibold text-lg text-white/70 hover:text-white transition whitespace-nowrap">{l}</span>
+            <div className="marquee-track flex items-center gap-14 w-max">
+              {allLogos.map((l, i) => (
+                <span key={i} className="inline-flex items-center gap-14 whitespace-nowrap">
+                  <span className="font-display font-bold text-xl md:text-2xl text-white/50 hover:text-[#4aa25a] transition-colors duration-300 whitespace-nowrap">{l}</span>
+                  {i < allLogos.length - 1 && (
+                    <span className="text-white/20 font-light select-none">|</span>
+                  )}
+                </span>
               ))}
             </div>
           </div>
@@ -264,7 +341,7 @@ function GoogleReviews() {
                 </div>
               </div>
               <p className="mt-4 text-[14px] text-[#4A4A4A] leading-relaxed line-clamp-4 flex-grow">&ldquo;{r.text}&rdquo;</p>
-              <button className="mt-4 text-[13px] font-semibold text-[#6AA63F] self-start">Read more &rarr;</button>
+              <button className="mt-4 text-[13px] font-semibold text-[#4aa25a] self-start">Read more &rarr;</button>
             </div>
           ))}
         </div>
@@ -277,8 +354,10 @@ export default function HomePage() {
   return (
     <>
       <HeroHome />
-      <WhyOSI />
+      <StatsBar />
       <ServicesOverview />
+      <AudienceSplit />
+      <WhyOSI />
       <BrandWall />
       <FeaturedProjects />
       <TrustedBy />

@@ -8,7 +8,7 @@ export default function AboutPage() {
   const quote = useQuote();
   return (
     <>
-      <Section className="bg-[#F9F9F5] pt-20 pb-20 md:pt-28 md:pb-28">
+      <Section className="bg-[#F1F2F3] pt-20 pb-20 md:pt-28 md:pb-28">
         <Container>
           <FadeIn>
             <Eyebrow>About OSI</Eyebrow>
@@ -17,8 +17,8 @@ export default function AboutPage() {
             </h1>
             <p className="mt-7 max-w-3xl text-lg text-[#4A4A4A] leading-relaxed">OSI is an Arizona-based commercial furniture services company providing installation, warehousing, receiving, MAC work, decommissioning, modular walls, and asset management for dealers, enterprise clients, and facility teams.</p>
             <div className="mt-10 flex flex-wrap gap-3">
-              <Button variant="primary" size="lg" onClick={() => quote.open()}>Talk to OSI</Button>
-              <Button variant="outlineDark" size="lg" onClick={() => quote.open()} iconRight={null}>Request a Quote</Button>
+              <Button variant="primary" size="lg" onClick={() => quote.open()}>Request a Quote</Button>
+              <a href="tel:+16022539392" className="inline-flex items-center gap-2 px-7 py-4 text-base font-semibold rounded-full border border-[#1A1A1A]/20 text-[#1A1A1A] hover:border-[#1A1A1A] hover:bg-[#1A1A1A] hover:text-white transition-colors duration-200">Call (602) 253-9392</a>
             </div>
           </FadeIn>
         </Container>
@@ -27,8 +27,13 @@ export default function AboutPage() {
       <Section className="pb-0 -mt-8">
         <Container>
           <FadeIn>
-            <div className="aspect-[16/6] rounded-2xl overflow-hidden">
+            <div className="aspect-[16/6] rounded-2xl overflow-hidden relative">
               <ImgOrPlaceholder src="/photos/osi-building.jpg" alt="OSI Arizona warehouse and office building" className="w-full h-full object-cover" />
+              <div className="absolute bottom-6 left-6">
+                <div className="bg-white/90 backdrop-blur rounded-xl px-5 py-3">
+                  <img src="/osi-logo-wave.jpg" alt="OSI" className="h-10 w-auto" />
+                </div>
+              </div>
             </div>
           </FadeIn>
         </Container>
@@ -97,7 +102,7 @@ export default function AboutPage() {
         </Container>
       </Section>
 
-      <Section className="py-24 bg-[#F4F4F4]">
+      <Section className="py-24 bg-[#F1F2F3]">
         <Container>
           <FadeIn>
             <SectionHeading eyebrow="Who We Serve" sub="OSI primarily supports two core client groups.">
@@ -112,7 +117,7 @@ export default function AboutPage() {
             ].map((t,i) => (
               <FadeIn key={i} delay={i*0.05}>
                 <div className="flex items-start gap-4">
-                  <div className="w-8 h-8 rounded-full bg-[#6AA63F] flex items-center justify-center shrink-0 mt-0.5"><Icon name="Check" className="w-4 h-4 text-white" strokeWidth={3}/></div>
+                  <div className="w-8 h-8 rounded-full bg-[#4aa25a] flex items-center justify-center shrink-0 mt-0.5"><Icon name="Check" className="w-4 h-4 text-white" strokeWidth={3}/></div>
                   <p className="text-lg text-[#1A1A1A] leading-relaxed">{t}</p>
                 </div>
               </FadeIn>
@@ -127,14 +132,17 @@ export default function AboutPage() {
             <FadeIn className="lg:col-span-5">
               <SectionHeading eyebrow="Our Approach">Practical, organized, and built for <Green>follow-through</Green></SectionHeading>
             </FadeIn>
-            <FadeIn className="lg:col-span-7 text-lg text-[#4A4A4A] leading-relaxed" delay={0.1}>
-              <p>OSI is built around the realities of commercial furniture work. Projects change. Shipments arrive in phases. Schedules shift. Punch items happen. Teams move. Clients need support after the install, not just on the install. Our approach is to bring structure to that process with clear coordination, dependable execution, and the operational support needed to keep the work moving. We focus on being responsive, professional, and easy to work with — while still having the depth to handle demanding projects.</p>
+            <FadeIn className="lg:col-span-7" delay={0.1}>
+              <div className="space-y-5">
+                <p className="text-lg text-[#4A4A4A] leading-relaxed">OSI is built around the realities of commercial furniture work. Projects change. Shipments arrive in phases. Schedules shift. Punch items happen. Teams move. Clients need support after the install, not just on install day.</p>
+                <p className="text-lg text-[#4A4A4A] leading-relaxed">Our approach is to bring structure to that process with clear coordination, dependable execution, and the operational support needed to keep the work moving. We focus on being responsive, professional, and easy to work with — while still having the depth to handle demanding projects.</p>
+              </div>
             </FadeIn>
           </div>
         </Container>
       </Section>
 
-      <Section className="py-24 bg-[#F9F9F5]">
+      <Section className="py-24 bg-[#F1F2F3]">
         <Container>
           <FadeIn>
             <SectionHeading eyebrow="Loyalty" sub="Many clients first come to OSI for a single need. They stay because they find a local partner that can support much more than one install day.">
@@ -143,13 +151,16 @@ export default function AboutPage() {
           </FadeIn>
           <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
-              ['Less friction','One partner for receiving, warehousing, installation, MAC work, relocation, and asset support.'],
-              ['Better follow-through','Support that continues after install day, when real-world changes start happening.'],
-              ['More trust','Execution that helps dealers protect client relationships and helps facility teams stay focused on bigger priorities.'],
-              ['Long-term value','A local partner with the infrastructure to support changing needs over time.'],
-            ].map(([t,b],i) => (
+              ['Less friction', 'One partner for receiving, warehousing, installation, MAC work, relocation, and asset support.', 'Zap'],
+              ['Better follow-through', 'Support that continues after install day, when real-world changes start happening.', 'CheckCircle2'],
+              ['More trust', 'Execution that helps dealers protect client relationships and helps facility teams stay focused on bigger priorities.', 'Shield'],
+              ['Long-term value', 'A local partner with the infrastructure to support changing needs over time.', 'TrendingUp'],
+            ].map(([t,b,icon],i) => (
               <FadeIn key={t} delay={i*0.05}>
                 <div className="bg-white rounded-2xl p-7 h-full">
+                  <div className="w-11 h-11 rounded-xl bg-[#E8F4DC] flex items-center justify-center text-[#4aa25a] mb-5">
+                    <Icon name={icon} className="w-5 h-5" strokeWidth={2} />
+                  </div>
                   <h4 className="font-display font-bold text-lg">{t}</h4>
                   <p className="mt-2 text-[#4A4A4A]">{b}</p>
                 </div>
@@ -171,7 +182,7 @@ export default function AboutPage() {
               { n:20, suf:'+', label:'Years in Arizona' },
             ].map((s,i) => (
               <FadeIn key={s.label} delay={i*0.08}>
-                <div className="font-display font-black text-6xl sm:text-7xl md:text-8xl text-[#6AA63F] tracking-tight leading-none"><CountUp to={s.n}/>{s.suf}</div>
+                <div className="font-display font-black text-6xl sm:text-7xl md:text-8xl text-[#4aa25a] tracking-tight leading-none"><CountUp to={s.n}/>{s.suf}</div>
                 <div className="mt-4 text-white/70 text-lg">{s.label}</div>
               </FadeIn>
             ))}

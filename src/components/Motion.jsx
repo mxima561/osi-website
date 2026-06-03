@@ -78,36 +78,51 @@ export function CountUp({ to, duration = 1.6, suffix = '', className = '' }) {
   return <span ref={ref} className={`whitespace-nowrap ${className}`}>{val.toLocaleString()}{suffix}</span>;
 }
 
-export function RotatingWord({ words, interval = 2800, color = '#6AA63F' }) {
-  const [i, setI] = useState(0);
+export function TypingWord({
+  words,
+  color = '#4aa25a',
+  typeSpeed = 65,
+  deleteSpeed = 34,
+  holdFull = 1500,
+  holdEmpty = 350,
+}) {
+  const [index, setIndex] = useState(0);
+  const [text, setText] = useState('');
+  const [phase, setPhase] = useState('typing'); // 'typing' | 'deleting'
   const reduced = useReducedMotion();
   const { query } = useRoute();
   const isStatic = query.static === '1' || reduced;
+
   useEffect(() => {
     if (isStatic) return;
-    const id = setInterval(() => setI(x => (x+1) % words.length), interval);
-    return () => clearInterval(id);
-  }, [words, interval, isStatic]);
+    const word = words[index % words.length];
+    let delay;
+    if (phase === 'typing') {
+      delay = text.length < word.length ? typeSpeed : holdFull;
+    } else {
+      delay = text.length > 0 ? deleteSpeed : holdEmpty;
+    }
+    const id = setTimeout(() => {
+      if (phase === 'typing') {
+        if (text.length < word.length) setText(word.slice(0, text.length + 1));
+        else setPhase('deleting');
+      } else if (text.length > 0) {
+        setText(word.slice(0, text.length - 1));
+      } else {
+        setIndex((i) => (i + 1) % words.length);
+        setPhase('typing');
+      }
+    }, delay);
+    return () => clearTimeout(id);
+  }, [text, phase, index, words, isStatic, typeSpeed, deleteSpeed, holdFull, holdEmpty]);
+
   if (isStatic) {
-    return <span style={{ color }}>{words[0]}</span>;
+    return <span className="whitespace-nowrap" style={{ color }}>{words[0]}</span>;
   }
   return (
-    <span className="inline-grid align-top leading-[0.98]" style={{ color }}>
-      {words.map(w => (
-        <span key={w} className="invisible col-start-1 row-start-1 whitespace-nowrap" aria-hidden="true">{w}</span>
-      ))}
-      <AnimatePresence mode="wait" initial={false}>
-        <motion.span
-          key={words[i]}
-          initial={{ y: '40%', opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: '-40%', opacity: 0 }}
-          transition={{ duration: 0.45, ease: [0.16,1,0.3,1] }}
-          className="col-start-1 row-start-1 whitespace-nowrap"
-        >
-          {words[i]}
-        </motion.span>
-      </AnimatePresence>
+    <span className="whitespace-nowrap" style={{ color }} aria-hidden="true">
+      {text}
+      <span className="typed-caret" />
     </span>
   );
 }

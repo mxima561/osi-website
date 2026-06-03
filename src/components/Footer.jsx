@@ -4,55 +4,60 @@ import { SERVICES, INDUSTRIES } from '../data/tokens';
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0E0E0E] text-white">
+    <footer className="bg-white border-t border-[#EAEAEA] text-[#1A1A1A]">
       <Container className="py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           <div>
-            <OSILogo variant="light" />
-            <p className="mt-5 text-white/60 text-[15px] leading-relaxed max-w-xs">Commercial furniture services, Arizona-built.</p>
-            <div className="mt-6 text-sm text-white/50 leading-relaxed">
+            <OSILogo variant="dark" />
+            <div className="mt-6 text-sm text-[#8A8A8A] leading-relaxed">
               135 E Watkins St<br/>Phoenix, AZ 85004
             </div>
           </div>
 
           <div>
-            <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#6AA63F] mb-5">Services</div>
+            <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#3d8f4e] mb-5">Services</div>
             <ul className="space-y-2.5">
               {SERVICES.map(s => (
-                <li key={s.slug}><Link to={`/services/${s.slug}`} className="text-[14px] text-white/70 hover:text-white">{s.title}</Link></li>
+                <li key={s.slug}><Link to={`/services/${s.slug}`} className="text-[14px] text-[#4A4A4A] hover:text-[#4aa25a] transition">{s.title}</Link></li>
               ))}
             </ul>
           </div>
 
           <div>
-            <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#6AA63F] mb-5">Industries</div>
+            <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#3d8f4e] mb-5">Industries</div>
             <ul className="space-y-2.5">
               {INDUSTRIES.map(i => (
-                <li key={i.slug}><Link to={`/industries/${i.slug}`} className="text-[14px] text-white/70 hover:text-white">{i.title}</Link></li>
+                <li key={i.slug}><Link to={`/industries/${i.slug}`} className="text-[14px] text-[#4A4A4A] hover:text-[#4aa25a] transition">{i.title}</Link></li>
               ))}
-              <li className="pt-3"><Link to="/about" className="text-[14px] text-white/70 hover:text-white">About</Link></li>
-              <li><Link to="/projects" className="text-[14px] text-white/70 hover:text-white">Projects</Link></li>
-              <li><Link to="/contact" className="text-[14px] text-white/70 hover:text-white">Contact</Link></li>
+              <li className="pt-3"><Link to="/about" className="text-[14px] text-[#4A4A4A] hover:text-[#4aa25a] transition">About</Link></li>
+              <li><Link to="/projects" className="text-[14px] text-[#4A4A4A] hover:text-[#4aa25a] transition">Projects</Link></li>
+              <li><Link to="/contact" className="text-[14px] text-[#4A4A4A] hover:text-[#4aa25a] transition">Contact</Link></li>
             </ul>
           </div>
 
           <div>
-            <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#6AA63F] mb-5">Contact</div>
-            <ul className="space-y-2.5 text-[14px] text-white/70">
-              <li><a href="tel:+16022539392" className="hover:text-white">(602) 253-9392</a></li>
-              <li><a href="mailto:requestaquote@osinstall.com" className="hover:text-white">requestaquote@osinstall.com</a></li>
+            <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#3d8f4e] mb-5">Contact</div>
+            <ul className="space-y-2.5 text-[14px] text-[#4A4A4A]">
+              <li><a href="tel:+16022539392" className="hover:text-[#4aa25a] transition">(602) 253-9392</a></li>
+              <li><a href="mailto:requestaquote@osinstall.com" className="hover:text-[#4aa25a] transition">requestaquote@osinstall.com</a></li>
             </ul>
-            <div className="mt-6 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#6AA63F] mb-2">Warehouse hours</div>
-            <div className="text-[14px] text-white/70 leading-relaxed">
+            <div className="mt-6 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#3d8f4e] mb-2">Warehouse hours</div>
+            <div className="text-[14px] text-[#4A4A4A] leading-relaxed">
               Mon – Fri<br/>
               8:00 AM – 3:00 PM MST
             </div>
           </div>
         </div>
 
-        <div className="mt-16 pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between gap-3 text-xs text-white/40">
-          <span>&copy; 2026 Office Systems Installation. All rights reserved.</span>
-          <span>Built by Maxim AI Labs</span>
+        <div className="mt-16 pt-6 border-t border-[#EAEAEA] flex flex-col md:flex-row justify-between gap-3 text-xs text-[#8A8A8A]">
+          <span>© 2026 Office Systems Installation. All rights reserved.</span>
+          <div className="flex items-center gap-3">
+            <Link to="/privacy-policy" className="hover:text-[#1A1A1A] transition">Privacy Policy</Link>
+            <span>·</span>
+            <Link to="/terms-of-use" className="hover:text-[#1A1A1A] transition">Terms of Use</Link>
+            <span>·</span>
+            <span>Built by Maxim AI Labs</span>
+          </div>
         </div>
       </Container>
     </footer>

@@ -22,7 +22,7 @@ export function ServicesLandingPage() {
             <p className="mt-7 max-w-2xl text-lg text-white/70 leading-relaxed">Installation is only part of the job. OSI supports the work before, during, and after install day with the labor, warehouse capacity, and ongoing service infrastructure needed to keep projects moving.</p>
             <div className="mt-10 flex flex-wrap gap-3">
               <Button variant="primary" size="lg" onClick={() => quote.open()}>Request a Quote</Button>
-              <Button variant="outlineLight" size="lg" onClick={() => quote.open()} iconRight={null}>Talk to OSI</Button>
+              <a href="tel:+16022539392" className="inline-flex items-center gap-2 px-7 py-4 text-base font-semibold rounded-full border border-white/30 text-white hover:border-white hover:bg-white hover:text-black transition-colors duration-200">Call (602) 253-9392</a>
             </div>
           </FadeIn>
         </Container>
@@ -31,7 +31,7 @@ export function ServicesLandingPage() {
       <Section className="py-24 md:py-32">
         <Container>
           <FadeIn>
-            <SectionHeading eyebrow="About Our Services" align="center" maxW="max-w-3xl">
+            <SectionHeading eyebrow="What We Offer" align="center" maxW="max-w-3xl">
               More than installers. A true <Green>service platform</Green>.
             </SectionHeading>
             <div className="mt-8 max-w-3xl mx-auto text-center text-lg text-[#4A4A4A] leading-relaxed space-y-5">
@@ -42,7 +42,7 @@ export function ServicesLandingPage() {
         </Container>
       </Section>
 
-      <Section className="py-24 md:py-32 bg-[#F9F9F5]">
+      <Section className="py-24 md:py-32 bg-[#F1F2F3]">
         <Container>
           <FadeIn>
             <SectionHeading eyebrow="Core Services" sub="Whether you are a dealer coordinating a client project or a facility team managing ongoing needs, OSI provides the local support needed to execute the work well.">
@@ -53,12 +53,12 @@ export function ServicesLandingPage() {
             {SERVICES.map((s,i) => (
               <FadeIn key={s.slug} delay={i*0.05}>
                 <Link to={`/services/${s.slug}`} className="group block h-full rounded-2xl border border-[#EAEAEA] p-8 bg-white hover:border-[#1A1A1A] transition">
-                  <div className="w-14 h-14 rounded-xl bg-[#E8F4DC] flex items-center justify-center text-[#6AA63F]">
+                  <div className="w-14 h-14 rounded-xl bg-[#E8F4DC] flex items-center justify-center text-[#4aa25a]">
                     <Icon name={s.icon} className="w-6 h-6"/>
                   </div>
                   <h3 className="font-display font-bold text-[22px] mt-6 tracking-tight">{s.title}</h3>
                   <p className="mt-3 text-[#4A4A4A] leading-relaxed">{s.blurb}</p>
-                  <div className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-[#6AA63F] group-hover:gap-3 transition-all">Learn More <Icon name="ArrowRight" className="w-4 h-4"/></div>
+                  <div className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-[#4aa25a] group-hover:gap-3 transition-all">Learn More <Icon name="ArrowRight" className="w-4 h-4"/></div>
                 </Link>
               </FadeIn>
             ))}
@@ -83,7 +83,7 @@ export function ServicesLandingPage() {
               ].map(([t,b], i) => (
                 <FadeIn key={t} delay={i*0.05}>
                   <div className="flex gap-5 pb-6">
-                    <div className="w-10 h-10 rounded-full bg-[#E8F4DC] flex items-center justify-center text-[#6AA63F] shrink-0 mt-1">
+                    <div className="w-10 h-10 rounded-full bg-[#E8F4DC] flex items-center justify-center text-[#4aa25a] shrink-0 mt-1">
                       <Icon name="Check" className="w-4 h-4" strokeWidth={3}/>
                     </div>
                     <div>
@@ -111,7 +111,7 @@ export function ServicesLandingPage() {
               </div>
             </FadeIn>
             <FadeIn delay={0.1}>
-              <div className="bg-[#1A1A1A] text-white rounded-2xl p-10">
+              <div className="bg-[#0F1E3D] text-white rounded-2xl p-10">
                 <h3 className="font-display font-bold text-2xl">For Enterprise Clients & Facility Teams</h3>
                 <p className="mt-4 text-white/70 leading-relaxed">OSI supports the furniture and facility work that internal teams often do not have the time, labor, or infrastructure to manage well on their own.</p>
               </div>
@@ -132,7 +132,7 @@ export function ServiceSubpage({ slug }) {
   if (!d) return <NotFoundPage />;
   return (
     <>
-      <Section dark={d.heroDark} className={`pt-20 pb-20 md:pt-28 md:pb-28 overflow-hidden ${!d.heroDark ? 'bg-[#F9F9F5]' : ''}`}>
+      <Section dark={d.heroDark} className={`pt-20 pb-20 md:pt-28 md:pb-28 overflow-hidden ${!d.heroDark ? 'bg-[#F1F2F3]' : ''}`}>
         {d.heroDark && <div className="absolute inset-0 grid-bg opacity-40" />}
         <Container className="relative">
           <FadeIn>
@@ -143,7 +143,7 @@ export function ServiceSubpage({ slug }) {
             <p className={`mt-7 max-w-2xl text-lg leading-relaxed ${d.heroDark ? 'text-white/70' : 'text-[#4A4A4A]'}`}>{d.sub}</p>
             <div className="mt-10 flex flex-wrap gap-3">
               <Button variant="primary" size="lg" onClick={() => quote.open()}>{d.ctas[0]}</Button>
-              <Button variant={d.heroDark ? 'outlineLight' : 'outlineDark'} size="lg" onClick={() => quote.open()} iconRight={null}>{d.ctas[1]}</Button>
+              <a href="tel:+16022539392" className={`inline-flex items-center gap-2 px-7 py-4 text-base font-semibold rounded-full border transition-colors duration-200 whitespace-nowrap ${d.heroDark ? 'border-white/30 text-white hover:border-white hover:bg-white hover:text-black' : 'border-[#1A1A1A]/20 text-[#1A1A1A] hover:border-[#1A1A1A] hover:bg-[#1A1A1A] hover:text-white'}`}>Call (602) 253-9392</a>
             </div>
           </FadeIn>
         </Container>
@@ -152,8 +152,16 @@ export function ServiceSubpage({ slug }) {
       <Section className="py-24 md:py-28">
         <Container>
           <FadeIn>
-            <div className="max-w-3xl mx-auto text-center space-y-6">
-              {d.intro.map((p,i) => <p key={i} className="text-lg leading-relaxed text-[#4A4A4A]">{p}</p>)}
+            <div className="max-w-3xl mx-auto">
+              {d.introEyebrow && (
+                <div className="text-center mb-8">
+                  <Eyebrow className="justify-center">{d.introEyebrow}</Eyebrow>
+                  <h2 className="mt-4 font-display font-black text-3xl md:text-4xl tracking-tight text-[#1A1A1A]">{d.introHeader}</h2>
+                </div>
+              )}
+              <div className="text-center space-y-6">
+                {d.intro.map((p,i) => <p key={i} className="text-lg leading-relaxed text-[#4A4A4A]">{p}</p>)}
+              </div>
             </div>
           </FadeIn>
         </Container>
@@ -171,7 +179,7 @@ export function ServiceSubpage({ slug }) {
               {d.supportList.map((s,i) => (
                 <FadeIn key={s} delay={i*0.04}>
                   <div className="bg-white rounded-xl p-5 flex items-start gap-3">
-                    <Icon name="Check" className="w-4 h-4 text-[#6AA63F] mt-1 shrink-0" strokeWidth={3}/>
+                    <Icon name="Check" className="w-4 h-4 text-[#4aa25a] mt-1 shrink-0" strokeWidth={3}/>
                     <span className="text-[15px] text-[#1A1A1A]">{s}</span>
                   </div>
                 </FadeIn>
@@ -193,7 +201,7 @@ export function ServiceSubpage({ slug }) {
                   <ul className="mt-6 space-y-3">
                     {d.extra.list.map(l => (
                       <li key={l} className="flex items-start gap-3">
-                        <span className="mt-2.5 w-1.5 h-1.5 rounded-full bg-[#6AA63F] shrink-0" />
+                        <span className="mt-2.5 w-1.5 h-1.5 rounded-full bg-[#4aa25a] shrink-0" />
                         <span className="text-[#1A1A1A]">{l}</span>
                       </li>
                     ))}
@@ -210,7 +218,7 @@ export function ServiceSubpage({ slug }) {
           <Container>
             <FadeIn>
               <div className="text-center">
-                <div className="font-display font-black text-[120px] md:text-[200px] leading-none text-[#6AA63F] tracking-tight">
+                <div className="font-display font-black text-[120px] md:text-[200px] leading-none text-[#4aa25a] tracking-tight">
                   <CountUp to={d.statCallout.n} />{d.statCallout.suffix}
                 </div>
                 <div className="font-mono text-sm tracking-[0.3em] text-white/60 mt-2">{d.statCallout.label}</div>
@@ -221,18 +229,19 @@ export function ServiceSubpage({ slug }) {
         </Section>
       )}
 
-      <Section className="py-24 md:py-28 bg-[#F9F9F5]">
+      <Section className="py-24 md:py-28 bg-[#F1F2F3]">
         <Container>
           <FadeIn>
             <div className="max-w-3xl">
               <Eyebrow>Why OSI</Eyebrow>
-              {d.whySub && <h3 className="font-display font-bold text-2xl md:text-3xl mt-4">{d.whySub}</h3>}
+              {d.whyHeader && <h3 className="font-display font-bold text-2xl md:text-3xl mt-4 tracking-tight">{d.whyHeader}</h3>}
+              {d.whySub && <p className="mt-3 text-lg text-[#4A4A4A]">{d.whySub}</p>}
               {d.whyBody && <p className="mt-5 text-lg text-[#4A4A4A] leading-relaxed">{d.whyBody}</p>}
               {d.whyList && (
                 <ul className="mt-6 space-y-3">
                   {d.whyList.map(w => (
                     <li key={w} className="flex items-start gap-3 text-[#1A1A1A]">
-                      <Icon name="Check" className="w-4 h-4 text-[#6AA63F] mt-1 shrink-0" strokeWidth={3}/>
+                      <Icon name="Check" className="w-4 h-4 text-[#4aa25a] mt-1 shrink-0" strokeWidth={3}/>
                       <span>{w}</span>
                     </li>
                   ))}
