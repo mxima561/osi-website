@@ -109,9 +109,7 @@ export function QuoteForm({ inline = false, prefill = {} }) {
     >
       {/* Hidden Salesforce fields */}
       <input type="hidden" name="oid" value="00Dao00001Y21VT" />
-      <input type="hidden" name="retURL" value="https://osiwebdraft1.vercel.app/#/thank-you" />
-      <input type="hidden" name="debug" value="1" />
-      <input type="hidden" name="debugEmail" value="requestaquote@osinstall.com" />
+      <input type="hidden" name="retURL" value="https://osi-website-seven.vercel.app/#/thank-you" />
       <input
         type="hidden"
         name="captcha_settings"
