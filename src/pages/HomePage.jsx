@@ -1,5 +1,4 @@
 import { FadeIn, Stagger, StaggerItem, CountUp, TypingWord } from '../components/Motion';
-import HeroProofCard from '../components/HeroProofCard';
 import { Section, Container, Eyebrow, Button, StatPill, SectionHeading, Green, ImgOrPlaceholder } from '../components/Primitives';
 import { Link } from '../components/Router';
 import Icon from '../components/Icon';
@@ -15,13 +14,13 @@ function HeroHome() {
     <Section className="relative overflow-hidden bg-white">
       <Container className="pt-8 pb-20 md:pt-12 md:pb-28">
         <div className="grid lg:grid-cols-12 gap-10 items-center">
-          <div className="lg:col-span-8">
+          <div className="lg:col-span-7">
             <Stagger>
               <StaggerItem>
                 <Eyebrow>Relax. You Found Us.</Eyebrow>
               </StaggerItem>
               <StaggerItem className="mt-6">
-                <h1 aria-label="One partner for complete furniture services, and everything around it." className="font-display font-black tracking-tight leading-[0.98] text-[44px] sm:text-[56px] md:text-[72px] lg:text-[76px] text-[#1A1A1A]">
+                <h1 aria-label="One partner for complete furniture services, and everything around it." className="font-display font-black tracking-tight leading-[0.98] text-[34px] sm:text-[46px] md:text-[56px] lg:text-[60px] text-[#1A1A1A]">
                   <span className="block">One partner for</span>
                   <span className="block min-h-[1.1em] leading-[1.1]">
                     <TypingWord words={HERO_WORDS} />
@@ -38,8 +37,12 @@ function HeroHome() {
             </Stagger>
           </div>
 
-          <div className="lg:col-span-4">
-            <HeroProofCard />
+          <div className="lg:col-span-5">
+            <FadeIn>
+              <div className="aspect-[4/5] rounded-2xl overflow-hidden bg-[#F1F2F3]">
+                <ImgOrPlaceholder src="/photos/home-hero.jpg" alt="OSI commercial furniture installation in Arizona" caption="OSI" />
+              </div>
+            </FadeIn>
           </div>
         </div>
       </Container>
@@ -82,15 +85,18 @@ function ServicesOverview() {
         <div className="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {SERVICES.map((s, i) => (
             <FadeIn key={s.slug} delay={i*0.05}>
-              <Link to={`/services/${s.slug}`} className="group block h-full rounded-2xl border border-[#EAEAEA] p-7 bg-white hover:border-[#1A1A1A] transition">
-                {/* TODO(jesse): replace with provided photos */}
-                <div className="w-12 h-12 rounded-xl bg-[#E8F4DC] flex items-center justify-center text-[#4aa25a]">
-                  <Icon name={s.icon} className="w-5 h-5"/>
+              <Link to={`/services/${s.slug}`} className="group block h-full rounded-2xl border border-[#EAEAEA] bg-white hover:border-[#1A1A1A] transition overflow-hidden">
+                <div className="aspect-[16/10] overflow-hidden bg-[#EEEEE8]">
+                  <div className="w-full h-full group-hover:scale-105 transition-transform duration-700">
+                    <ImgOrPlaceholder src={s.img} alt={s.title} caption={`SERVICE — ${s.title.toUpperCase()}`} />
+                  </div>
                 </div>
-                <h3 className="font-display font-bold text-xl mt-6 tracking-tight">{s.title}</h3>
-                <p className="mt-3 text-[#4A4A4A] leading-relaxed text-[15px]">{s.blurb}</p>
-                <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#4aa25a] group-hover:gap-3 transition-all">
-                  Learn More <Icon name="ArrowRight" className="w-4 h-4"/>
+                <div className="p-7">
+                  <h3 className="font-display font-bold text-xl tracking-tight">{s.title}</h3>
+                  <p className="mt-3 text-[#4A4A4A] leading-relaxed text-[15px]">{s.blurb}</p>
+                  <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#4aa25a] group-hover:gap-3 transition-all">
+                    Learn More <Icon name="ArrowRight" className="w-4 h-4"/>
+                  </div>
                 </div>
               </Link>
             </FadeIn>
@@ -172,10 +178,10 @@ function AudienceSplit() {
 
 function WhyOSI() {
   const items = [
-    { icon: 'Layers', title: 'Dock to done', body: 'Receiving, inspection, warehousing, staging, delivery, installation, punch, and follow-through.' },
-    { icon: 'Building2', title: 'Real infrastructure', body: '80+ installers, 60,000 sq. ft. of warehouse capacity, trucks, field leadership, and project coordination.' },
-    { icon: 'ShieldCheck', title: 'Total project support', body: 'Installation, MAC work, decommissions, relocations, modular walls, asset management, storage, and redeployment.' },
-    { icon: 'Repeat', title: 'Dealer and facility team fluency', body: 'We help dealers protect the client relationship and help facility teams manage the work they do not have the time, labor, or infrastructure to absorb.' },
+    { icon: 'Layers', title: 'Dock to done', body: 'Receiving, inspection, warehousing, staging, delivery, installation, punch, and follow-through.', img: '/photos/why-dock-to-done.jpg' },
+    { icon: 'Building2', title: 'Real infrastructure', body: '80+ installers, 60,000 sq. ft. of warehouse capacity, trucks, field leadership, and project coordination.', img: '/photos/why-real-infrastructure.jpg' },
+    { icon: 'ShieldCheck', title: 'Total project support', body: 'Installation, MAC work, decommissions, relocations, modular walls, asset management, storage, and redeployment.', img: '/photos/why-total-support.jpg' },
+    { icon: 'Repeat', title: 'Dealer and facility team fluency', body: 'We help dealers protect the client relationship and help facility teams manage the work they do not have the time, labor, or infrastructure to absorb.', img: '/photos/why-dealer-fluency.jpg' },
   ];
   return (
     <Section className="py-24 md:py-32 bg-[#F1F2F3]">
@@ -193,12 +199,16 @@ function WhyOSI() {
           <div className="lg:col-span-7 grid sm:grid-cols-2 gap-5">
             {items.map((it, i) => (
               <FadeIn key={it.title} delay={i*0.05}>
-                <div className="h-full bg-white rounded-2xl p-7 hover:-translate-y-1 transition-transform duration-300">
-                  <div className="w-12 h-12 rounded-xl bg-[#E8F4DC] flex items-center justify-center text-[#4aa25a]">
-                    <Icon name={it.icon} className="w-5 h-5" strokeWidth={2}/>
+                <div className="group h-full bg-white rounded-2xl overflow-hidden hover:-translate-y-1 transition-transform duration-300">
+                  <div className="aspect-[16/10] overflow-hidden bg-[#EEEEE8]">
+                    <div className="w-full h-full group-hover:scale-105 transition-transform duration-700">
+                      <ImgOrPlaceholder src={it.img} alt={it.title} caption={it.title.toUpperCase()} />
+                    </div>
                   </div>
-                  <h3 className="font-display font-bold text-xl mt-5 tracking-tight">{it.title}</h3>
-                  <p className="mt-3 text-[#4A4A4A] leading-relaxed text-[15px]">{it.body}</p>
+                  <div className="p-7">
+                    <h3 className="font-display font-bold text-xl tracking-tight">{it.title}</h3>
+                    <p className="mt-3 text-[#4A4A4A] leading-relaxed text-[15px]">{it.body}</p>
+                  </div>
                 </div>
               </FadeIn>
             ))}

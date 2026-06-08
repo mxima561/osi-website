@@ -36,6 +36,9 @@ export function IndustriesLandingPage() {
             <p className="mt-8 max-w-3xl mx-auto text-center text-lg text-[#4A4A4A] leading-relaxed">
               Every industry has its own pace, constraints, and expectations. A corporate office rollout is different from a hospital refresh. A university renovation is different from a government move. OSI brings the labor, warehouse support, and project coordination needed to execute furniture work in environments where professionalism, timing, and follow-through matter.
             </p>
+            <div className="mt-14 max-w-5xl mx-auto aspect-[16/8] rounded-2xl overflow-hidden bg-[#F1F2F3]">
+              <ImgOrPlaceholder src="/photos/industries-our-approach.jpg" alt="OSI furniture services across industries" caption="OUR APPROACH" />
+            </div>
           </FadeIn>
         </Container>
       </Section>
@@ -76,16 +79,22 @@ export function IndustriesLandingPage() {
             </FadeIn>
             <div className="lg:col-span-7 grid sm:grid-cols-2 gap-6">
               {[
-                ['Built for every environment','Offices, hospitals, schools, resorts, and public-sector environments all operate differently. OSI understands how to adapt the work around schedules, access, occupants, and site conditions.'],
-                ['Beyond standard office installs','We support more than standard office installs — including classrooms, clinical spaces, guest-facing hospitality areas, staff spaces, common areas, specialty facilities, and multi-site programs.'],
-                ['Infrastructure to control the process','Receiving, warehousing, staging, delivery, installation, relocation, MAC work, decommissioning, and asset support help keep projects organized from start to finish.'],
-                ['Dependable execution in active spaces','Whether the project is happening around employees, students, patients, guests, or public-sector operations, OSI helps minimize disruption and keep the work moving.'],
-              ].map(([t,b],i) => (
+                ['Built for every environment','Offices, hospitals, schools, resorts, and public-sector environments all operate differently. OSI understands how to adapt the work around schedules, access, occupants, and site conditions.','/photos/industries-why-every-env.jpg'],
+                ['Beyond standard office installs','We support more than standard office installs — including classrooms, clinical spaces, guest-facing hospitality areas, staff spaces, common areas, specialty facilities, and multi-site programs.','/photos/industries-why-beyond.jpg'],
+                ['Infrastructure to control the process','Receiving, warehousing, staging, delivery, installation, relocation, MAC work, decommissioning, and asset support help keep projects organized from start to finish.','/photos/industries-why-infrastructure.jpg'],
+                ['Dependable execution in active spaces','Whether the project is happening around employees, students, patients, guests, or public-sector operations, OSI helps minimize disruption and keep the work moving.','/photos/industries-why-dependable.jpg'],
+              ].map(([t,b,img],i) => (
                 <FadeIn key={t} delay={i*0.05}>
-                  <div>
-                    <div className="w-10 h-10 rounded-xl bg-[#E8F4DC] flex items-center justify-center text-[#4aa25a]"><Icon name="Check" className="w-4 h-4" strokeWidth={3}/></div>
-                    <h4 className="mt-4 font-display font-bold text-lg">{t}</h4>
-                    <p className="mt-2 text-[#4A4A4A] leading-relaxed">{b}</p>
+                  <div className="group h-full bg-white rounded-2xl border border-[#EAEAEA] overflow-hidden">
+                    <div className="aspect-[16/10] overflow-hidden bg-[#EEEEE8]">
+                      <div className="w-full h-full group-hover:scale-105 transition-transform duration-700">
+                        <ImgOrPlaceholder src={img} alt={t} caption={t.toUpperCase()} />
+                      </div>
+                    </div>
+                    <div className="p-6">
+                      <h4 className="font-display font-bold text-lg">{t}</h4>
+                      <p className="mt-2 text-[#4A4A4A] leading-relaxed">{b}</p>
+                    </div>
                   </div>
                 </FadeIn>
               ))}
@@ -143,6 +152,11 @@ export function IndustrySubpage({ slug }) {
               )}
               <p className="text-center text-lg text-[#4A4A4A] leading-relaxed">{d.intro}</p>
             </div>
+            {d.introImg && (
+              <div className="mt-14 max-w-4xl mx-auto aspect-[16/8] rounded-2xl overflow-hidden bg-[#F1F2F3]">
+                <ImgOrPlaceholder src={d.introImg} alt={d.introHeader} caption="ENVIRONMENT OVERVIEW" />
+              </div>
+            )}
           </FadeIn>
         </Container>
       </Section>
@@ -171,13 +185,22 @@ export function IndustrySubpage({ slug }) {
 
       <Section className="py-24">
         <Container>
-          <FadeIn>
-            <div className="max-w-3xl">
-              <Eyebrow>Why OSI</Eyebrow>
-              {d.whyHeader && <h3 className="mt-4 font-display font-bold text-2xl md:text-3xl tracking-tight text-[#1A1A1A]">{d.whyHeader}</h3>}
-              <p className="mt-5 text-lg leading-relaxed text-[#4A4A4A]">{d.why}</p>
-            </div>
-          </FadeIn>
+          <div className="grid lg:grid-cols-12 gap-12 items-center">
+            <FadeIn className="lg:col-span-6">
+              <div className="max-w-xl">
+                <Eyebrow>Why OSI</Eyebrow>
+                {d.whyHeader && <h3 className="mt-4 font-display font-bold text-2xl md:text-3xl tracking-tight text-[#1A1A1A]">{d.whyHeader}</h3>}
+                <p className="mt-5 text-lg leading-relaxed text-[#4A4A4A]">{d.why}</p>
+              </div>
+            </FadeIn>
+            {d.whyImg && (
+              <FadeIn className="lg:col-span-6" delay={0.1}>
+                <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-[#EEEEE8]">
+                  <ImgOrPlaceholder src={d.whyImg} alt={d.whyHeader || 'Why OSI'} caption="WHY OSI" />
+                </div>
+              </FadeIn>
+            )}
+          </div>
         </Container>
       </Section>
 

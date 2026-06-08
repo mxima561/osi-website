@@ -38,6 +38,9 @@ export function ServicesLandingPage() {
               <p>OSI provides commercial furniture support across the full project lifecycle — from receiving and warehousing to installation, MAC work, decommissioning, modular walls, and asset management.</p>
               <p>Some clients come to us for a single installation. Others rely on us as an ongoing Arizona partner. Either way, the value is the same: one accountable team that understands how to execute commercial furniture work with less friction and better follow-through.</p>
             </div>
+            <div className="mt-14 max-w-5xl mx-auto aspect-[16/8] rounded-2xl overflow-hidden bg-[#F1F2F3]">
+              <ImgOrPlaceholder src="/photos/services-what-we-offer.jpg" alt="OSI commercial furniture service platform" caption="WHAT WE OFFER" />
+            </div>
           </FadeIn>
         </Container>
       </Section>
@@ -76,17 +79,19 @@ export function ServicesLandingPage() {
             </FadeIn>
             <div className="lg:col-span-7 grid sm:grid-cols-2 gap-6">
               {[
-                ['Organized before install day', 'Receiving, inspection, warehousing, staging, and dispatch support keep projects controlled before product reaches the site.'],
-                ['Built for complex work', 'Experienced crews, warehouse capacity, trucks, and field coordination help OSI support larger, phased, and schedule-sensitive projects.'],
-                ['Support after the install', 'MAC work, reconfigurations, repairs, relocations, decommissions, modular walls, and asset management keep clients supported long term.'],
-                ['One accountable partner', 'Fewer vendors, fewer handoffs, and better follow-through across the full furniture lifecycle.'],
-              ].map(([t,b], i) => (
+                ['Organized before install day', 'Receiving, inspection, warehousing, staging, and dispatch support keep projects controlled before product reaches the site.', '/photos/services-why-organized.jpg'],
+                ['Built for complex work', 'Experienced crews, warehouse capacity, trucks, and field coordination help OSI support larger, phased, and schedule-sensitive projects.', '/photos/services-why-complex.jpg'],
+                ['Support after the install', 'MAC work, reconfigurations, repairs, relocations, decommissions, modular walls, and asset management keep clients supported long term.', '/photos/services-why-support.jpg'],
+                ['One accountable partner', 'Fewer vendors, fewer handoffs, and better follow-through across the full furniture lifecycle.', '/photos/services-why-accountable.jpg'],
+              ].map(([t,b,img], i) => (
                 <FadeIn key={t} delay={i*0.05}>
-                  <div className="flex gap-5 pb-6">
-                    <div className="w-10 h-10 rounded-full bg-[#E8F4DC] flex items-center justify-center text-[#4aa25a] shrink-0 mt-1">
-                      <Icon name="Check" className="w-4 h-4" strokeWidth={3}/>
+                  <div className="group h-full bg-white rounded-2xl border border-[#EAEAEA] overflow-hidden">
+                    <div className="aspect-[16/10] overflow-hidden bg-[#EEEEE8]">
+                      <div className="w-full h-full group-hover:scale-105 transition-transform duration-700">
+                        <ImgOrPlaceholder src={img} alt={t} caption={t.toUpperCase()} />
+                      </div>
                     </div>
-                    <div>
+                    <div className="p-6">
                       <h4 className="font-display font-bold text-lg">{t}</h4>
                       <p className="mt-1.5 text-[#4A4A4A] leading-relaxed">{b}</p>
                     </div>
@@ -105,15 +110,25 @@ export function ServicesLandingPage() {
           </FadeIn>
           <div className="mt-14 grid md:grid-cols-2 gap-5 max-w-5xl mx-auto">
             <FadeIn delay={0.05}>
-              <div className="bg-white rounded-2xl p-10">
-                <h3 className="font-display font-bold text-2xl">For Dealers, Project Managers & A&D Teams</h3>
-                <p className="mt-4 text-[#4A4A4A] leading-relaxed">OSI acts as your Arizona execution partner, helping protect the client relationship while keeping the project organized and on schedule.</p>
+              <div className="h-full bg-white rounded-2xl overflow-hidden">
+                <div className="aspect-[16/9] overflow-hidden bg-[#EEEEE8]">
+                  <ImgOrPlaceholder src="/photos/services-group-dealers.jpg" alt="Dealers, project managers, and A&D teams" caption="DEALERS / PMS / A&D" />
+                </div>
+                <div className="p-10">
+                  <h3 className="font-display font-bold text-2xl">For Dealers, Project Managers & A&D Teams</h3>
+                  <p className="mt-4 text-[#4A4A4A] leading-relaxed">OSI acts as your Arizona execution partner, helping protect the client relationship while keeping the project organized and on schedule.</p>
+                </div>
               </div>
             </FadeIn>
             <FadeIn delay={0.1}>
-              <div className="bg-[#0F1E3D] text-white rounded-2xl p-10">
-                <h3 className="font-display font-bold text-2xl">For Enterprise Clients & Facility Teams</h3>
-                <p className="mt-4 text-white/70 leading-relaxed">OSI supports the furniture and facility work that internal teams often do not have the time, labor, or infrastructure to manage well on their own.</p>
+              <div className="h-full bg-[#0F1E3D] text-white rounded-2xl overflow-hidden">
+                <div className="aspect-[16/9] overflow-hidden bg-[#0b1730]">
+                  <ImgOrPlaceholder src="/photos/services-group-enterprise.jpg" alt="Enterprise clients and facility teams" caption="ENTERPRISE / FACILITY TEAMS" />
+                </div>
+                <div className="p-10">
+                  <h3 className="font-display font-bold text-2xl">For Enterprise Clients & Facility Teams</h3>
+                  <p className="mt-4 text-white/70 leading-relaxed">OSI supports the furniture and facility work that internal teams often do not have the time, labor, or infrastructure to manage well on their own.</p>
+                </div>
               </div>
             </FadeIn>
           </div>
@@ -163,6 +178,11 @@ export function ServiceSubpage({ slug }) {
                 {d.intro.map((p,i) => <p key={i} className="text-lg leading-relaxed text-[#4A4A4A]">{p}</p>)}
               </div>
             </div>
+            {d.introImg && (
+              <div className="mt-14 max-w-4xl mx-auto aspect-[16/8] rounded-2xl overflow-hidden bg-[#F1F2F3]">
+                <ImgOrPlaceholder src={d.introImg} alt={d.introHeader} caption="SERVICE OVERVIEW" />
+              </div>
+            )}
           </FadeIn>
         </Container>
       </Section>
@@ -207,6 +227,11 @@ export function ServiceSubpage({ slug }) {
                     ))}
                   </ul>
                 )}
+                {d.extra.img && (
+                  <div className="mt-10 aspect-[16/8] rounded-2xl overflow-hidden bg-[#F1F2F3]">
+                    <ImgOrPlaceholder src={d.extra.img} alt={d.extra.title} caption={d.extra.title.toUpperCase()} />
+                  </div>
+                )}
               </div>
             </FadeIn>
           </Container>
@@ -231,24 +256,33 @@ export function ServiceSubpage({ slug }) {
 
       <Section className="py-24 md:py-28 bg-[#F1F2F3]">
         <Container>
-          <FadeIn>
-            <div className="max-w-3xl">
-              <Eyebrow>Why OSI</Eyebrow>
-              {d.whyHeader && <h3 className="font-display font-bold text-2xl md:text-3xl mt-4 tracking-tight">{d.whyHeader}</h3>}
-              {d.whySub && <p className="mt-3 text-lg text-[#4A4A4A]">{d.whySub}</p>}
-              {d.whyBody && <p className="mt-5 text-lg text-[#4A4A4A] leading-relaxed">{d.whyBody}</p>}
-              {d.whyList && (
-                <ul className="mt-6 space-y-3">
-                  {d.whyList.map(w => (
-                    <li key={w} className="flex items-start gap-3 text-[#1A1A1A]">
-                      <Icon name="Check" className="w-4 h-4 text-[#4aa25a] mt-1 shrink-0" strokeWidth={3}/>
-                      <span>{w}</span>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
-          </FadeIn>
+          <div className="grid lg:grid-cols-12 gap-12 items-center">
+            <FadeIn className="lg:col-span-6">
+              <div className="max-w-xl">
+                <Eyebrow>Why OSI</Eyebrow>
+                {d.whyHeader && <h3 className="font-display font-bold text-2xl md:text-3xl mt-4 tracking-tight">{d.whyHeader}</h3>}
+                {d.whySub && <p className="mt-3 text-lg text-[#4A4A4A]">{d.whySub}</p>}
+                {d.whyBody && <p className="mt-5 text-lg text-[#4A4A4A] leading-relaxed">{d.whyBody}</p>}
+                {d.whyList && (
+                  <ul className="mt-6 space-y-3">
+                    {d.whyList.map(w => (
+                      <li key={w} className="flex items-start gap-3 text-[#1A1A1A]">
+                        <Icon name="Check" className="w-4 h-4 text-[#4aa25a] mt-1 shrink-0" strokeWidth={3}/>
+                        <span>{w}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </FadeIn>
+            {d.whyImg && (
+              <FadeIn className="lg:col-span-6" delay={0.1}>
+                <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-[#EEEEE8]">
+                  <ImgOrPlaceholder src={d.whyImg} alt={d.whyHeader || 'Why OSI'} caption="WHY OSI" />
+                </div>
+              </FadeIn>
+            )}
+          </div>
         </Container>
       </Section>
 

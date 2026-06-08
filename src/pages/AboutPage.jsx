@@ -67,6 +67,11 @@ export default function AboutPage() {
               <p>That is what allows us to support work that is larger, more complex, more ongoing, or simply too important to leave to a less organized team.</p>
             </FadeIn>
           </div>
+          <FadeIn className="mt-14">
+            <div className="aspect-[16/7] rounded-2xl overflow-hidden bg-white/5">
+              <ImgOrPlaceholder src="/photos/about-different.jpg" alt="The infrastructure that makes OSI different" caption="WHAT MAKES OSI DIFFERENT" />
+            </div>
+          </FadeIn>
         </Container>
       </Section>
 
@@ -80,15 +85,14 @@ export default function AboutPage() {
           </FadeIn>
           <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {[
-              { t: 'Commercial Furniture Installation', c: 'Experienced crews install workstations, private offices, conference rooms, seating, and furniture systems across active commercial environments.', img: '/photos/install-in-progress.jpg' },
-              { t: 'Warehousing & Receiving', c: 'OSI receives, inspects, stores, stages, and dispatches furniture so projects are organized before product reaches the site.', img: '/photos/warehouse-steelcase-stock.png' },
-              { t: 'Decommissioning & Relocation', c: 'We help clients remove, relocate, store, redeploy, or dispose of furniture during office moves, closures, renovations, and transitions.', img: '/photos/warehouse-racking.png' },
-              { t: 'Asset Management & Storage', c: 'Our asset programs give clients secure storage, inventory visibility, reporting, and redeployment support for furniture they already own.', img: '/photos/warehouse-chairs-staged.png' },
-              { t: 'Modular Walls', c: 'OSI supports demountable wall and modular environment installations that require careful sequencing, coordination, and finish quality.', img: '/photos/install-finished-workstations.jpg' },
-              { t: 'MAC & Day 2 Services', c: 'We provide ongoing support for moves, adds, changes, repairs, reconfigurations, and the furniture work that continues after install day.', img: '/photos/hero-open-plan.jpg' },
+              { t: 'Commercial Furniture Installation', c: 'Experienced crews install workstations, private offices, conference rooms, seating, and furniture systems across active commercial environments.', img: '/photos/about-ops-installation.jpg' },
+              { t: 'Warehousing & Receiving', c: 'OSI receives, inspects, stores, stages, and dispatches furniture so projects are organized before product reaches the site.', img: '/photos/about-ops-warehousing.jpg' },
+              { t: 'Decommissioning & Relocation', c: 'We help clients remove, relocate, store, redeploy, or dispose of furniture during office moves, closures, renovations, and transitions.', img: '/photos/about-ops-decommissioning.jpg' },
+              { t: 'Asset Management & Storage', c: 'Our asset programs give clients secure storage, inventory visibility, reporting, and redeployment support for furniture they already own.', img: '/photos/about-ops-asset-management-storage.jpg' },
+              { t: 'Modular Walls', c: 'OSI supports demountable wall and modular environment installations that require careful sequencing, coordination, and finish quality.', img: '/photos/about-ops-modular-walls.jpg' },
+              { t: 'MAC & Day 2 Services', c: 'We provide ongoing support for moves, adds, changes, repairs, reconfigurations, and the furniture work that continues after install day.', img: '/photos/about-ops-mac-day2.jpg' },
             ].map((it,i) => (
               <FadeIn key={it.t} delay={i*0.08}>
-                {/* TODO(jesse): replace with specific photo for each service */}
                 <div className="aspect-[5/3] rounded-2xl overflow-hidden bg-[#EEEEE8]">
                   <ImgOrPlaceholder src={it.img} alt={it.t} />
                 </div>
@@ -136,6 +140,9 @@ export default function AboutPage() {
               <div className="space-y-5">
                 <p className="text-lg text-[#4A4A4A] leading-relaxed">OSI is built around the realities of commercial furniture work. Projects change. Shipments arrive in phases. Schedules shift. Punch items happen. Teams move. Clients need support after the install, not just on install day.</p>
                 <p className="text-lg text-[#4A4A4A] leading-relaxed">Our approach is to bring structure to that process with clear coordination, dependable execution, and the operational support needed to keep the work moving. We focus on being responsive, professional, and easy to work with — while still having the depth to handle demanding projects.</p>
+              </div>
+              <div className="mt-8 aspect-[16/9] rounded-2xl overflow-hidden bg-[#EEEEE8]">
+                <ImgOrPlaceholder src="/photos/about-our-approach.jpg" alt="OSI approach to commercial furniture work" caption="OUR APPROACH" />
               </div>
             </FadeIn>
           </div>
