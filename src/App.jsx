@@ -1,18 +1,23 @@
-import { useEffect } from 'react';
+import { useEffect, lazy, Suspense } from 'react';
 import { RouterProvider, useRoute } from './components/Router';
 import { QuoteProvider } from './components/QuoteModal';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
-import HomePage from './pages/HomePage';
-import { ServicesLandingPage, ServiceSubpage } from './pages/ServicesPage';
-import { IndustriesLandingPage, IndustrySubpage } from './pages/IndustriesPage';
-import ProjectsPage from './pages/ProjectsPage';
-import AboutPage from './pages/AboutPage';
-import ContactPage from './pages/ContactPage';
-import ThankYouPage from './pages/ThankYouPage';
-import NotFoundPage from './pages/NotFoundPage';
-import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
-import TermsOfUsePage from './pages/TermsOfUsePage';
+
+// Route-level code splitting: each page is fetched on demand to keep the
+// initial bundle small.
+const HomePage = lazy(() => import('./pages/HomePage'));
+const ServicesLandingPage = lazy(() => import('./pages/ServicesPage').then(m => ({ default: m.ServicesLandingPage })));
+const ServiceSubpage = lazy(() => import('./pages/ServicesPage').then(m => ({ default: m.ServiceSubpage })));
+const IndustriesLandingPage = lazy(() => import('./pages/IndustriesPage').then(m => ({ default: m.IndustriesLandingPage })));
+const IndustrySubpage = lazy(() => import('./pages/IndustriesPage').then(m => ({ default: m.IndustrySubpage })));
+const ProjectsPage = lazy(() => import('./pages/ProjectsPage'));
+const AboutPage = lazy(() => import('./pages/AboutPage'));
+const ContactPage = lazy(() => import('./pages/ContactPage'));
+const ThankYouPage = lazy(() => import('./pages/ThankYouPage'));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
+const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage'));
+const TermsOfUsePage = lazy(() => import('./pages/TermsOfUsePage'));
 
 function useDocumentTitle(title) {
   useEffect(() => { document.title = title; }, [title]);
@@ -47,7 +52,9 @@ function MainArea() {
   const label = path === '/' ? '00 Home' : path.split('/').filter(Boolean).join(' / ');
   return (
     <main id="main" data-screen-label={label}>
-      <PageShell path={path} />
+      <Suspense fallback={<div className="min-h-[60vh]" aria-hidden="true" />}>
+        <PageShell path={path} />
+      </Suspense>
     </main>
   );
 }

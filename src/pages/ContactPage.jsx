@@ -36,30 +36,30 @@ export default function ContactPage() {
 
             <FadeIn className="lg:col-span-5 space-y-8" delay={0.1}>
               <div>
-                <div className="text-xs font-semibold uppercase tracking-[0.2em] text-[#8A8A8A]">Call us</div>
+                <div className="text-xs font-semibold uppercase tracking-[0.2em] text-[#6E6E6E]">Call us</div>
                 <a href="tel:+16022539392" className="mt-2 block font-display font-black text-4xl text-[#4aa25a] hover:text-[#3d8f4e]">(602) 253-9392</a>
               </div>
               <div>
-                <div className="text-xs font-semibold uppercase tracking-[0.2em] text-[#8A8A8A]">Email</div>
+                <div className="text-xs font-semibold uppercase tracking-[0.2em] text-[#6E6E6E]">Email</div>
                 <a href="mailto:requestaquote@osinstall.com" className="mt-2 block font-display font-bold text-xl text-[#1A1A1A] hover:text-[#4aa25a]">requestaquote@osinstall.com</a>
               </div>
               <div className="grid grid-cols-2 gap-6">
                 <div>
-                  <div className="text-xs font-semibold uppercase tracking-[0.2em] text-[#8A8A8A]">Office / Warehouse</div>
+                  <div className="text-xs font-semibold uppercase tracking-[0.2em] text-[#6E6E6E]">Office / Warehouse</div>
                   <p className="mt-2 text-[#1A1A1A] leading-relaxed">135 E Watkins St<br/>Phoenix, AZ 85004</p>
                 </div>
                 <div>
-                  <div className="text-xs font-semibold uppercase tracking-[0.2em] text-[#8A8A8A]">Warehouse Hours</div>
+                  <div className="text-xs font-semibold uppercase tracking-[0.2em] text-[#6E6E6E]">Warehouse Hours</div>
                   <p className="mt-2 text-[#1A1A1A] leading-relaxed">Mon – Fri<br/>8:00 AM – 3:00 PM MST</p>
-                  <p className="mt-2 text-xs text-[#8A8A8A]">Arizona: MST year-round. No DST shifts.</p>
+                  <p className="mt-2 text-xs text-[#6E6E6E]">Arizona: MST year-round. No DST shifts.</p>
                 </div>
               </div>
               <div>
-                <div className="text-xs font-semibold uppercase tracking-[0.2em] text-[#8A8A8A]">Delivery & Receiving</div>
+                <div className="text-xs font-semibold uppercase tracking-[0.2em] text-[#6E6E6E]">Delivery & Receiving</div>
                 <p className="mt-2 text-[#1A1A1A] leading-relaxed">Delivery appointments are required. Schedule with Receiving at <a className="underline" href="tel:+16022539392">(602) 253-9392</a> or <a className="underline" href="mailto:warehouse@ofms-az.com">warehouse@ofms-az.com</a>.</p>
               </div>
               <div>
-                <div className="text-xs font-semibold uppercase tracking-[0.2em] text-[#8A8A8A] mb-2">Shipping Instructions</div>
+                <div className="text-xs font-semibold uppercase tracking-[0.2em] text-[#6E6E6E] mb-2">Shipping Instructions</div>
                 <div className="bg-[#F4F4F4] rounded-xl p-5 relative">
                   <pre className="font-mono text-[13px] whitespace-pre-wrap text-[#1A1A1A]">{shipBlock}</pre>
                   <button

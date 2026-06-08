@@ -6,7 +6,7 @@ export default function PrivacyPolicyPage() {
       <Container>
         <div className="max-w-3xl mx-auto prose prose-gray">
           <h1 className="font-display font-black text-4xl md:text-5xl tracking-tight text-[#1A1A1A] mb-3">Privacy Policy</h1>
-          <p className="text-sm text-[#8A8A8A] mb-12">Effective Date: June 1, 2026</p>
+          <p className="text-sm text-[#6E6E6E] mb-12">Effective Date: June 1, 2026</p>
 
           <p className="text-[#4A4A4A] leading-relaxed mb-6">OSI Management LLC, doing business as Office Systems Installation ("OSI," "we," "our," or "us"), respects your privacy and is committed to protecting the personal information you share with us. This Privacy Policy explains how we collect, use, and protect information when you visit our website or contact us.</p>
 

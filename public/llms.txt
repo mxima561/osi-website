@@ -1,0 +1,11 @@
+# OSI — Office Systems Installation
+
+> Commercial furniture services company based in Phoenix, Arizona. OSI provides installation, warehousing & receiving, decommissioning & relocation, asset management & storage, modular walls, and MAC & Day 2 services for furniture dealers, project managers, enterprise clients, and facility teams. 20+ years in Arizona, 80+ installers, 60,000 sq ft warehouse.
+
+## Pages
+
+- [Services](/#/services): Commercial furniture services across the full project lifecycle
+- [Industries](/#/industries): Environments served — corporate office, healthcare, education, hospitality, government
+- [Projects](/#/projects): Portfolio of completed commercial furniture projects
+- [About](/#/about): Company background, infrastructure, and approach
+- [Contact](/#/contact): Request a quote or reach the OSI team

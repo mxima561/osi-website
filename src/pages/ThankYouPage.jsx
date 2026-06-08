@@ -21,7 +21,7 @@ export default function ThankYouPage() {
               <Button variant="primary" size="lg" to="/">Back to Home</Button>
               <Button variant="outlineDark" size="lg" to="/projects" iconRight={null}>View Our Work</Button>
             </div>
-            <p className="mt-8 text-sm text-[#8A8A8A]">
+            <p className="mt-8 text-sm text-[#6E6E6E]">
               In a hurry? Call us directly at <a href="tel:+16022539392" className="font-semibold text-[#1A1A1A] hover:text-[#4aa25a]">(602) 253-9392</a>.
             </p>
           </div>

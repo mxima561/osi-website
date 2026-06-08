@@ -27,9 +27,9 @@ function NavDropdown({ label, items, overviewItem }) {
                   <Link to={overviewItem.to} className="block px-4 py-3 rounded-xl bg-[#F4F4F4] hover:bg-[#EAEAEA] transition">
                     <div className="flex items-center justify-between">
                       <div className="text-[14px] font-bold text-[#1A1A1A]">{overviewItem.label}</div>
-                      <span className="text-[11px] font-semibold text-[#4aa25a] bg-white border border-[#EAEAEA] rounded-full px-2 py-0.5">Overview →</span>
+                      <span className="text-[11px] font-semibold text-[#3d8f4e] bg-white border border-[#EAEAEA] rounded-full px-2 py-0.5">Overview →</span>
                     </div>
-                    {overviewItem.sub && <div className="text-[12px] text-[#8A8A8A] mt-0.5">{overviewItem.sub}</div>}
+                    {overviewItem.sub && <div className="text-[12px] text-[#6E6E6E] mt-0.5">{overviewItem.sub}</div>}
                   </Link>
                   <div className="border-t border-[#EAEAEA] my-1"/>
                 </>

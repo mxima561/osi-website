@@ -11,7 +11,7 @@ export default function NotFoundPage() {
           <p className="mt-5 text-lg text-[#4A4A4A]">The page you're looking for doesn't exist — but the OSI warehouse is still open.</p>
           <div className="mt-10 flex flex-wrap gap-3 items-center">
             <Button variant="primary" to="/">Back to Home</Button>
-            <Link to="/contact" className="text-sm font-semibold text-[#4aa25a] hover:text-[#1A1A1A]">or talk to us &rarr;</Link>
+            <Link to="/contact" className="text-sm font-semibold text-[#3d8f4e] hover:text-[#1A1A1A]">or talk to us &rarr;</Link>
           </div>
         </div>
       </Container>

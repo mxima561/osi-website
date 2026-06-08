@@ -60,7 +60,7 @@ export function IndustriesLandingPage() {
                   <div className="p-7">
                     <h3 className="font-display font-bold text-xl tracking-tight">{it.title}</h3>
                     <p className="mt-3 text-[15px] text-[#4A4A4A] leading-relaxed">{it.blurb}</p>
-                    <div className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[#4aa25a] group-hover:gap-3 transition-all">Learn More <Icon name="ArrowRight" className="w-4 h-4"/></div>
+                    <div className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[#3d8f4e] group-hover:gap-3 transition-all">Learn More <Icon name="ArrowRight" className="w-4 h-4"/></div>
                   </div>
                 </Link>
               </FadeIn>

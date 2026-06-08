@@ -61,7 +61,7 @@ export function ServicesLandingPage() {
                   </div>
                   <h3 className="font-display font-bold text-[22px] mt-6 tracking-tight">{s.title}</h3>
                   <p className="mt-3 text-[#4A4A4A] leading-relaxed">{s.blurb}</p>
-                  <div className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-[#4aa25a] group-hover:gap-3 transition-all">Learn More <Icon name="ArrowRight" className="w-4 h-4"/></div>
+                  <div className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-[#3d8f4e] group-hover:gap-3 transition-all">Learn More <Icon name="ArrowRight" className="w-4 h-4"/></div>
                 </Link>
               </FadeIn>
             ))}

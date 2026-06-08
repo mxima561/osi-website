@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           <div>
             <OSILogo variant="dark" />
-            <div className="mt-6 text-sm text-[#8A8A8A] leading-relaxed">
+            <div className="mt-6 text-sm text-[#6E6E6E] leading-relaxed">
               135 E Watkins St<br/>Phoenix, AZ 85004
             </div>
           </div>
@@ -49,7 +49,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 pt-6 border-t border-[#EAEAEA] flex flex-col md:flex-row justify-between gap-3 text-xs text-[#8A8A8A]">
+        <div className="mt-16 pt-6 border-t border-[#EAEAEA] flex flex-col md:flex-row justify-between gap-3 text-xs text-[#6E6E6E]">
           <span>© 2026 Office Systems Installation. All rights reserved.</span>
           <div className="flex items-center gap-3">
             <Link to="/privacy-policy" className="hover:text-[#1A1A1A] transition">Privacy Policy</Link>
