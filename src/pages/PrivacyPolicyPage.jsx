@@ -45,8 +45,8 @@ export default function PrivacyPolicyPage() {
           <p className="text-[#4A4A4A] leading-relaxed">
             OSI Management LLC<br/>
             135 E Watkins St, Phoenix, AZ 85004<br/>
-            <a href="tel:+16022539392" className="text-[#4aa25a] hover:underline">(602) 253-9392</a><br/>
-            <a href="mailto:requestaquote@osinstall.com" className="text-[#4aa25a] hover:underline">requestaquote@osinstall.com</a>
+            <a href="tel:+16022539392" className="text-[#2f7d44] hover:underline">(602) 253-9392</a><br/>
+            <a href="mailto:requestaquote@osinstall.com" className="text-[#2f7d44] hover:underline">requestaquote@osinstall.com</a>
           </p>
 
           <h2 className="font-display font-bold text-2xl tracking-tight text-[#1A1A1A] mt-10 mb-4">Changes to This Policy</h2>

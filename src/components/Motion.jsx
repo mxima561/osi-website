@@ -80,7 +80,7 @@ export function CountUp({ to, duration = 1.6, suffix = '', className = '' }) {
 
 export function TypingWord({
   words,
-  color = '#4aa25a',
+  color = '#2f7d44',
   typeSpeed = 65,
   deleteSpeed = 34,
   holdFull = 1500,

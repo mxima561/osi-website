@@ -4,8 +4,8 @@
   --font-display: 'Archivo', system-ui, sans-serif;
   --font-sans: 'Inter', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
-  --color-brand-green: #4aa25a;
-  --color-brand-green-hover: #3d8f4e;
+  --color-brand-green: #2f7d44;
+  --color-brand-green-hover: #276a39;
   --color-brand-navy: #0F1E3D;
   --color-brand-navy-hover: #1A2D5C;
   --color-surface: #F1F2F3;
@@ -24,7 +24,7 @@ html, body {
 }
 
 ::selection {
-  background: #4aa25a;
+  background: #2f7d44;
   color: #FFFFFF;
 }
 

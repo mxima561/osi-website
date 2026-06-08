@@ -60,7 +60,7 @@ export function IndustriesLandingPage() {
                   <div className="p-7">
                     <h3 className="font-display font-bold text-xl tracking-tight">{it.title}</h3>
                     <p className="mt-3 text-[15px] text-[#4A4A4A] leading-relaxed">{it.blurb}</p>
-                    <div className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[#3d8f4e] group-hover:gap-3 transition-all">Learn More <Icon name="ArrowRight" className="w-4 h-4"/></div>
+                    <div className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[#276a39] group-hover:gap-3 transition-all">Learn More <Icon name="ArrowRight" className="w-4 h-4"/></div>
                   </div>
                 </Link>
               </FadeIn>
@@ -173,7 +173,7 @@ export function IndustrySubpage({ slug }) {
               {d.supportList.map((s,i) => (
                 <FadeIn key={s} delay={i*0.04}>
                   <div className="bg-white rounded-xl p-5 flex items-start gap-3">
-                    <Icon name="Check" className="w-4 h-4 text-[#4aa25a] mt-1 shrink-0" strokeWidth={3}/>
+                    <Icon name="Check" className="w-4 h-4 text-[#2f7d44] mt-1 shrink-0" strokeWidth={3}/>
                     <span className="text-[15px]">{s}</span>
                   </div>
                 </FadeIn>

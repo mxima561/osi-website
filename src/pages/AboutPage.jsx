@@ -121,7 +121,7 @@ export default function AboutPage() {
             ].map((t,i) => (
               <FadeIn key={i} delay={i*0.05}>
                 <div className="flex items-start gap-4">
-                  <div className="w-8 h-8 rounded-full bg-[#4aa25a] flex items-center justify-center shrink-0 mt-0.5"><Icon name="Check" className="w-4 h-4 text-white" strokeWidth={3}/></div>
+                  <div className="w-8 h-8 rounded-full bg-[#2f7d44] flex items-center justify-center shrink-0 mt-0.5"><Icon name="Check" className="w-4 h-4 text-white" strokeWidth={3}/></div>
                   <p className="text-lg text-[#1A1A1A] leading-relaxed">{t}</p>
                 </div>
               </FadeIn>
@@ -165,7 +165,7 @@ export default function AboutPage() {
             ].map(([t,b,icon],i) => (
               <FadeIn key={t} delay={i*0.05}>
                 <div className="bg-white rounded-2xl p-7 h-full">
-                  <div className="w-11 h-11 rounded-xl bg-[#E8F4DC] flex items-center justify-center text-[#4aa25a] mb-5">
+                  <div className="w-11 h-11 rounded-xl bg-[#E8F4DC] flex items-center justify-center text-[#2f7d44] mb-5">
                     <Icon name={icon} className="w-5 h-5" strokeWidth={2} />
                   </div>
                   <h4 className="font-display font-bold text-lg">{t}</h4>
@@ -189,7 +189,7 @@ export default function AboutPage() {
               { n:20, suf:'+', label:'Years in Arizona' },
             ].map((s,i) => (
               <FadeIn key={s.label} delay={i*0.08}>
-                <div className="font-display font-black text-6xl sm:text-7xl md:text-8xl text-[#4aa25a] tracking-tight leading-none"><CountUp to={s.n}/>{s.suf}</div>
+                <div className="font-display font-black text-6xl sm:text-7xl md:text-8xl text-[#2f7d44] tracking-tight leading-none"><CountUp to={s.n}/>{s.suf}</div>
                 <div className="mt-4 text-white/70 text-lg">{s.label}</div>
               </FadeIn>
             ))}

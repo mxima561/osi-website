@@ -1,7 +1,7 @@
 export const TOKENS = {
   green: {
-    primary: '#4aa25a',
-    dark: '#3d8f4e',
+    primary: '#2f7d44',
+    dark: '#276a39',
     light: '#7FBF55',
     tint: '#E8F4DC',
   },

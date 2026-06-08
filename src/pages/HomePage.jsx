@@ -94,7 +94,7 @@ function ServicesOverview() {
                 <div className="p-7">
                   <h3 className="font-display font-bold text-xl tracking-tight">{s.title}</h3>
                   <p className="mt-3 text-[#4A4A4A] leading-relaxed text-[15px]">{s.blurb}</p>
-                  <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#3d8f4e] group-hover:gap-3 transition-all">
+                  <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#276a39] group-hover:gap-3 transition-all">
                     Learn More <Icon name="ArrowRight" className="w-4 h-4"/>
                   </div>
                 </div>
@@ -137,7 +137,7 @@ function AudienceSplit() {
                 <div className="mt-6 flex flex-wrap gap-3 text-[14px] text-[#4A4A4A]">
                   {['Receiving & staging', 'Installation', 'Punch & follow-through', 'Ongoing MAC support'].map(t => (
                     <span key={t} className="inline-flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#4aa25a]" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#2f7d44]" />
                       {t}
                     </span>
                   ))}
@@ -162,7 +162,7 @@ function AudienceSplit() {
                 <div className="mt-6 flex flex-wrap gap-3 text-[14px] text-white/70">
                   {['Large-scale installs', 'Asset management', 'Decommissioning', 'Warehouse support'].map(t => (
                     <span key={t} className="inline-flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#4aa25a]" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#2f7d44]" />
                       {t}
                     </span>
                   ))}
@@ -272,8 +272,8 @@ function FeaturedProjects() {
                   </div>
                 </div>
                 <div className="mt-5">
-                  <span className="inline-flex items-center px-3 py-1 rounded-full bg-[#E8F4DC] text-[#3d8f4e] text-xs font-semibold tracking-wider uppercase">{p.tag}</span>
-                  <h3 className="mt-4 font-display font-bold text-xl tracking-tight group-hover:text-[#4aa25a] transition">{p.title}</h3>
+                  <span className="inline-flex items-center px-3 py-1 rounded-full bg-[#E8F4DC] text-[#276a39] text-xs font-semibold tracking-wider uppercase">{p.tag}</span>
+                  <h3 className="mt-4 font-display font-bold text-xl tracking-tight group-hover:text-[#2f7d44] transition">{p.title}</h3>
                   <p className="mt-2 text-[#4A4A4A] text-[15px]">{p.result}</p>
                 </div>
               </Link>
@@ -303,7 +303,7 @@ function TrustedBy() {
             <div className="marquee-track flex items-center gap-14 w-max">
               {allLogos.map((l, i) => (
                 <span key={i} className="inline-flex items-center gap-14 whitespace-nowrap">
-                  <span className="font-display font-bold text-xl md:text-2xl text-white/50 hover:text-[#4aa25a] transition-colors duration-300 whitespace-nowrap">{l}</span>
+                  <span className="font-display font-bold text-xl md:text-2xl text-white/50 hover:text-[#2f7d44] transition-colors duration-300 whitespace-nowrap">{l}</span>
                   {i < allLogos.length - 1 && (
                     <span className="text-white/20 font-light select-none">|</span>
                   )}
@@ -351,7 +351,7 @@ function GoogleReviews() {
                 </div>
               </div>
               <p className="mt-4 text-[14px] text-[#4A4A4A] leading-relaxed line-clamp-4 flex-grow">&ldquo;{r.text}&rdquo;</p>
-              <button className="mt-4 text-[13px] font-semibold text-[#3d8f4e] self-start">Read more &rarr;</button>
+              <button className="mt-4 text-[13px] font-semibold text-[#276a39] self-start">Read more &rarr;</button>
             </div>
           ))}
         </div>

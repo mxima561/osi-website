@@ -96,7 +96,7 @@ export function QuoteForm({ inline = false, prefill = {} }) {
     // Native form POST proceeds — browser navigates to Salesforce, which redirects to retURL
   }
 
-  const fieldCls = (field) => `w-full bg-white border rounded-xl px-4 py-3.5 text-[15px] focus:border-[#4aa25a] focus:ring-2 focus:ring-[#4aa25a]/20 outline-none transition placeholder:text-[#6E6E6E] ${errors[field] ? 'border-red-300' : 'border-[#EAEAEA]'}`;
+  const fieldCls = (field) => `w-full bg-white border rounded-xl px-4 py-3.5 text-[15px] focus:border-[#2f7d44] focus:ring-2 focus:ring-[#2f7d44]/20 outline-none transition placeholder:text-[#6E6E6E] ${errors[field] ? 'border-red-300' : 'border-[#EAEAEA]'}`;
   const labelCls = 'block text-[11px] font-semibold uppercase tracking-[0.15em] text-[#6E6E6E] mb-2';
   const sectionCls = 'space-y-4';
 
@@ -168,7 +168,7 @@ export function QuoteForm({ inline = false, prefill = {} }) {
           <label className={labelCls}>Product Description *</label>
           <textarea required rows={5} name="description" maxLength={5000} className={fieldCls('description')} value={state.description} onChange={e=>update('description', e.target.value)} placeholder="Brief overview of scope, timeline, or any special requirements..." />
           <p className="mt-1.5 text-xs text-[#6E6E6E]">Please include any details that may be critical for accurate pricing (over-time, stair-carry, etc).</p>
-          <p className="mt-2 text-sm text-gray-500">Need to send drawings, floor plans, or photos? Email them to <a href="mailto:requestaquote@osinstall.com" className="font-semibold text-[#0F1E3D] hover:text-[#4aa25a] transition">requestaquote@osinstall.com</a> after submitting this form.</p>
+          <p className="mt-2 text-sm text-gray-500">Need to send drawings, floor plans, or photos? Email them to <a href="mailto:requestaquote@osinstall.com" className="font-semibold text-[#0F1E3D] hover:text-[#2f7d44] transition">requestaquote@osinstall.com</a> after submitting this form.</p>
         </div>
         <div>
           <label className={labelCls}>How did you hear about us?</label>
@@ -200,14 +200,14 @@ export function QuoteForm({ inline = false, prefill = {} }) {
       <div className="flex flex-col sm:flex-row sm:items-center gap-4">
         <button
           type="submit"
-          className="inline-flex items-center justify-center gap-2 font-semibold rounded-full transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-[#4aa25a] focus-visible:ring-offset-2 px-7 py-4 text-base bg-[#4aa25a] text-white hover:bg-[#3d8f4e]"
+          className="inline-flex items-center justify-center gap-2 font-semibold rounded-full transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-[#2f7d44] focus-visible:ring-offset-2 px-7 py-4 text-base bg-[#2f7d44] text-white hover:bg-[#276a39]"
         >
           <span className="inline-flex items-center gap-2 whitespace-nowrap">
             <span>Submit Request</span>
             <Icon name="ArrowRight" className="w-4 h-4" />
           </span>
         </button>
-        <p className="text-xs text-[#6E6E6E]">We'll respond within one business day.<br className="hidden sm:block" /> Or call <a className="underline text-[#4aa25a] hover:text-[#3d8f4e]" href="tel:+16022539392">(602) 253-9392</a>.</p>
+        <p className="text-xs text-[#6E6E6E]">We'll respond within one business day.<br className="hidden sm:block" /> Or call <a className="underline text-[#2f7d44] hover:text-[#276a39]" href="tel:+16022539392">(602) 253-9392</a>.</p>
       </div>
     </form>
   );

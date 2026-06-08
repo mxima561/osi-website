@@ -37,11 +37,11 @@ export default function ContactPage() {
             <FadeIn className="lg:col-span-5 space-y-8" delay={0.1}>
               <div>
                 <div className="text-xs font-semibold uppercase tracking-[0.2em] text-[#6E6E6E]">Call us</div>
-                <a href="tel:+16022539392" className="mt-2 block font-display font-black text-4xl text-[#4aa25a] hover:text-[#3d8f4e]">(602) 253-9392</a>
+                <a href="tel:+16022539392" className="mt-2 block font-display font-black text-4xl text-[#2f7d44] hover:text-[#276a39]">(602) 253-9392</a>
               </div>
               <div>
                 <div className="text-xs font-semibold uppercase tracking-[0.2em] text-[#6E6E6E]">Email</div>
-                <a href="mailto:requestaquote@osinstall.com" className="mt-2 block font-display font-bold text-xl text-[#1A1A1A] hover:text-[#4aa25a]">requestaquote@osinstall.com</a>
+                <a href="mailto:requestaquote@osinstall.com" className="mt-2 block font-display font-bold text-xl text-[#1A1A1A] hover:text-[#2f7d44]">requestaquote@osinstall.com</a>
               </div>
               <div className="grid grid-cols-2 gap-6">
                 <div>
