@@ -10,7 +10,7 @@ function NavDropdown({ label, items, overviewItem }) {
   const [open, setOpen] = useState(false);
   return (
     <div className="relative" onMouseEnter={()=>setOpen(true)} onMouseLeave={()=>setOpen(false)}>
-      <button className="inline-flex items-center gap-1 text-[14px] font-medium text-[#1A1A1A] hover:text-[#4aa25a] transition py-2">
+      <button className="inline-flex items-center gap-1 text-[14px] font-medium text-[#1A1A1A] hover:text-[#2f7d44] transition py-2">
         {label}
         <Icon name="ChevronDown" className="w-3.5 h-3.5"/>
       </button>
@@ -27,15 +27,15 @@ function NavDropdown({ label, items, overviewItem }) {
                   <Link to={overviewItem.to} className="block px-4 py-3 rounded-xl bg-[#F4F4F4] hover:bg-[#EAEAEA] transition">
                     <div className="flex items-center justify-between">
                       <div className="text-[14px] font-bold text-[#1A1A1A]">{overviewItem.label}</div>
-                      <span className="text-[11px] font-semibold text-[#4aa25a] bg-white border border-[#EAEAEA] rounded-full px-2 py-0.5">Overview →</span>
+                      <span className="text-[11px] font-semibold text-[#276a39] bg-white border border-[#EAEAEA] rounded-full px-2 py-0.5">Overview →</span>
                     </div>
-                    {overviewItem.sub && <div className="text-[12px] text-[#8A8A8A] mt-0.5">{overviewItem.sub}</div>}
+                    {overviewItem.sub && <div className="text-[12px] text-[#6E6E6E] mt-0.5">{overviewItem.sub}</div>}
                   </Link>
                   <div className="border-t border-[#EAEAEA] my-1"/>
                 </>
               )}
               {items.map(it => (
-                <Link key={it.to} to={it.to} className="block px-4 py-2.5 rounded-xl text-[14px] font-semibold text-[#1A1A1A] hover:bg-[#F4F4F4] hover:text-[#4aa25a] transition">
+                <Link key={it.to} to={it.to} className="block px-4 py-2.5 rounded-xl text-[14px] font-semibold text-[#1A1A1A] hover:bg-[#F4F4F4] hover:text-[#2f7d44] transition">
                   {it.label}
                 </Link>
               ))}
@@ -73,7 +73,7 @@ export default function Nav() {
           </div>
 
           <div className="hidden lg:flex items-center gap-8">
-            <Link to="/" className="text-[14px] font-medium hover:text-[#4aa25a]">Home</Link>
+            <Link to="/" className="text-[14px] font-medium hover:text-[#2f7d44]">Home</Link>
             <NavDropdown
               label="Services"
               overviewItem={{to:'/services', label:'All Services', sub:'Overview of everything we do'}}
@@ -84,9 +84,9 @@ export default function Nav() {
               overviewItem={{to:'/industries', label:'All Industries', sub:'Environments we serve'}}
               items={industriesItems}
             />
-            <Link to="/projects" className="text-[14px] font-medium hover:text-[#4aa25a]">Projects</Link>
-            <Link to="/about" className="text-[14px] font-medium hover:text-[#4aa25a]">About</Link>
-            <Link to="/contact" className="text-[14px] font-medium hover:text-[#4aa25a]">Contact</Link>
+            <Link to="/projects" className="text-[14px] font-medium hover:text-[#2f7d44]">Projects</Link>
+            <Link to="/about" className="text-[14px] font-medium hover:text-[#2f7d44]">About</Link>
+            <Link to="/contact" className="text-[14px] font-medium hover:text-[#2f7d44]">Contact</Link>
           </div>
 
           <div className="flex items-center gap-4">
@@ -120,7 +120,7 @@ export default function Nav() {
                 {to:'/contact', label:'Contact'},
               ].map((l, i) => (
                 <motion.div key={l.to} initial={{opacity:0,x:-20}} animate={{opacity:1,x:0}} transition={{delay:0.1+i*0.06}}>
-                  <Link to={l.to} onClick={()=>setMobileOpen(false)} className="block font-display font-black text-4xl hover:text-[#4aa25a]">{l.label}</Link>
+                  <Link to={l.to} onClick={()=>setMobileOpen(false)} className="block font-display font-black text-4xl hover:text-[#2f7d44]">{l.label}</Link>
                 </motion.div>
               ))}
               <div className="pt-6 border-t border-white/10 space-y-4">

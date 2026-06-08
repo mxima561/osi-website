@@ -6,7 +6,7 @@ export default function PrivacyPolicyPage() {
       <Container>
         <div className="max-w-3xl mx-auto prose prose-gray">
           <h1 className="font-display font-black text-4xl md:text-5xl tracking-tight text-[#1A1A1A] mb-3">Privacy Policy</h1>
-          <p className="text-sm text-[#8A8A8A] mb-12">Effective Date: June 1, 2026</p>
+          <p className="text-sm text-[#6E6E6E] mb-12">Effective Date: June 1, 2026</p>
 
           <p className="text-[#4A4A4A] leading-relaxed mb-6">OSI Management LLC, doing business as Office Systems Installation ("OSI," "we," "our," or "us"), respects your privacy and is committed to protecting the personal information you share with us. This Privacy Policy explains how we collect, use, and protect information when you visit our website or contact us.</p>
 
@@ -45,8 +45,8 @@ export default function PrivacyPolicyPage() {
           <p className="text-[#4A4A4A] leading-relaxed">
             OSI Management LLC<br/>
             135 E Watkins St, Phoenix, AZ 85004<br/>
-            <a href="tel:+16022539392" className="text-[#4aa25a] hover:underline">(602) 253-9392</a><br/>
-            <a href="mailto:requestaquote@osinstall.com" className="text-[#4aa25a] hover:underline">requestaquote@osinstall.com</a>
+            <a href="tel:+16022539392" className="text-[#2f7d44] hover:underline">(602) 253-9392</a><br/>
+            <a href="mailto:requestaquote@osinstall.com" className="text-[#2f7d44] hover:underline">requestaquote@osinstall.com</a>
           </p>
 
           <h2 className="font-display font-bold text-2xl tracking-tight text-[#1A1A1A] mt-10 mb-4">Changes to This Policy</h2>
