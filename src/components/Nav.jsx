@@ -50,8 +50,10 @@ function NavDropdown({ label, items, overviewItem }) {
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileSub, setMobileSub] = useState(null); // 'services' | 'industries' | null
   const quote = useQuote();
   const { path } = useRoute();
+  const closeMobile = () => { setMobileOpen(false); setMobileSub(null); };
   // Logo acts as Home. If already on the home page, scroll to top instead of
   // a no-op navigation (the hash wouldn't change, so it wouldn't fire).
   const onLogoClick = () => { if (path === '/') window.scrollTo({ top: 0, behavior: 'smooth' }); };
@@ -110,25 +112,58 @@ export default function Nav() {
             className="fixed inset-0 z-80 bg-[#0F1E3D] text-white lg:hidden overflow-y-auto"
           >
             <div className="flex items-center justify-between p-6 border-b border-white/10">
-              <OSILogo variant="light" />
-              <button aria-label="Close menu" onClick={()=>setMobileOpen(false)} className="w-10 h-10 rounded-lg hover:bg-white/10 flex items-center justify-center"><Icon name="X" className="w-5 h-5"/></button>
+              <Link to="/" onClick={() => { closeMobile(); if (path === '/') window.scrollTo({ top: 0, behavior: 'smooth' }); }} aria-label="OSI — home">
+                <OSILogo variant="light" />
+              </Link>
+              <button aria-label="Close menu" onClick={closeMobile} className="w-10 h-10 rounded-lg hover:bg-white/10 flex items-center justify-center"><Icon name="X" className="w-5 h-5"/></button>
             </div>
             <div className="px-6 py-8 space-y-6">
               {[
-                {to:'/', label:'Home'},
-                {to:'/services', label:'Services'},
-                {to:'/industries', label:'Industries'},
+                { key:'services', label:'Services', overview:{ to:'/services', label:'All Services' }, items: servicesItems },
+                { key:'industries', label:'Industries', overview:{ to:'/industries', label:'All Industries' }, items: industriesItems },
+              ].map((group, i) => {
+                const isOpen = mobileSub === group.key;
+                return (
+                  <motion.div key={group.key} initial={{opacity:0,x:-20}} animate={{opacity:1,x:0}} transition={{delay:0.1+i*0.06}}>
+                    <button
+                      onClick={() => setMobileSub(isOpen ? null : group.key)}
+                      aria-expanded={isOpen}
+                      className="w-full flex items-center justify-between font-display font-black text-4xl hover:text-[#2f7d44] transition"
+                    >
+                      {group.label}
+                      <Icon name="ChevronDown" className={`w-7 h-7 transition-transform duration-300 ${isOpen ? 'rotate-180 text-[#2f7d44]' : 'text-white/60'}`} />
+                    </button>
+                    <AnimatePresence initial={false}>
+                      {isOpen && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.25, ease: [0.16,1,0.3,1] }}
+                          className="overflow-hidden"
+                        >
+                          <div className="pt-4 pb-1 pl-1 space-y-3 border-l border-white/10 ml-1">
+                            <Link to={group.overview.to} onClick={closeMobile} className="block pl-4 text-lg font-semibold text-[#2f7d44]">{group.overview.label}</Link>
+                            {group.items.map(it => (
+                              <Link key={it.to} to={it.to} onClick={closeMobile} className="block pl-4 text-lg text-white/75 hover:text-white transition">{it.label}</Link>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+                );
+              })}
+              {[
                 {to:'/projects', label:'Projects'},
                 {to:'/about', label:'About'},
                 {to:'/contact', label:'Contact'},
               ].map((l, i) => (
-                <motion.div key={l.to} initial={{opacity:0,x:-20}} animate={{opacity:1,x:0}} transition={{delay:0.1+i*0.06}}>
-                  <Link to={l.to} onClick={()=>setMobileOpen(false)} className="block font-display font-black text-4xl hover:text-[#2f7d44]">{l.label}</Link>
+                <motion.div key={l.to} initial={{opacity:0,x:-20}} animate={{opacity:1,x:0}} transition={{delay:0.22+i*0.06}}>
+                  <Link to={l.to} onClick={closeMobile} className="block font-display font-black text-4xl hover:text-[#2f7d44]">{l.label}</Link>
                 </motion.div>
               ))}
               <div className="pt-6 border-t border-white/10 space-y-4">
                 <a href="tel:+16022539392" className="block text-xl text-white/80">(602) 253-9392</a>
-                <Button onClick={() => { setMobileOpen(false); quote.open(); }} variant="primary" size="lg" magnetic={false}>Request a Quote</Button>
+                <Button onClick={() => { closeMobile(); quote.open(); }} variant="primary" size="lg" magnetic={false}>Request a Quote</Button>
               </div>
             </div>
           </motion.div>
