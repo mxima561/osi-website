@@ -15,6 +15,24 @@ const HANDLER_SRC = 'https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.j
 export default function JotFormEmbed({ domId = `JotFormIFrame-${FORM_ID}`, title = 'Tell us about your project.', className = '' }) {
   const [loaded, setLoaded] = useState(false);
 
+  // Reveal the form once it has actually rendered. The iframe's own `load`
+  // event is unreliable here (JotForm's embed handler rewrites the iframe src,
+  // and cross-origin load events often don't fire), so we poll the iframe
+  // height instead: once the handler resizes it past its initial 539px, the
+  // form has rendered. A max-attempt cap guarantees the spinner never sticks.
+  useEffect(() => {
+    let done = false;
+    let attempts = 0;
+    const reveal = () => { if (!done) { done = true; setLoaded(true); } };
+    const id = setInterval(() => {
+      attempts += 1;
+      const el = document.getElementById(domId);
+      if (el && el.getBoundingClientRect().height > 560) { reveal(); clearInterval(id); }
+      else if (attempts > 40) { reveal(); clearInterval(id); } // ~10s ultimate fallback
+    }, 250);
+    return () => clearInterval(id);
+  }, [domId]);
+
   useEffect(() => {
     let cancelled = false;
     const runHandler = () => {
@@ -40,22 +58,26 @@ export default function JotFormEmbed({ domId = `JotFormIFrame-${FORM_ID}`, title
 
   return (
     <div className="relative min-h-[420px]">
+      {/* The iframe is rendered once with fixed props and never re-touched by
+          React — JotForm's handler mutates its src/height directly, and
+          re-applying React-controlled props would break it. The spinner is a
+          sibling overlay (state-driven), so toggling it never re-renders the
+          iframe. */}
+      <iframe
+        id={domId}
+        title={title}
+        allow="geolocation; microphone; camera; fullscreen; payment"
+        src={`${FORM_ORIGIN}${FORM_ID}`}
+        className={className}
+        style={{ minWidth: '100%', maxWidth: '100%', height: '539px', border: 'none' }}
+        scrolling="no"
+      />
       {!loaded && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-[#6E6E6E]">
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-[#6E6E6E] bg-[#F9F9F5]">
           <span className="w-8 h-8 rounded-full border-2 border-[#EAEAEA] border-t-[#2f7d44] animate-spin" />
           <span className="text-sm">Loading the form…</span>
         </div>
       )}
-      <iframe
-        id={domId}
-        title={title}
-        onLoad={() => setLoaded(true)}
-        allow="geolocation; microphone; camera; fullscreen; payment"
-        src={`${FORM_ORIGIN}${FORM_ID}`}
-        className={className}
-        style={{ minWidth: '100%', maxWidth: '100%', height: '539px', border: 'none', opacity: loaded ? 1 : 0, transition: 'opacity 0.3s' }}
-        scrolling="no"
-      />
     </div>
   );
 }
