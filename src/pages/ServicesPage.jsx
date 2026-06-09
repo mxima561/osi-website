@@ -55,13 +55,17 @@ export function ServicesLandingPage() {
           <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {SERVICES.map((s,i) => (
               <FadeIn key={s.slug} delay={i*0.05}>
-                <Link to={`/services/${s.slug}`} className="group block h-full rounded-2xl border border-[#EAEAEA] p-8 bg-white hover:border-[#1A1A1A] transition">
-                  <div className="w-14 h-14 rounded-xl bg-[#E8F4DC] flex items-center justify-center text-[#2f7d44]">
-                    <Icon name={s.icon} className="w-6 h-6"/>
+                <Link to={`/services/${s.slug}`} className="group block h-full rounded-2xl border border-[#EAEAEA] bg-white hover:border-[#1A1A1A] transition overflow-hidden">
+                  <div className="aspect-[16/10] overflow-hidden bg-[#EEEEE8]">
+                    <div className="w-full h-full group-hover:scale-105 transition-transform duration-700">
+                      <ImgOrPlaceholder src={s.img} alt={s.title} caption={`SERVICE — ${s.title.toUpperCase()}`} />
+                    </div>
                   </div>
-                  <h3 className="font-display font-bold text-[22px] mt-6 tracking-tight">{s.title}</h3>
-                  <p className="mt-3 text-[#4A4A4A] leading-relaxed">{s.blurb}</p>
-                  <div className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-[#276a39] group-hover:gap-3 transition-all">Learn More <Icon name="ArrowRight" className="w-4 h-4"/></div>
+                  <div className="p-8">
+                    <h3 className="font-display font-bold text-[22px] tracking-tight">{s.title}</h3>
+                    <p className="mt-3 text-[#4A4A4A] leading-relaxed">{s.blurb}</p>
+                    <div className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-[#276a39] group-hover:gap-3 transition-all">Learn More <Icon name="ArrowRight" className="w-4 h-4"/></div>
+                  </div>
                 </Link>
               </FadeIn>
             ))}

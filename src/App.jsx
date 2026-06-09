@@ -18,6 +18,7 @@ const ThankYouPage = lazy(() => import('./pages/ThankYouPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage'));
 const TermsOfUsePage = lazy(() => import('./pages/TermsOfUsePage'));
+const CitiesWeServePage = lazy(() => import('./pages/CitiesWeServePage'));
 
 function useDocumentTitle(title) {
   useEffect(() => { document.title = title; }, [title]);
@@ -43,6 +44,7 @@ function PageShell({ path }) {
   if (path === '/thank-you') { useDocumentTitle('Thank You — OSI'); return <ThankYouPage/>; }
   if (path === '/privacy-policy') { useDocumentTitle('Privacy Policy — OSI'); return <PrivacyPolicyPage/>; }
   if (path === '/terms-of-use') { useDocumentTitle('Terms of Use — OSI'); return <TermsOfUsePage/>; }
+  if (path === '/cities-we-serve') { useDocumentTitle('Cities We Serve — OSI'); return <CitiesWeServePage/>; }
   useDocumentTitle('404 — OSI');
   return <NotFoundPage/>;
 }

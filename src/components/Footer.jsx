@@ -52,6 +52,8 @@ export default function Footer() {
         <div className="mt-16 pt-6 border-t border-[#EAEAEA] flex flex-col md:flex-row justify-between gap-3 text-xs text-[#6E6E6E]">
           <span>© 2026 Office Systems Installation. All rights reserved.</span>
           <div className="flex items-center gap-3">
+            <Link to="/cities-we-serve" className="hover:text-[#1A1A1A] transition">Cities We Serve</Link>
+            <span>·</span>
             <Link to="/privacy-policy" className="hover:text-[#1A1A1A] transition">Privacy Policy</Link>
             <span>·</span>
             <Link to="/terms-of-use" className="hover:text-[#1A1A1A] transition">Terms of Use</Link>

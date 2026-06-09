@@ -57,13 +57,24 @@ export const PROJECTS = [
 
 export const CLIENT_LOGOS = ['Coca-Cola','Maricopa County','Western Alliance Bank','Hyatt Regency','Luke AFB','CarMax','Hilton Sedona Resort','Toyota','KPMG','Paycom','MidFirst Bank','Mesa Public Library','Berkshire Hathaway','Fujifilm','Waymo','Verizon','City of Phoenix','Genoa Healthcare','Morgan Stanley','PepsiCo','Phoenix Children\'s Hospital','Bank of America'];
 
+// Aggregate Google rating — used by the reviews badge. Sourced from real Google reviews.
+export const REVIEW_AGGREGATE = { rating: '4.8', total: 43 };
+
+// Real, scraped Google reviews. Generic one-liners, employee reviews, and
+// reviews naming third-party clients are intentionally excluded.
 export const REVIEWS = [
-  { name: 'Dana R.', initials: 'DR', text: 'OSI handled our multi-floor install without a hiccup — responsive, professional, and on schedule. We rely on them for every Arizona project now.' },
-  { name: 'Marcus P.', initials: 'MP', text: 'The team arrived on time, protected every surface, and finished the punch list before we even asked. Night-and-day difference from prior installers.' },
-  { name: 'Keiko T.', initials: 'KT', text: 'Their receiving and staging support saved us on a tight rollout. Honest communication the whole way through.' },
-  { name: 'Brian L.', initials: 'BL', text: 'We use OSI for daily MAC work across our Arizona portfolio. They treat our spaces like their own.' },
-  { name: 'Alicia S.', initials: 'AS', text: 'Warehouse was organized, delivery windows were exact, installers were sharp. Quoted fairly and stood behind the work.' },
-  { name: 'Jorge M.', initials: 'JM', text: 'OSI decommissioned an entire floor for us in a weekend. Seamless — and they helped us redeploy what we kept.' },
+  { name: 'Brian Schneider', initials: 'BS', stars: 5, text: 'Having to work with installation companies throughout the country, it is always great to be able to depend on a company as much as if I was on site myself. OSI has completed over 15+ projects for my company.' },
+  { name: 'Terri Hubbard', initials: 'TH', stars: 5, text: 'We have been using OSI for our clients for over 10 years! They ALWAYS go above and beyond the call of duty!' },
+  { name: 'Benjamin Bottner', initials: 'BB', stars: 5, text: "OSI are true professionals and experts. We've worked with them for the last 5 years and top to bottom they clearly put a lot of thought and energy into putting their team together. Thank you OSI!" },
+  { name: 'Alysan Ulrich', initials: 'AU', stars: 5, text: 'I highly recommend OSI, they were responsive and got me on the schedule quickly. Instead of giving me a broad window, I was given an exact time and they actually showed up as expected.' },
+  { name: 'Meri Jo Alexander', initials: 'MA', stars: 5, text: 'For what I thought was a difficult move and install — located in Portland, OR — everything went perfectly and in one day.' },
+  { name: 'Michael E.', initials: 'ME', stars: 5, text: 'Our small job seemed to garner just as much attention as a large project. The service techs were professional, knowledgeable and no-nonsense. Top notch communication. Highly recommend this company.' },
+  { name: 'John Leone', initials: 'JL', stars: 5, text: 'OSI helped me out in a pinch when a customer needed a quick turnaround on an office installation. They were responsive, flexible, and performed great work for our customer!' },
+  { name: 'Ryan Bastman', initials: 'RB', stars: 5, text: 'As a facilities professional I have worked with OSI for many years. From installation to site relocation, the guys have always gone above and beyond to make sure that everything was perfect and my end users were happy.' },
+  { name: 'Nathan T.', initials: 'NT', stars: 5, text: 'Highly recommended. They were courteous and did great work. Attention to the details. They installed our PortaFab Quick Ship Module 8x12 building.' },
+  { name: 'Lauren Witte', initials: 'LW', stars: 5, text: 'We used Office Systems Installation for a corporate move. They were fabulous! Great communication, prompt and professional.' },
+  { name: 'Kristin Anderson', initials: 'KA', stars: 5, text: 'OSI is amazing to work with! The people working at OSI are experienced professionals who take pride in what they do. Very organized and efficient. OSI knows how to get the job done!' },
+  { name: 'Rajnish Radhakrishnan', initials: 'RR', stars: 5, text: 'Extremely professional and skilled installers. Worked fast and did a great job for us.' },
 ];
 
 export const SERVICE_PAGES = {

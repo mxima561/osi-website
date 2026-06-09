@@ -4,7 +4,7 @@ import { Link } from '../components/Router';
 import Icon from '../components/Icon';
 import { useQuote } from '../components/QuoteModal';
 import FinalCTA from '../components/FinalCTA';
-import { SERVICES, MANUFACTURERS, PROJECTS, CLIENT_LOGOS, REVIEWS } from '../data/tokens';
+import { SERVICES, MANUFACTURERS, PROJECTS, CLIENT_LOGOS, REVIEWS, REVIEW_AGGREGATE } from '../data/tokens';
 
 const HERO_WORDS = ['Furniture Installation', 'Warehousing', 'Asset Management', 'MAC & Daily Services', 'Modular Walls'];
 
@@ -333,7 +333,7 @@ function GoogleReviews() {
                 <div className="text-[13px] font-semibold">Google</div>
                 <div className="flex items-center gap-1">
                   {[0,1,2,3,4].map(i => <Icon key={i} name="Star" className="w-3.5 h-3.5 text-[#F5B400] fill-[#F5B400]"/>)}
-                  <span className="text-[12px] text-[#4A4A4A] ml-1">5.0 &middot; 17 reviews</span>
+                  <span className="text-[12px] text-[#4A4A4A] ml-1">{REVIEW_AGGREGATE.rating}</span>
                 </div>
               </div>
             </div>
@@ -351,7 +351,6 @@ function GoogleReviews() {
                 </div>
               </div>
               <p className="mt-4 text-[14px] text-[#4A4A4A] leading-relaxed line-clamp-4 flex-grow">&ldquo;{r.text}&rdquo;</p>
-              <button className="mt-4 text-[13px] font-semibold text-[#276a39] self-start">Read more &rarr;</button>
             </div>
           ))}
         </div>
