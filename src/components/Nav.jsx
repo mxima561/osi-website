@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from './Motion';
-import { Link } from './Router';
+import { Link, useRoute } from './Router';
 import Icon from './Icon';
 import { Container, Button, OSILogo } from './Primitives';
 import { useQuote } from './QuoteModal';
@@ -51,6 +51,10 @@ export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const quote = useQuote();
+  const { path } = useRoute();
+  // Logo acts as Home. If already on the home page, scroll to top instead of
+  // a no-op navigation (the hash wouldn't change, so it wouldn't fire).
+  const onLogoClick = () => { if (path === '/') window.scrollTo({ top: 0, behavior: 'smooth' }); };
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
     window.addEventListener('scroll', onScroll);
@@ -67,13 +71,12 @@ export default function Nav() {
             <button aria-label="Menu" className="lg:hidden w-10 h-10 rounded-lg hover:bg-black/5 flex items-center justify-center" onClick={()=>setMobileOpen(true)}>
               <Icon name="Menu" className="w-5 h-5" />
             </button>
-            <Link to="/" className="flex items-center">
+            <Link to="/" onClick={onLogoClick} aria-label="OSI — home" className="flex items-center">
               <OSILogo variant="dark" />
             </Link>
           </div>
 
           <div className="hidden lg:flex items-center gap-8">
-            <Link to="/" className="text-[14px] font-medium hover:text-[#2f7d44]">Home</Link>
             <NavDropdown
               label="Services"
               overviewItem={{to:'/services', label:'All Services', sub:'Overview of everything we do'}}
