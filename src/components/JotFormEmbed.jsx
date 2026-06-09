@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 // OSI "Tell us about your project." quote form, hosted on JotForm
 // (supports file uploads; routed to Salesforce + confirmation email via Zapier).
@@ -13,6 +13,8 @@ const HANDLER_SRC = 'https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.j
  * contact page) without duplicate element IDs.
  */
 export default function JotFormEmbed({ domId = `JotFormIFrame-${FORM_ID}`, title = 'Tell us about your project.', className = '' }) {
+  const [loaded, setLoaded] = useState(false);
+
   useEffect(() => {
     let cancelled = false;
     const runHandler = () => {
@@ -37,14 +39,23 @@ export default function JotFormEmbed({ domId = `JotFormIFrame-${FORM_ID}`, title
   }, [domId]);
 
   return (
-    <iframe
-      id={domId}
-      title={title}
-      allow="geolocation; microphone; camera; fullscreen; payment"
-      src={`${FORM_ORIGIN}${FORM_ID}`}
-      className={className}
-      style={{ minWidth: '100%', maxWidth: '100%', height: '539px', border: 'none' }}
-      scrolling="no"
-    />
+    <div className="relative min-h-[420px]">
+      {!loaded && (
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-[#6E6E6E]">
+          <span className="w-8 h-8 rounded-full border-2 border-[#EAEAEA] border-t-[#2f7d44] animate-spin" />
+          <span className="text-sm">Loading the form…</span>
+        </div>
+      )}
+      <iframe
+        id={domId}
+        title={title}
+        onLoad={() => setLoaded(true)}
+        allow="geolocation; microphone; camera; fullscreen; payment"
+        src={`${FORM_ORIGIN}${FORM_ID}`}
+        className={className}
+        style={{ minWidth: '100%', maxWidth: '100%', height: '539px', border: 'none', opacity: loaded ? 1 : 0, transition: 'opacity 0.3s' }}
+        scrolling="no"
+      />
+    </div>
   );
 }
