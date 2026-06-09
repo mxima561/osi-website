@@ -13,7 +13,7 @@ export default function ThankYouPage() {
             </h1>
             <p className="mt-6 text-xl text-[#1A1A1A]">We'll be in touch within one business day.</p>
             <p className="mt-6 text-[#4A4A4A] leading-relaxed">
-              Someone from the OSI team will review your request and reach out at the email or phone number you provided. If you have drawings, floor plans, or photos to share, email them to{' '}
+              Someone from the OSI team will review your request — including any drawings, floor plans, or photos you attached — and reach out at the email or phone number you provided. Need to add something? Email{' '}
               <a href="mailto:requestaquote@osinstall.com" className="font-semibold text-[#0F1E3D] hover:text-[#2f7d44] transition">requestaquote@osinstall.com</a>
               {' '}and reference the project details you just submitted.
             </p>

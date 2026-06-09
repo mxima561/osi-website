@@ -2,6 +2,7 @@ import { useState, useEffect, createContext, useContext } from 'react';
 import { motion, AnimatePresence } from './Motion';
 import Icon from './Icon';
 import { Eyebrow, Green } from './Primitives';
+import { useRoute } from './Router';
 import JotFormEmbed from './JotFormEmbed';
 
 const QuoteCtx = createContext({ open: () => {} });
@@ -9,7 +10,12 @@ export const useQuote = () => useContext(QuoteCtx);
 
 export function QuoteProvider({ children }) {
   const [open, setOpen] = useState(false);
+  const { path } = useRoute();
   const ctx = { open: () => setOpen(true), close: () => setOpen(false) };
+  // Close the modal on any route change — e.g. when JotForm redirects the
+  // page to /thank-you after a successful submission.
+  // eslint-disable-next-line react-hooks/set-state-in-effect
+  useEffect(() => { setOpen(false); }, [path]);
   return (
     <QuoteCtx.Provider value={ctx}>
       {children}
