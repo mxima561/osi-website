@@ -109,13 +109,13 @@ export default function Nav() {
           <motion.div
             initial={{ x: '-100%' }} animate={{ x: 0 }} exit={{ x: '-100%' }}
             transition={{ duration: 0.35, ease: [0.16,1,0.3,1] }}
-            className="fixed inset-0 z-80 bg-[#0F1E3D] text-white lg:hidden overflow-y-auto"
+            className="fixed inset-0 z-80 bg-white text-[#1A1A1A] lg:hidden overflow-y-auto"
           >
-            <div className="flex items-center justify-between p-6 border-b border-white/10">
+            <div className="flex items-center justify-between p-6 border-b border-[#EAEAEA]">
               <Link to="/" onClick={() => { closeMobile(); if (path === '/') window.scrollTo({ top: 0, behavior: 'smooth' }); }} aria-label="OSI — home">
-                <OSILogo variant="light" />
+                <OSILogo variant="dark" />
               </Link>
-              <button aria-label="Close menu" onClick={closeMobile} className="w-10 h-10 rounded-lg hover:bg-white/10 flex items-center justify-center"><Icon name="X" className="w-5 h-5"/></button>
+              <button aria-label="Close menu" onClick={closeMobile} className="w-10 h-10 rounded-lg hover:bg-black/5 flex items-center justify-center"><Icon name="X" className="w-5 h-5"/></button>
             </div>
             <div className="px-6 py-8 space-y-6">
               {[
@@ -131,7 +131,7 @@ export default function Nav() {
                       className="w-full flex items-center justify-between font-display font-black text-4xl hover:text-[#2f7d44] transition"
                     >
                       {group.label}
-                      <Icon name="ChevronDown" className={`w-7 h-7 transition-transform duration-300 ${isOpen ? 'rotate-180 text-[#2f7d44]' : 'text-white/60'}`} />
+                      <Icon name="ChevronDown" className={`w-7 h-7 transition-transform duration-300 ${isOpen ? 'rotate-180 text-[#2f7d44]' : 'text-[#6E6E6E]'}`} />
                     </button>
                     <AnimatePresence initial={false}>
                       {isOpen && (
@@ -140,10 +140,10 @@ export default function Nav() {
                           transition={{ duration: 0.25, ease: [0.16,1,0.3,1] }}
                           className="overflow-hidden"
                         >
-                          <div className="pt-4 pb-1 pl-1 space-y-3 border-l border-white/10 ml-1">
+                          <div className="pt-4 pb-1 pl-1 space-y-3 border-l border-[#EAEAEA] ml-1">
                             <Link to={group.overview.to} onClick={closeMobile} className="block pl-4 text-lg font-semibold text-[#2f7d44]">{group.overview.label}</Link>
                             {group.items.map(it => (
-                              <Link key={it.to} to={it.to} onClick={closeMobile} className="block pl-4 text-lg text-white/75 hover:text-white transition">{it.label}</Link>
+                              <Link key={it.to} to={it.to} onClick={closeMobile} className="block pl-4 text-lg text-[#4A4A4A] hover:text-[#1A1A1A] transition">{it.label}</Link>
                             ))}
                           </div>
                         </motion.div>
@@ -161,8 +161,8 @@ export default function Nav() {
                   <Link to={l.to} onClick={closeMobile} className="block font-display font-black text-4xl hover:text-[#2f7d44]">{l.label}</Link>
                 </motion.div>
               ))}
-              <div className="pt-6 border-t border-white/10 space-y-4">
-                <a href="tel:+16022539392" className="block text-xl text-white/80">(602) 253-9392</a>
+              <div className="pt-6 border-t border-[#EAEAEA] space-y-4">
+                <a href="tel:+16022539392" className="block text-xl text-[#4A4A4A]">(602) 253-9392</a>
                 <Button onClick={() => { closeMobile(); quote.open(); }} variant="primary" size="lg" magnetic={false}>Request a Quote</Button>
               </div>
             </div>
