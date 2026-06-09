@@ -117,26 +117,19 @@ export function IndustrySubpage({ slug }) {
   if (!d) return <NotFoundPage />;
   return (
     <>
-      <Section className="bg-[#F1F2F3] pt-16 pb-16 md:pt-20 md:pb-20">
+      <Section className="bg-[#F1F2F3] pt-20 pb-20 md:pt-28 md:pb-28">
         <Container>
-          <div className="grid lg:grid-cols-12 gap-10 items-center">
-            <FadeIn className="lg:col-span-7">
-              <Eyebrow>Industries / {d.title[1].split(' ').pop()}</Eyebrow>
-              <h1 className="mt-5 font-display font-black tracking-tight leading-[1.02] text-5xl md:text-6xl">
-                {d.title[0]} <Green>{d.title[1]}</Green>
-              </h1>
-              <p className="mt-6 max-w-2xl text-lg text-[#4A4A4A] leading-relaxed">{d.sub}</p>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Button variant="primary" size="lg" onClick={() => quote.open()}>Request a Quote</Button>
-                <a href="tel:+16022539392" className="inline-flex items-center gap-2 px-7 py-4 text-base font-semibold rounded-full border border-[#1A1A1A]/20 text-[#1A1A1A] hover:border-[#1A1A1A] hover:bg-[#1A1A1A] hover:text-white transition-colors duration-200">Call (602) 253-9392</a>
-              </div>
-            </FadeIn>
-            <FadeIn className="lg:col-span-5" delay={0.1}>
-              <div className="aspect-[4/5] rounded-2xl overflow-hidden">
-                <ImgOrPlaceholder src={d.img} alt={d.title.join(' ')} caption="INDUSTRY HERO" />
-              </div>
-            </FadeIn>
-          </div>
+          <FadeIn>
+            <Eyebrow>Industries / {d.title[1].split(' ').pop()}</Eyebrow>
+            <h1 className="mt-5 font-display font-black tracking-tight leading-[1.02] text-5xl md:text-6xl lg:text-7xl max-w-5xl text-[#1A1A1A]">
+              {d.title[0]} <Green>{d.title[1]}</Green>
+            </h1>
+            <p className="mt-7 max-w-2xl text-lg text-[#4A4A4A] leading-relaxed">{d.sub}</p>
+            <div className="mt-10 flex flex-wrap gap-3">
+              <Button variant="primary" size="lg" onClick={() => quote.open()}>Request a Quote</Button>
+              <a href="tel:+16022539392" className="inline-flex items-center gap-2 px-7 py-4 text-base font-semibold rounded-full border border-[#1A1A1A]/20 text-[#1A1A1A] hover:border-[#1A1A1A] hover:bg-[#1A1A1A] hover:text-white transition-colors duration-200">Call (602) 253-9392</a>
+            </div>
+          </FadeIn>
         </Container>
       </Section>
 
