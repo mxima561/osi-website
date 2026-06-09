@@ -9,7 +9,7 @@ export default function ThankYouPage() {
           <div className="max-w-2xl">
             <Eyebrow>Confirmation</Eyebrow>
             <h1 className="mt-5 font-display font-black tracking-tight leading-[1.02] text-5xl md:text-6xl lg:text-7xl">
-              Thanks — we <Green>got it.</Green>
+              Thanks — we <Green>got&nbsp;it.</Green>
             </h1>
             <p className="mt-6 text-xl text-[#1A1A1A]">We'll be in touch within one business day.</p>
             <p className="mt-6 text-[#4A4A4A] leading-relaxed">
