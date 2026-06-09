@@ -10,7 +10,7 @@ export default function FinalCTA({ title, subtitle }) {
       <Container className="relative">
         <FadeIn>
           <div className="max-w-4xl">
-            <h2 className="font-display font-black tracking-tight leading-[1.05] text-4xl md:text-6xl lg:text-7xl">
+            <h2 className="font-display font-black tracking-tight leading-[1.05] text-4xl md:text-5xl lg:text-[56px]">
               {title || <>Need a <Green>stronger furniture services partner</Green> in Arizona?</>}
             </h2>
             <p className="mt-6 max-w-2xl text-lg text-white/70 leading-relaxed">
