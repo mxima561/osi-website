@@ -294,7 +294,7 @@ function TrustedBy() {
         <FadeIn>
           <div className="text-center">
             <Eyebrow dark className="justify-center">Proof</Eyebrow>
-            <h3 className="mt-4 font-display font-bold text-2xl md:text-3xl tracking-tight text-white">Dependable Work for <Green>Recognized Organizations</Green></h3>
+            <h3 className="mt-4 font-display font-black tracking-tight leading-[1.05] text-4xl md:text-5xl lg:text-[56px] text-white">Dependable Work for <Green>Recognized Organizations</Green></h3>
             <p className="mt-4 max-w-3xl mx-auto text-white/60 text-[15px] leading-relaxed">
               Clients use OSI when the work needs to be organized, professional, and done right. OSI has supported project-related work for recognized employers, brands, institutions, and public-facing organizations across Arizona including:
             </p>
