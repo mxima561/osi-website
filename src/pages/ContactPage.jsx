@@ -1,13 +1,10 @@
 import { useState } from 'react';
 import { FadeIn } from '../components/Motion';
-import { Section, Container, Eyebrow, Button, Green } from '../components/Primitives';
-import { useRoute } from '../components/Router';
-import { QuoteForm } from '../components/QuoteModal';
+import { Section, Container, Eyebrow, Green } from '../components/Primitives';
+import JotFormEmbed from '../components/JotFormEmbed';
 
 export default function ContactPage() {
-  const { query } = useRoute();
   const [copied, setCopied] = useState(false);
-  const prefill = { clientType: query.topic === 'dealer' ? 'Dealer' : query.topic === 'enterprise' ? 'Enterprise' : '' };
   const shipBlock = `Office Systems Installation\n[Your OSI project number here]\n135 E Watkins St\nPhoenix, AZ 85004`;
   return (
     <>
@@ -30,7 +27,7 @@ export default function ContactPage() {
               <div className="bg-white rounded-2xl p-8 md:p-10 border border-[#EAEAEA]">
                 <h2 className="font-display font-bold text-2xl">Tell us about it</h2>
                 <p className="mt-2 text-[#4A4A4A]">Fill this out and we'll route it to the right person on our team.</p>
-                <div className="mt-6"><QuoteForm inline prefill={prefill} /></div>
+                <div className="mt-6"><JotFormEmbed domId="JotFormIFrame-contact" /></div>
               </div>
             </FadeIn>
 
