@@ -95,14 +95,15 @@ export function Placeholder({ className = '', label = 'PHOTO', caption, dark = f
   );
 }
 
-export function ImgOrPlaceholder({ src, alt, caption, className = '', imgClassName = '' }) {
+export function ImgOrPlaceholder({ src, alt, caption, className = '', imgClassName = '', priority = false }) {
   const [failed, setFailed] = useState(false);
   if (!src || failed) return <Placeholder className={className} label="PHOTO" caption={caption || alt} />;
   return (
     <img
       src={src}
       alt={alt || ''}
-      loading="lazy"
+      loading={priority ? 'eager' : 'lazy'}
+      fetchPriority={priority ? 'high' : undefined}
       decoding="async"
       onError={() => setFailed(true)}
       className={`w-full h-full object-cover ${imgClassName}`}

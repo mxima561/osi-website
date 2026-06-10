@@ -40,7 +40,7 @@ function HeroHome() {
           <div className="lg:col-span-5">
             <FadeIn>
               <div className="aspect-[4/5] rounded-2xl overflow-hidden bg-[#F1F2F3]">
-                <ImgOrPlaceholder src="/photos/home-hero.jpg" alt="OSI commercial furniture installation in Arizona" caption="OSI" />
+                <ImgOrPlaceholder src="/photos/home-hero.jpg" alt="OSI commercial furniture installation in Arizona" caption="OSI" priority />
               </div>
             </FadeIn>
           </div>

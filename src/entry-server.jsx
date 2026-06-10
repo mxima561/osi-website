@@ -1,7 +1,8 @@
 /* eslint-disable react-refresh/only-export-components -- SSR build entry, not a fast-refreshed module */
 import { renderToString } from 'react-dom/server';
 import App from './App';
-import { getPageMeta, PRERENDER_ROUTES, SITEMAP_ROUTES, NOINDEX, SITE_ORIGIN } from './seo';
+import { getPageMeta, getOgImage, PRERENDER_ROUTES, SITEMAP_ROUTES, NOINDEX, SITE_ORIGIN } from './seo';
+import { getJsonLd } from './structuredData';
 
 // Statically-imported pages (no React.lazy) so renderToString produces the full
 // markup synchronously. The client (App.jsx) still code-splits via lazy().
@@ -35,7 +36,7 @@ const staticPages = {
 
 export function render(path) {
   const html = renderToString(<App pages={staticPages} initialPath={path} />);
-  return { html, ...getPageMeta(path) };
+  return { html, ...getPageMeta(path), ogImage: getOgImage(path), jsonLd: getJsonLd(path) };
 }
 
 export { PRERENDER_ROUTES, SITEMAP_ROUTES, NOINDEX, SITE_ORIGIN };

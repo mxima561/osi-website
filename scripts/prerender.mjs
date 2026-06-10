@@ -19,10 +19,12 @@ const esc = (s) => String(s)
 
 const canonicalFor = (route) => SITE_ORIGIN + (route === '/' ? '/' : route);
 
-const OG_IMAGE = SITE_ORIGIN + '/osi-logo-wave.jpg';
+const FALLBACK_OG_IMAGE = '/osi-logo-wave.jpg';
+const absImage = (img) => SITE_ORIGIN + (img || FALLBACK_OG_IMAGE);
 
-function headTags({ title, description }, route, noindex) {
+function headTags({ title, description, ogImage }, route, noindex) {
   const canonical = canonicalFor(route);
+  const image = absImage(ogImage);
   return [
     `<link rel="canonical" href="${esc(canonical)}">`,
     noindex ? '<meta name="robots" content="noindex, follow">' : '',
@@ -31,19 +33,28 @@ function headTags({ title, description }, route, noindex) {
     `<meta property="og:title" content="${esc(title)}">`,
     `<meta property="og:description" content="${esc(description)}">`,
     `<meta property="og:url" content="${esc(canonical)}">`,
-    `<meta property="og:image" content="${esc(OG_IMAGE)}">`,
+    `<meta property="og:image" content="${esc(image)}">`,
     `<meta name="twitter:card" content="summary_large_image">`,
     `<meta name="twitter:title" content="${esc(title)}">`,
     `<meta name="twitter:description" content="${esc(description)}">`,
-    `<meta name="twitter:image" content="${esc(OG_IMAGE)}">`,
+    `<meta name="twitter:image" content="${esc(image)}">`,
   ].filter(Boolean).join('\n    ');
+}
+
+// One <script type="application/ld+json"> per schema block. `<` is escaped to
+// < so a value can never break out of the <script> element.
+function jsonLdTags(blocks) {
+  return (blocks || [])
+    .map((b) => `<script type="application/ld+json">${JSON.stringify(b).replace(/</g, '\\u003c')}</script>`)
+    .join('\n    ');
 }
 
 function buildHtml(route, meta, html, noindex) {
   let out = template;
   out = out.replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(meta.title)}</title>`);
   out = out.replace(/<meta name="description"[^>]*>/, `<meta name="description" content="${esc(meta.description)}">`);
-  out = out.replace('</head>', `    ${headTags(meta, route, noindex)}\n  </head>`);
+  const head = `    ${headTags(meta, route, noindex)}\n    ${jsonLdTags(meta.jsonLd)}\n  </head>`;
+  out = out.replace('</head>', head);
   out = out.replace('<div id="root"></div>', `<div id="root">${html}</div>`);
   return out;
 }
@@ -54,8 +65,8 @@ function outFile(route) {
 }
 
 function writePage(route, file, noindex) {
-  const { html, title, description } = render(route);
-  const out = buildHtml(route, { title, description }, html, noindex);
+  const { html, title, description, ogImage, jsonLd } = render(route);
+  const out = buildHtml(route, { title, description, ogImage, jsonLd }, html, noindex);
   fs.mkdirSync(path.dirname(file), { recursive: true });
   fs.writeFileSync(file, out);
   return { route, file: path.relative(root, file) };
