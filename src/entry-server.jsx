@@ -16,6 +16,7 @@ import ThankYouPage from './pages/ThankYouPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import TermsOfUsePage from './pages/TermsOfUsePage';
 import CitiesWeServePage from './pages/CitiesWeServePage';
+import CityPage from './pages/CityPage';
 import NotFoundPage from './pages/NotFoundPage';
 
 const staticPages = {
@@ -31,6 +32,7 @@ const staticPages = {
   Privacy: PrivacyPolicyPage,
   Terms: TermsOfUsePage,
   Cities: CitiesWeServePage,
+  City: CityPage,
   NotFound: NotFoundPage,
 };
 

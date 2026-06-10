@@ -1,4 +1,5 @@
 import { SERVICES, SERVICE_PAGES, INDUSTRIES, INDUSTRY_PAGES } from './data/tokens.js';
+import { CITY_SLUGS, getCity } from './data/cities.js';
 
 // Canonical production origin — used for sitemap.xml, robots.txt and
 // <link rel="canonical"> / og:url tags.
@@ -146,13 +147,19 @@ export function getPageMeta(path) {
     const ind = INDUSTRIES.find((s) => s.slug === slug);
     if (page) return { title: joinTitle(page.title) + SUFFIX, description: clamp(ind?.blurb || (Array.isArray(page.intro) ? page.intro[0] : page.intro)) };
   }
+  if (path.startsWith('/cities/')) {
+    const city = getCity(path.split('/')[2]);
+    if (city) return { title: `Furniture Installation in ${city.name}, AZ` + SUFFIX, description: clamp(city.intro[0]) };
+  }
   return { title: 'Page Not Found' + SUFFIX, description: 'The page you are looking for could not be found.' };
 }
 
 // Root-relative Open Graph / Twitter image for a route, falling back to the
 // brand image for routes without a dedicated photo.
 export function getOgImage(path) {
-  return OG_IMAGES[path] || OG_IMAGE_FALLBACK;
+  if (OG_IMAGES[path]) return OG_IMAGES[path];
+  if (path.startsWith('/cities/')) return '/photos/home-hero.jpg';
+  return OG_IMAGE_FALLBACK;
 }
 
 // Routes that should not be indexed (get a robots noindex tag and are kept out
@@ -170,6 +177,7 @@ export const PRERENDER_ROUTES = [
   '/about',
   '/contact',
   '/cities-we-serve',
+  ...CITY_SLUGS.map((slug) => `/cities/${slug}`),
   '/privacy-policy',
   '/terms-of-use',
   '/thank-you',

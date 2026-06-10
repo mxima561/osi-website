@@ -16,6 +16,7 @@ import {
   REVIEWS,
   REVIEW_AGGREGATE,
 } from './data/tokens.js';
+import { getCity } from './data/cities.js';
 import { SITE_ORIGIN } from './seo.js';
 
 const ORIGIN = SITE_ORIGIN;
@@ -244,6 +245,31 @@ export function getJsonLd(path) {
           { name: 'Home', url: ORIGIN },
           { name: 'Industries', url: abs('/industries') },
           { name, url: abs(path) },
+        ]),
+      );
+    }
+    return blocks;
+  }
+
+  // City landing pages: city-scoped Service + BreadcrumbList.
+  if (path.startsWith('/cities/')) {
+    const city = getCity(path.split('/')[2]);
+    if (city) {
+      blocks.push(
+        serviceSchema({
+          name: `Commercial Furniture Installation in ${city.name}, AZ`,
+          description: city.intro[0],
+          url: abs(path),
+          serviceType: 'Commercial furniture installation, relocation, and services',
+        }),
+      );
+      // Narrow areaServed to this specific city.
+      blocks[blocks.length - 1].areaServed = { '@type': 'City', name: city.name, addressRegion: 'AZ' };
+      blocks.push(
+        breadcrumbSchema([
+          { name: 'Home', url: ORIGIN },
+          { name: 'Cities We Serve', url: abs('/cities-we-serve') },
+          { name: city.name, url: abs(path) },
         ]),
       );
     }

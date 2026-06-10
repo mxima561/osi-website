@@ -2,6 +2,10 @@ import { Section, Container, SectionHeading, Green, Button } from '../components
 import { FadeIn } from '../components/Motion';
 import { Link } from '../components/Router';
 import FinalCTA from '../components/FinalCTA';
+import { CITIES } from '../data/cities';
+
+// Cities with a dedicated landing page, keyed by display name.
+const CITY_PAGE_BY_NAME = Object.fromEntries(CITIES.map((c) => [c.name, c.slug]));
 
 const PHOENIX_METRO = ['Phoenix', 'Mesa', 'Chandler', 'Gilbert', 'Glendale', 'Scottsdale', 'Tempe', 'Peoria', 'Surprise', 'Avondale', 'Buckeye'];
 const STATEWIDE = ['Bisbee', 'Bullhead City', 'Casa Grande', 'Flagstaff', 'Florence', 'Globe', 'Holbrook', 'Kingman', 'Lake Havasu City', 'Nogales', 'Payson', 'Prescott', 'Safford', 'Sedona', 'Sierra Vista', 'Tucson', 'Wickenburg', 'Yuma'];
@@ -11,7 +15,16 @@ function CityGroup({ title, cities }) {
     <FadeIn>
       <h2 className="font-display font-black text-2xl md:text-[28px] tracking-tight text-[#1A1A1A]">{title}</h2>
       <ul className="mt-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-3.5 text-[16px] text-[#4A4A4A]">
-        {cities.map(city => <li key={city}>{city}</li>)}
+        {cities.map(city => {
+          const slug = CITY_PAGE_BY_NAME[city];
+          return (
+            <li key={city}>
+              {slug
+                ? <Link to={`/cities/${slug}`} className="text-[#2f7d44] font-medium hover:underline">{city}</Link>
+                : city}
+            </li>
+          );
+        })}
       </ul>
     </FadeIn>
   );

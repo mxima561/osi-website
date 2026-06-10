@@ -19,5 +19,6 @@ export default function PageRoutes({ pages }) {
   else if (path === '/privacy-policy') Page = pages.Privacy;
   else if (path === '/terms-of-use') Page = pages.Terms;
   else if (path === '/cities-we-serve') Page = pages.Cities;
+  else if (path.startsWith('/cities/')) { Page = pages.City; props = { slug: path.split('/')[2] }; }
   return <Page {...props} />;
 }

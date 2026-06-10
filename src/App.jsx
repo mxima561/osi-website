@@ -21,6 +21,7 @@ const lazyPages = {
   Privacy: lazy(() => import('./pages/PrivacyPolicyPage')),
   Terms: lazy(() => import('./pages/TermsOfUsePage')),
   Cities: lazy(() => import('./pages/CitiesWeServePage')),
+  City: lazy(() => import('./pages/CityPage')),
   NotFound: lazy(() => import('./pages/NotFoundPage')),
 };
 
