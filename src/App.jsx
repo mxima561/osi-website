@@ -3,70 +3,58 @@ import { RouterProvider, useRoute } from './components/Router';
 import { QuoteProvider } from './components/QuoteModal';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
+import PageRoutes from './PageRoutes';
+import { getPageMeta } from './seo';
 
 // Route-level code splitting: each page is fetched on demand to keep the
-// initial bundle small.
-const HomePage = lazy(() => import('./pages/HomePage'));
-const ServicesLandingPage = lazy(() => import('./pages/ServicesPage').then(m => ({ default: m.ServicesLandingPage })));
-const ServiceSubpage = lazy(() => import('./pages/ServicesPage').then(m => ({ default: m.ServiceSubpage })));
-const IndustriesLandingPage = lazy(() => import('./pages/IndustriesPage').then(m => ({ default: m.IndustriesLandingPage })));
-const IndustrySubpage = lazy(() => import('./pages/IndustriesPage').then(m => ({ default: m.IndustrySubpage })));
-const ProjectsPage = lazy(() => import('./pages/ProjectsPage'));
-const AboutPage = lazy(() => import('./pages/AboutPage'));
-const ContactPage = lazy(() => import('./pages/ContactPage'));
-const ThankYouPage = lazy(() => import('./pages/ThankYouPage'));
-const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
-const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage'));
-const TermsOfUsePage = lazy(() => import('./pages/TermsOfUsePage'));
-const CitiesWeServePage = lazy(() => import('./pages/CitiesWeServePage'));
+// initial bundle small. (The prerender entry imports these statically instead.)
+const lazyPages = {
+  Home: lazy(() => import('./pages/HomePage')),
+  ServicesLanding: lazy(() => import('./pages/ServicesPage').then(m => ({ default: m.ServicesLandingPage }))),
+  ServiceSubpage: lazy(() => import('./pages/ServicesPage').then(m => ({ default: m.ServiceSubpage }))),
+  IndustriesLanding: lazy(() => import('./pages/IndustriesPage').then(m => ({ default: m.IndustriesLandingPage }))),
+  IndustrySubpage: lazy(() => import('./pages/IndustriesPage').then(m => ({ default: m.IndustrySubpage }))),
+  Projects: lazy(() => import('./pages/ProjectsPage')),
+  About: lazy(() => import('./pages/AboutPage')),
+  Contact: lazy(() => import('./pages/ContactPage')),
+  ThankYou: lazy(() => import('./pages/ThankYouPage')),
+  Privacy: lazy(() => import('./pages/PrivacyPolicyPage')),
+  Terms: lazy(() => import('./pages/TermsOfUsePage')),
+  Cities: lazy(() => import('./pages/CitiesWeServePage')),
+  NotFound: lazy(() => import('./pages/NotFoundPage')),
+};
 
-function useDocumentTitle(title) {
-  useEffect(() => { document.title = title; }, [title]);
+// Keep <title> and meta description in sync on client-side navigation so they
+// match the prerendered tags after the SPA takes over.
+function useDocumentMeta(path) {
+  useEffect(() => {
+    const { title, description } = getPageMeta(path);
+    document.title = title;
+    let tag = document.querySelector('meta[name="description"]');
+    if (!tag) { tag = document.createElement('meta'); tag.setAttribute('name', 'description'); document.head.appendChild(tag); }
+    tag.setAttribute('content', description);
+  }, [path]);
 }
 
-function PageShell({ path }) {
-  if (path === '/') { useDocumentTitle('OSI — Office Systems Installation'); return <HomePage/>; }
-  if (path === '/services') { useDocumentTitle('Services — OSI'); return <ServicesLandingPage/>; }
-  if (path.startsWith('/services/')) {
-    const slug = path.split('/')[2];
-    useDocumentTitle(`${slug} — OSI`);
-    return <ServiceSubpage slug={slug} />;
-  }
-  if (path === '/industries') { useDocumentTitle('Industries — OSI'); return <IndustriesLandingPage/>; }
-  if (path.startsWith('/industries/')) {
-    const slug = path.split('/')[2];
-    useDocumentTitle(`${slug} — OSI`);
-    return <IndustrySubpage slug={slug} />;
-  }
-  if (path === '/projects') { useDocumentTitle('Projects — OSI'); return <ProjectsPage/>; }
-  if (path === '/about') { useDocumentTitle('About — OSI'); return <AboutPage/>; }
-  if (path === '/contact') { useDocumentTitle('Contact — OSI'); return <ContactPage/>; }
-  if (path === '/thank-you') { useDocumentTitle('Thank You — OSI'); return <ThankYouPage/>; }
-  if (path === '/privacy-policy') { useDocumentTitle('Privacy Policy — OSI'); return <PrivacyPolicyPage/>; }
-  if (path === '/terms-of-use') { useDocumentTitle('Terms of Use — OSI'); return <TermsOfUsePage/>; }
-  if (path === '/cities-we-serve') { useDocumentTitle('Cities We Serve — OSI'); return <CitiesWeServePage/>; }
-  useDocumentTitle('404 — OSI');
-  return <NotFoundPage/>;
-}
-
-function MainArea() {
+function MainArea({ pages }) {
   const { path } = useRoute();
+  useDocumentMeta(path);
   const label = path === '/' ? '00 Home' : path.split('/').filter(Boolean).join(' / ');
   return (
     <main id="main" data-screen-label={label}>
       <Suspense fallback={<div className="min-h-[60vh]" aria-hidden="true" />}>
-        <PageShell path={path} />
+        <PageRoutes pages={pages} />
       </Suspense>
     </main>
   );
 }
 
-export default function App() {
+export default function App({ pages = lazyPages, initialPath }) {
   return (
-    <RouterProvider>
+    <RouterProvider initialPath={initialPath}>
       <QuoteProvider>
         <Nav />
-        <MainArea />
+        <MainArea pages={pages} />
         <Footer />
       </QuoteProvider>
     </RouterProvider>

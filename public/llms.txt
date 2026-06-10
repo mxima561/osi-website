@@ -4,8 +4,8 @@
 
 ## Pages
 
-- [Services](/#/services): Commercial furniture services across the full project lifecycle
-- [Industries](/#/industries): Environments served — corporate office, healthcare, education, hospitality, government
-- [Projects](/#/projects): Portfolio of completed commercial furniture projects
-- [About](/#/about): Company background, infrastructure, and approach
-- [Contact](/#/contact): Request a quote or reach the OSI team
+- [Services](/services): Commercial furniture services across the full project lifecycle
+- [Industries](/industries): Environments served — corporate office, healthcare, education, hospitality, government
+- [Projects](/projects): Portfolio of completed commercial furniture projects
+- [About](/about): Company background, infrastructure, and approach
+- [Contact](/contact): Request a quote or reach the OSI team
