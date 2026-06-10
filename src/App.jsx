@@ -3,7 +3,6 @@ import { RouterProvider, useRoute } from './components/Router';
 import { QuoteProvider } from './components/QuoteModal';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
-import { Analytics } from '@vercel/analytics/react';
 
 // Route-level code splitting: each page is fetched on demand to keep the
 // initial bundle small.
@@ -69,7 +68,6 @@ export default function App() {
         <Nav />
         <MainArea />
         <Footer />
-        <Analytics />
       </QuoteProvider>
     </RouterProvider>
   );
